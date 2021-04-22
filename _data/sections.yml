@@ -1,0 +1,12 @@
+- name: gcs
+  title: Ground Control
+
+- name: fw
+  title: Integration
+
+- name: hw
+  title: Hardware
+
+- name: contacts
+  title: Contacts
+  doc: contacts

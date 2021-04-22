@@ -1,0 +1,35 @@
+// $font-family-sans-serif:      "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+// $font-weight-base:            400;
+
+@import "bootstrap/bootstrap";
+
+@import "rouge";
+@import "typeahead";
+@import "markdown/markdown";
+
+
+
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  padding-top: $nav-link-height + $nav-link-padding-y * 2;
+}
+
+main {
+  padding-bottom: 20px;
+}
+
+.jumbotron {
+  background: url("../img/jumbotron.jpg") no-repeat 50% 0;
+  background-size: cover;
+  color: #fff;
+  background-position: center 36%;
+  margin-top: -37px;
+  h1 {
+    color: #fff;
+  }
+}

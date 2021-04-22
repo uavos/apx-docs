@@ -1,0 +1,47 @@
+---
+title: Technical Documentation
+layout: default
+---
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{ site.title }}</h1>
+        <p>by UAVOS</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ site.baseurl }}/gcs/sim.html" role="button">Quickstart</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 lead">
+            <h2 class="header-light regular-pad">{{ page.title }}</h2>
+            <p class="lead">{{ site.docs | where: 'label','about' | map: 'content' | first | markdownify }}</p>
+        </div>
+        <div class="col-md-7 text-center">
+            <img src="img/about-apx.png" alt="about" class="img-fluid">
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        {% for section in site.data.sections %}
+            {% for i in site.docs %}
+                {% assign i_section = i.id | split:"/" | shift | first %}
+                {% assign i_name = i.id | split:"/" | shift | last %}
+                {% if i_section == section.name and i_name == "intro" %}
+                    <!-- <h1 class="text-center">{{ i.id }} - {{ i_section }} - {{ i_name }}</h1> -->
+                    <div class="col-sm-4">
+                        <a href="{{ i_section | prepend: site.baseurl }}" class="text-decoration-none text-dark">
+                            {% if i.icon %}
+                                <h1 class="text-center"><i class="{{ i.icon }}" aria-hidden="true"></i></h1>
+                            {% endif %}
+
+                            <h3 class="text-center">{{ i.title }}</h3>
+                        </a>
+                        <p>{{ i.content | markdownify }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,11 @@
+---
+---
+[
+{% for doc in site.docs %}
+  {
+    "title": "{{ doc.title }}",
+    "url": "{{ doc.url | prepend: site.baseurl }}"
+
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

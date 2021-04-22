@@ -1,0 +1,27 @@
+<nav class="navbar fixed-top navbar-light bg-light navbar-expand-md shadow">
+  <a class="navbar-brand text-nowrap" href="{{ site.baseurl }}/index.html">
+    <img src="{{site.baseurl}}/assets/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="UAVOS Inc">
+    {{ site.title }}
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav navbar-nav">
+      {% for i in site.data.sections %}
+        {% if i.doc %}
+          {% assign sid = i.doc | prepend:"/" %}
+        {% else %}
+          {% assign sid = i.name | prepend:"/" | append:"/index" %}
+        {% endif %}
+        {% assign doc = site.docs | where:"id", sid | first %}
+        <li class="nav-item text-nowrap {% if page.id==doc.id %}active{% endif %}"><a class="nav-link" href="{{ doc.url | prepend: site.baseurl }}">{{ i.title }}</a></li>
+      {% endfor %}
+    </ul>
+    <form class="form-inline ml-auto">
+      <div class="input-group">
+        <input id="search-box" class="form-control" type="search" placeholder="Search..." aria-label="Search">
+      </div>
+    </form>
+  </div>
+</nav>

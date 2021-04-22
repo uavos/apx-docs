@@ -1,0 +1,45 @@
+{% assign section_name = page.id | split:"/" | shift | first %}
+{% assign sdata = site.data[section_name] %}
+
+
+{% if sdata.pages %}
+
+<div class="{{ include.class }} pb-4">
+  <div class="list-group shadow mr-4">
+
+  {% if sdata.doc %}
+    {% assign shome = sdata.doc %}
+  {% else %}
+    {% assign shome = "index" %}
+  {% endif %}
+
+  {% assign spages = shome | concat: sdata.pages %}
+
+  {% for p in spages %}
+
+    {% assign sid = section_name | prepend:"/" | append:"/" | append:p %}
+    {% assign doc = site.docs | where:"id", sid | first %}
+
+    {% assign istyle = "" %}
+    {% if forloop.first %}
+      {% assign istyle = istyle | append:" font-weight-bold" %}
+    {% endif %}
+
+    {% if doc.id == page.id %}
+      {% assign istyle = istyle | append:" active" %}
+    {% else %}
+      {% if forloop.first %}
+        {% assign istyle = istyle | append:" list-group-item-primary" %}
+      {% endif %}
+    {% endif %}
+
+    <a class="list-group-item list-group-item-action bs-callout bs-callout-blue{{ istyle }}" href="{{ doc.url  | prepend: site.baseurl }}">
+      {{ doc.title }}
+      {% if doc.badge %}
+      <span class="badge badge-light float-right">{{ doc.badge }}</span>
+      {% endif %}
+    </a>
+  {% endfor %}
+  </div>
+</div>
+{% endif %}

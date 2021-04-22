@@ -1,0 +1,24 @@
+---
+layout: compress
+---
+
+<!DOCTYPE html>
+<html class="h-100"="{{ page.lang | default: site.lang | default: " en" }}">
+
+{% include head.html %}
+
+<body class="d-flex flex-column h-100">
+  <header>
+    {% include navbar.html %}
+  </header>
+
+  <main role="main" class="flex-shrink-0">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  {% include js_files.html %}
+</body>
+
+</html>

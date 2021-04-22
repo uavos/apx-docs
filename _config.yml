@@ -1,0 +1,64 @@
+title: APX Autopilot
+email: sa@uavos.com
+description: >
+  APX Autopilot by UAVOS Inc. Technical documentation and hardware integration manual.
+
+#baseurl: "/pages-test" # the subpath of your site, e.g. /blog/
+#url: https://uavos.github.io/pages-test # the base hostname & protocol for your site
+url: https://docs.uavos.com
+
+google_analytics: UA-38438120-1
+
+sass:
+  style: compressed
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-relative-links
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-titles-from-headings
+
+relative_links:
+  enabled: true
+  collections: true
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .idea/
+  - .gitignore
+
+defaults:
+  - scope:
+      path: "_docs"
+    values:
+      layout: docs
+      seo:
+        type: "WebPage"
+
+collections:
+  docs:
+    permalink: /:path:output_ext
+    output: true
+
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: [local]
+  blanklines: false
+  profile: false
+  startings: [html, head, body]
+
+titles_from_headings:
+  enabled: true
+  strip_title: true
+  collections: true
+
+optional_front_matter:
+  remove_originals: true
