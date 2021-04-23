@@ -4,11 +4,12 @@
 #
 ###########################################################################
 
-view: FORCE
+view:
 	@bundle exec jekyll serve
 
 
-check: FORCE
+check:
 	@bundle exec jekyll build
 	@htmlproofer _site --disable-external --allow-hash-href
+
 
