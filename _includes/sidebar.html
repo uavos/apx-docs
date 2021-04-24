@@ -13,13 +13,20 @@
     {% assign shome = "index" %}
   {% endif %}
 
-  {% assign spages = shome | concat: sdata.pages %}
 
-  {% for p in spages %}
-
+  {% assign sdocs = "" | split: ',' %}
+  {% for p in sdata.pages %}
     {% assign sid = section_name | prepend:"/" | append:"/" | append:p %}
     {% assign doc = site.docs | where:"id", sid | first %}
+    {% assign sdocs = sdocs | push: doc %}
+  {% endfor %}
+  {% assign sdocs = sdocs | sort: "order", "last" %}
 
+  {% assign sid = section_name | prepend:"/" | append:"/" | append:shome %}
+  {% assign doc = site.docs | where:"id", sid | first %}
+  {% assign sdocs = sdocs | unshift: doc %}
+
+  {% for doc in sdocs %}
     {% assign istyle = "" %}
     {% if forloop.first %}
       {% assign istyle = istyle | append:" font-weight-bold" %}
@@ -36,7 +43,7 @@
     <a class="list-group-item list-group-item-action bs-callout bs-callout-blue{{ istyle }}" href="{{ doc.url  | prepend: site.baseurl }}">
       {{ doc.title }}
       {% if doc.badge %}
-      <span class="badge badge-light float-right">{{ doc.badge }}</span>
+        <span class="badge badge-light float-right">{{ doc.badge }}</span>
       {% endif %}
     </a>
   {% endfor %}
