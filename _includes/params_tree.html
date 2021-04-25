@@ -21,7 +21,9 @@
         {% endif %}
         
         <i>
-          <code>{{ item.type }}</code>
+          {% if item.type %}
+            <code>{{ item.type }}</code>
+          {% endif %}
           {% if item.units %}
             <code>[{{ item.units | join:"," }}]</code>
           {% endif %}
