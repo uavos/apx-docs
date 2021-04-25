@@ -2,6 +2,9 @@
 layout: default
 ---
 
+{% assign page_label = page.id | split:"/" | last %}
+{% assign meta = site.data.meta[page_label] %}
+
 <div class="container pt-4">
   <div class="row">
 
@@ -10,6 +13,30 @@ layout: default
         <div class="col-md-8 markdown-body">
 
             <h1>{{ page.title }}</h1>
+    
+            {% if page.badge %}
+              <blockquote>
+                Node: <code class="language-plaintext">{{ page.badge }}</code>
+              </blockquote>
+            {% endif %}
+
+            <!-- nodes using a module -->
+            {% assign nodes = meta.nodes %}
+            {% if nodes and nodes != empty %}
+              <blockquote>
+                Nodes: 
+                {% for node_name in nodes %}
+                    <a href="../hw/{{ node_name }}"><code class="language-plaintext">{{ node_name }}</code></a>
+                {% endfor %}
+                {% if meta.conf and meta.conf != empty %}
+                    | Parameters: 
+                    {% for i in meta.conf %}
+                      <code class="language-plaintext">{{ i }}</code>
+                    {% endfor %}
+                {% endif %}
+              </blockquote>
+            {% endif %}
+
             {% if page.toc %}
               <div class="panel panel-info">
                 <blockquote>
@@ -20,8 +47,38 @@ layout: default
                 </blockquote>
               </div>
             {% endif %}
+
             {{ content }}
 
+            {% if page.modules and page.modules != empty %}
+              <h2>Capabilities</h2>
+              <ul>
+              {% for i in page.modules %}
+                {% assign mod_name = i | replace: ".", "_" %}
+                {% assign mod = site.data.meta[mod_name] %}
+                <li>
+                  <a href="../fw/{{ mod_name }}">{{ mod.title }}</a>
+                </li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% if meta.params and meta.params != empty %}
+              {% assign params = meta.params %}
+              <h2>Configuration parameters</h2>
+              {% include params_tree.html %}
+            {% endif %}
+
+            {% if page.documents and page.documents != empty %}
+              {% assign assets = page.documents %}
+              <h2>Documents</h2>
+              <ul>
+              {% for asset in assets %}
+                <li><a href="{{ asset }}">{{ asset | split:"/" | last }}</a></li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+            
           </div>
 
   </div>

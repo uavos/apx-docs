@@ -1,0 +1,44 @@
+<ul>
+  {% for item in params %}
+    <li>
+      {% if item.content %}
+      <!-- GROUP OF PARAMETERS -->
+        {% if item.title %}
+          {% assign title = item.title %}
+        {% else %}
+          {% assign title = item.name %}
+        {% endif %}
+        <code class="language-plaintext">{{ title }}</code>
+
+        {% if item.descr %}
+          <br><blockquote>{{ item.descr }}</blockquote>
+        {% endif %}
+      {% else %}
+      <!-- PARAMETER -->
+        <code class="language-plaintext">{{ item.name }}</code> 
+        {% if item.title %}
+           <b>{{ item.title | capitalize }}</b>
+        {% endif %}
+        
+        <i>
+          <code>{{ item.type }}</code>
+          {% if item.units %}
+            <code>[{{ item.units | join:"," }}]</code>
+          {% endif %}
+        </i>
+        
+        
+        {% if item.descr %}
+          <br><blockquote>{{ item.descr }}</blockquote>
+        {% endif %}
+      {% endif %}
+    </li>
+
+    <!-- RECURSIVE TREE -->
+    {% if item.content %}
+      {% assign params = item.content %}
+      {% include params_tree.html %}
+    {% endif %}
+
+  {% endfor %}
+</ul>

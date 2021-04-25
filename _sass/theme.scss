@@ -42,6 +42,12 @@ main {
   padding-bottom: 20px;
 }
 
+.markdown-body {
+  blockquote {
+    color: $gray-600;
+  }
+}
+
 .jumbotron {
   background: url("../img/jumbotron.jpg") no-repeat 50% 0;
   background-size: cover;
