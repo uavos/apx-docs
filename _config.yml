@@ -42,7 +42,7 @@ defaults:
 
 collections:
   docs:
-    permalink: /:path:output_ext
+    permalink: /:path
     output: true
 
 compress_html:

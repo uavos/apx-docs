@@ -14,7 +14,7 @@ layout: default
 
             <h1>{{ page.title }}</h1>
     
-            {% if page.badge %}
+            {% if page.node %}
               <blockquote>
                 Node: <code class="language-plaintext">{{ page.badge }}</code>
               </blockquote>
@@ -24,10 +24,14 @@ layout: default
             {% assign nodes = meta.nodes %}
             {% if nodes and nodes != empty %}
               <blockquote>
-                Nodes: 
+                  Nodes: 
                 {% for node_name in nodes %}
                     <a href="../hw/{{ node_name }}"><code class="language-plaintext">{{ node_name }}</code></a>
                 {% endfor %}
+                {% if meta.name %}
+                  | Module: 
+                  <code>{{ meta.name | split:"." | slice:1,8 | join:"." }}</code>
+                {% endif %}
                 {% if meta.conf and meta.conf != empty %}
                     | Parameters: 
                     {% for i in meta.conf %}

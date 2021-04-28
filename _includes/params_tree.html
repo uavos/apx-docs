@@ -8,16 +8,16 @@
         {% else %}
           {% assign title = item.name %}
         {% endif %}
-        <code class="language-plaintext">{{ title }}</code>
+        <b><code class="language-plaintext">{{ title }}</code></b>
 
         {% if item.descr %}
-          <br><blockquote>{{ item.descr }}</blockquote>
+          <br><blockquote>{{ item.descr | markdownify }}</blockquote>
         {% endif %}
       {% else %}
       <!-- PARAMETER -->
-        <code class="language-plaintext">{{ item.name }}</code> 
+        <b><code class="language-plaintext">{{ item.name }}</code></b>
         {% if item.title %}
-           <b>{{ item.title | capitalize }}</b>
+           {{ item.title | capitalize }}
         {% endif %}
         
         <i>
@@ -27,11 +27,14 @@
           {% if item.units %}
             <code>[{{ item.units | join:"," }}]</code>
           {% endif %}
+          {% if item.default %}
+            <code>{{ item.default }}</code>
+          {% endif %}
         </i>
         
         
         {% if item.descr %}
-          <br><blockquote>{{ item.descr }}</blockquote>
+          <br><blockquote>{{ item.descr | markdownify }}</blockquote>
         {% endif %}
       {% endif %}
     </li>

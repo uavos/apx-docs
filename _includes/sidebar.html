@@ -20,7 +20,6 @@
     {% assign doc = site.docs | where:"id", sid | first %}
     {% assign sdocs = sdocs | push: doc %}
   {% endfor %}
-  {% assign sdocs = sdocs | sort: "order", "last" %}
 
   {% assign sid = section_name | prepend:"/" | append:"/" | append:shome %}
   {% assign doc = site.docs | where:"id", sid | first %}
