@@ -14,32 +14,46 @@ layout: default
 
             <h1>{{ page.title }}</h1>
     
+            <blockquote>
+            <!-- badges -->
+
+            {% assign sep="" %}
+            <!-- node name -->
             {% if page.node %}
-              <blockquote>
-                Node: <code class="language-plaintext">{{ page.badge }}</code>
-              </blockquote>
+              {{ sep }}
+              {% assign sep="|" %}
+              Node: <code class="language-plaintext">{{ page.badge }}</code>
             {% endif %}
 
             <!-- nodes using a module -->
             {% assign nodes = meta.nodes %}
             {% if nodes and nodes != empty %}
-              <blockquote>
-                  Nodes: 
+              {{ sep }}
+              {% assign sep="|" %}
+              Nodes: 
                 {% for node_name in nodes %}
                     <a href="../hw/{{ node_name }}"><code class="language-plaintext">{{ node_name }}</code></a>
                 {% endfor %}
-                {% if meta.name %}
-                  | Module: 
-                  <code>{{ meta.name | split:"." | slice:1,8 | join:"." }}</code>
-                {% endif %}
-                {% if meta.conf and meta.conf != empty %}
-                    | Parameters: 
-                    {% for i in meta.conf %}
-                      <code class="language-plaintext">{{ i }}</code>
-                    {% endfor %}
-                {% endif %}
-              </blockquote>
             {% endif %}
+
+            {% if meta.module %}
+              {{ sep }}
+              {% assign sep="|" %}
+              Module: 
+              <code>{{ meta.module }}</code>
+            {% endif %}
+
+            {% if meta.conf and meta.conf != empty %}
+                {{ sep }}
+                {% assign sep="|" %}
+                Parameters: 
+                {% for i in meta.conf %}
+                  <code class="language-plaintext">{{ i }}</code>
+                {% endfor %}
+            {% endif %}
+
+            <!-- badges end -->
+            </blockquote>
 
             {% if page.toc %}
               <div class="panel panel-info">
@@ -52,8 +66,10 @@ layout: default
               </div>
             {% endif %}
 
+
             {{ content }}
 
+            <!-- list used modules -->
             {% if page.modules and page.modules != empty %}
               <h2>Capabilities</h2>
               <ul>
@@ -61,7 +77,7 @@ layout: default
                 {% assign mod_name = i | replace: ".", "_" %}
                 {% assign mod = site.data.meta[mod_name] %}
                 <li>
-                  <a href="../fw/{{ mod_name }}">{{ mod.title }}</a>
+                  <a href="../fw/{{ mod.label }}">{{ mod.title }}</a>
                 </li>
               {% endfor %}
               </ul>
