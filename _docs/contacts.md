@@ -18,10 +18,11 @@ Aliaksei Stratsilatau <sa@uavos.com>
 
 * [`apx-ap`](https://github.com/uavos/apx-ap) - Autopilot firmware distribution;
 * [`apx-gcs`](https://github.com/uavos/apx-gcs) - Ground Control (open source);
+* [`apx-lib`](https://github.com/uavos/apx-lib) - Shared library (open source);
 
 All `issues`, `bugs` and `feature requests` can be reported in appropriate repository.
 
->The old documentation site is accessible here: [apx-v10](http://uavos.github.io/apx-v10).
+>The old documentation site of v10.xx and below is accessible here: [apx-v10](http://uavos.github.io/apx-v10).
 
 ## Subscribe for updates
 
