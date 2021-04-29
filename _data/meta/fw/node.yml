@@ -1,0 +1,15 @@
+conf:
+- label
+label: node
+module: node
+name: node
+nodes: []
+params:
+- descr: 'Node label.
+
+    User comment for the node configuration used for display purposes only.
+
+    '
+  name: label
+  type: string
+title: Node modules tree

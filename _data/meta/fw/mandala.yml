@@ -1,0 +1,2811 @@
+content:
+- content:
+  - content:
+    - content:
+      - name: src
+        suffix: source
+        title: Gyro source
+        type: option
+        units:
+        - unknown
+        - local
+        - primary
+        - secondary
+        - failsafe
+        - auxillary
+      - name: cnt
+        suffix: devices
+        title: Gyro devices
+        type: byte
+      - name: temp
+        suffix: temperature
+        title: Gyro temperature
+        type: real
+        units: C
+      - name: clip
+        suffix: total clip count
+        title: Gyro total clip count
+        type: byte
+        units: u
+      - name: vib
+        suffix: vibration
+        title: Gyro vibration
+        type: byte
+        units: '%'
+      - name: coning
+        suffix: coning vibration
+        title: Gyro coning vibration
+        type: real
+        units: rad^2
+      descr: Gyro bundle status shared with GCS
+      name: gyro
+      title: Gyro
+      type: real
+    - content:
+      - name: src
+        suffix: source
+        title: Accelerometer source
+        type: option
+        units:
+        - unknown
+        - local
+        - primary
+        - secondary
+        - failsafe
+        - auxillary
+      - name: cnt
+        suffix: devices
+        title: Accelerometer devices
+        type: byte
+      - name: temp
+        suffix: temperature
+        title: Accelerometer temperature
+        type: real
+        units: C
+      - name: clip
+        suffix: clip count
+        title: Accelerometer clip count
+        type: byte
+        units: u
+      - name: vib
+        suffix: vibration
+        title: Accelerometer vibration
+        type: byte
+        units: '%'
+      name: acc
+      title: Accelerometer
+      type: real
+    - content:
+      - name: src
+        suffix: source
+        title: Magnetometer source
+        type: option
+        units:
+        - unknown
+        - local
+        - primary
+        - secondary
+        - failsafe
+        - auxillary
+      - name: cnt
+        suffix: devices
+        title: Magnetometer devices
+        type: byte
+      - name: temp
+        suffix: temperature
+        title: Magnetometer temperature
+        type: real
+        units: C
+      - name: vib
+        suffix: vibration
+        title: Magnetometer vibration
+        type: byte
+        units: '%'
+      - name: norm
+        suffix: magnitude
+        title: Magnetometer magnitude
+        type: real
+        units: u
+      - name: decl
+        suffix: declination
+        title: Magnetometer declination
+        type: real
+        units: rad
+      name: mag
+      title: Magnetometer
+      type: real
+    - content:
+      - name: src
+        suffix: source
+        title: GPS source
+        type: option
+        units:
+        - unknown
+        - local
+        - primary
+        - secondary
+        - failsafe
+        - auxillary
+      - name: cnt
+        suffix: devices
+        title: GPS devices
+        type: byte
+      - name: fix
+        suffix: fix type
+        title: GPS fix type
+        type: option
+        units:
+        - none
+        - 2D
+        - 3D
+        - DIFF
+        - RTK
+      - name: emi
+        suffix: EMI status
+        title: GPS EMI status
+        type: option
+        units:
+        - unknown
+        - ok
+        - warning
+        - critical
+        - spoofing
+      - name: hacc
+        suffix: horizontal position accuracy
+        title: GPS horizontal position accuracy
+        type: real
+        units: m
+      - name: vacc
+        suffix: vertical position accuracy
+        title: GPS vertical position accuracy
+        type: real
+        units: m
+      - name: sacc
+        suffix: speed accuracy
+        title: GPS speed accuracy
+        type: real
+        units: m/s
+      - name: pdop
+        suffix: position dilution of precision
+        title: GPS position dilution of precision
+        type: real
+      - name: sv
+        suffix: visible satellites
+        title: GPS visible satellites
+        type: word
+      - name: su
+        suffix: used satellites
+        title: GPS used satellites
+        type: word
+      - name: temp
+        suffix: temperature
+        title: GPS temperature
+        type: real
+        units: C
+      - name: hmsl
+        suffix: altitude
+        title: GPS altitude
+        type: real
+        units: m
+      name: gps
+      title: GPS
+      type: real
+    - content:
+      - name: src
+        suffix: source
+        title: Static pressure source
+        type: option
+        units:
+        - unknown
+        - local
+        - primary
+        - secondary
+        - failsafe
+        - auxillary
+      - name: cnt
+        suffix: devices
+        title: Static pressure devices
+        type: byte
+      - name: status
+        title: Baro
+        type: option
+        units:
+        - unknown
+        - available
+        - warning
+        - critical
+        - failure
+      - name: mbar
+        title: Absolute pressure
+        type: real
+        units: mbar
+      - name: temp
+        title: Barometer temperature
+        type: real
+        units: C
+      name: baro
+      title: Static pressure
+      type: real
+    - content:
+      - name: src
+        suffix: source
+        title: Dynamic pressure source
+        type: option
+        units:
+        - unknown
+        - local
+        - primary
+        - secondary
+        - failsafe
+        - auxillary
+      - name: cnt
+        suffix: devices
+        title: Dynamic pressure devices
+        type: byte
+      - name: valid
+        suffix: validated devices
+        title: Dynamic pressure validated devices
+        type: byte
+      - name: status
+        title: Pitot
+        type: option
+        units:
+        - unknown
+        - available
+        - warning
+        - critical
+        - failure
+      - name: airspeed
+        title: Airspeed
+        type: real
+        units: m/s
+      - name: acc
+        title: Airspeed derivative
+        type: real
+        units: m/s^2
+      - name: temp
+        title: Pitot probe temperature
+        type: real
+        units: C
+      - name: raw
+        title: Dynamic pressure
+        type: real
+        units: kPa
+      name: pitot
+      title: Dynamic pressure
+      type: real
+    - content:
+      - name: src
+        title: AGL source
+        type: option
+        units:
+        - none
+        - laser
+        - radio
+        - sonic
+      - name: status
+        title: AGL
+        type: option
+        units:
+        - 'off'
+        - valid
+      - name: laser
+        title: Laser AGL altitude
+        type: real
+        units: m
+      - name: radio
+        title: Radio AGL altitude
+        type: real
+        units: m
+      - name: sonic
+        title: Ultrasonic AGL altitude
+        type: real
+        units: m
+      - name: ground
+        title: Ground
+        type: option
+        units:
+        - unknown
+        - landed
+        - flying
+      name: agl
+      title: Altitude above ground sensors
+      type: real
+    - content:
+      - name: slip
+        title: Slip
+        type: real
+        units: rad
+      - name: aoa
+        title: Angle of attack
+        type: real
+        units: rad
+      - name: temp
+        title: Ambient air temperature
+        type: real
+        units: C
+      - name: buo
+        title: Blimp ballonet pressure
+        type: real
+        units: kPa
+      name: air
+      title: Aerodynamic sensors
+      type: real
+    - content:
+      - name: roll
+        suffix: Roll
+        title: RTK Roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: Pitch
+        title: RTK Pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: Yaw
+        title: RTK Yaw
+        type: real
+        units: rad
+      name: rtk
+      title: RTK
+      type: real
+    - content:
+      - name: status
+        title: LAS status
+        type: option
+        units:
+        - ok
+        - holdon
+        - cancel
+      - name: dx
+        title: Relative distance X
+        type: real
+        units: m
+      - name: dy
+        title: Relative distance Y
+        type: real
+        units: m
+      - name: dz
+        title: Relative distance Z
+        type: real
+        units: m
+      - name: vx
+        title: Relative velocity X
+        type: real
+        units: m/s
+      - name: vy
+        title: Relative velocity Y
+        type: real
+        units: m/s
+      - name: vz
+        title: Relative velocity Z
+        type: real
+        units: m/s
+      descr: Used for approach correction.
+      name: las
+      title: Landing Assistance sensors
+      type: real
+    - content:
+      - name: lat
+        suffix: latitude
+        title: Platform latitude
+        type: real
+        units: deg
+      - name: lon
+        suffix: longitude
+        title: Platform longitude
+        type: real
+        units: deg
+      - name: hmsl
+        suffix: altitude MSL
+        title: Platform altitude MSL
+        type: real
+        units: m
+      - name: vn
+        suffix: velocity north
+        title: Platform velocity north
+        type: real
+        units: m/s
+      - name: ve
+        suffix: velocity east
+        title: Platform velocity east
+        type: real
+        units: m/s
+      - name: vd
+        suffix: velocity down
+        title: Platform velocity down
+        type: real
+        units: m/s
+      - name: roll
+        suffix: roll
+        title: Platform roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: pitch
+        title: Platform pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: yaw
+        title: Platform yaw
+        type: real
+        units: rad
+      descr: Used for landing to a moving platform with las.
+      name: pfm
+      title: Platform
+      type: real
+    - content:
+      - name: vx
+        title: Visual velocity X
+        type: real
+        units: m/s
+      - name: vy
+        title: Visual velocity Y
+        type: real
+        units: m/s
+      - name: vz
+        title: Visual velocity Z
+        type: real
+        units: m/s
+      - name: dx
+        title: Visual delta X
+        type: real
+        units: m
+      - name: dy
+        title: Visual delta Y
+        type: real
+        units: m
+      - name: dz
+        title: Visual delta Z
+        type: real
+        units: m
+      - name: roll
+        title: Visual roll
+        type: real
+        units: rad
+      - name: pitch
+        title: Visual pitch
+        type: real
+        units: rad
+      - name: yaw
+        title: Visual yaw
+        type: real
+        units: rad
+      - name: lat
+        title: Visual latitude
+        type: real
+        units: deg
+      - name: lon
+        title: Visual longitude
+        type: real
+        units: deg
+      - name: hmsl
+        title: Visual altitude MSL
+        type: real
+        units: m
+      - name: altitude
+        title: Visual altitude
+        type: real
+        units: m
+      descr: Used for global position estimation and dead-reckoning.
+      name: vps
+      title: Visual navigation
+      type: real
+    - content:
+      - name: dist
+        title: Distance to target
+        type: real
+        units: m
+      - name: hdg
+        title: Heading to target
+        type: real
+        units: rad
+      - name: elv
+        title: Elevation to target
+        type: real
+        units: rad
+      - name: vel
+        title: Velocity of target
+        type: real
+        units: m/s
+      name: tcas
+      title: Collision avoidance
+      type: real
+    descr: Sensors used for vehicle navigation and controls. Used as input for position
+      and attitude estimators and for filters to supply aerodynamic controls.
+    name: nav
+    title: Navigation
+    type: real
+  - content:
+    - content:
+      - name: status
+        suffix: status
+        title: Engine status
+        type: option
+        units:
+        - unknown
+        - ready
+        - start
+        - stop
+        - running
+        - warning
+        - failure
+      - name: rpm
+        suffix: RPM
+        title: Engine RPM
+        type: real
+        units: rpm
+      - name: torque
+        suffix: torque
+        title: Engine torque
+        type: real
+        units: Nm
+      - name: temp
+        suffix: temperature
+        title: Engine temperature
+        type: real
+        units: C
+      - name: voltage
+        suffix: ECU voltage
+        title: Engine ECU voltage
+        type: real
+        units: V
+      - name: current
+        suffix: ECU current
+        title: Engine ECU current
+        type: real
+        units: A
+      - name: ot
+        title: Oil temperature
+        type: real
+        units: C
+      - name: egt
+        title: Exhaust temperature
+        type: real
+        units: C
+      - name: egtd
+        title: Exhaust delta temperature
+        type: real
+        units: C
+      - name: op
+        title: Oil pressure
+        type: real
+        units: bar
+      - name: map
+        title: Manifold Absolute Pressure
+        type: real
+        units: Pa
+      - name: iap
+        title: Intake air box pressure
+        type: real
+        units: kPa
+      - name: tc
+        title: Turbocharger
+        type: option
+        units:
+        - unknown
+        - 'off'
+        - active
+        - warning
+        - critical
+        - failure
+      - name: block
+        title: Disable starter switch
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      name: eng
+      title: Engine
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Gearbox status
+        type: option
+        units:
+        - unknown
+        - ok
+        - warning
+        - failure
+      - name: rpm
+        suffix: RPM
+        title: Gearbox RPM
+        type: real
+        units: rpm
+      - name: temp
+        suffix: temperature
+        title: Gearbox temperature
+        type: real
+        units: C
+      - name: clutch
+        title: Clutch
+        type: option
+        units:
+        - 'on'
+        - 'off'
+        - busy
+      name: gbox
+      title: Gearbox
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Prop status
+        type: option
+        units:
+        - unknown
+        - ok
+        - warning
+        - failure
+      - name: rpm
+        suffix: RPM
+        title: Prop RPM
+        type: real
+        units: rpm
+      - name: pitch
+        suffix: pitch position
+        title: Prop pitch position
+        type: real
+        units: su
+      - name: thrust
+        suffix: thrust
+        title: Prop thrust
+        type: real
+        units: N
+      name: prop
+      title: Prop
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Generator status
+        type: option
+        units:
+        - unknown
+        - ok
+        - idle
+        - free
+        - warning
+        - failure
+      - name: rpm
+        suffix: RPM
+        title: Generator RPM
+        type: real
+        units: rpm
+      - name: voltage
+        suffix: voltage
+        title: Generator voltage
+        type: real
+        units: V
+      - name: current
+        suffix: current
+        title: Generator current
+        type: real
+        units: A
+      - name: temp
+        suffix: temperature
+        title: Generator temperature
+        type: real
+        units: C
+      name: gen
+      title: Generator
+      type: real
+    - content:
+      - name: capacity
+        suffix: capacity
+        title: Fuel capacity
+        type: real
+        units: l
+      - name: rate
+        suffix: flow rate
+        title: Fuel flow rate
+        type: real
+        units: l/h
+      - name: temp
+        suffix: temperature
+        title: Fuel temperature
+        type: real
+        units: C
+      - name: ps
+        suffix: pressure
+        title: Fuel pressure
+        type: real
+        units: bar
+      name: fuel
+      title: Fuel
+      type: real
+    - content:
+      - name: status
+        title: BAT
+        type: option
+        units:
+        - unknown
+        - ok
+        - charging
+        - shutdown
+        - warning
+        - failure
+      - name: voltage
+        suffix: voltage
+        title: Battery voltage
+        type: real
+        units: V
+      - name: current
+        suffix: current
+        title: Battery current
+        type: real
+        units: A
+      - name: capacity
+        suffix: capacity
+        title: Battery capacity
+        type: real
+        units: A/h
+      - name: temp
+        suffix: temperature
+        title: Battery temperature
+        type: real
+        units: C
+      name: bat
+      title: Battery
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Power status
+        type: option
+        units:
+        - unknown
+        - ok
+        - shutdown
+        - warning
+        - failure
+      - name: vsys
+        title: System voltage
+        type: real
+        units: V
+      - name: isys
+        title: System current
+        type: real
+        units: A
+      - name: vsrv
+        title: Servo voltage
+        type: real
+        units: V
+      - name: isrv
+        title: Servo current
+        type: real
+        units: A
+      - name: vpld
+        title: Payload voltage
+        type: real
+        units: V
+      - name: ipld
+        title: Payload current
+        type: real
+        units: A
+      name: pwr
+      title: Power
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Datalink status
+        type: option
+        units:
+        - unknown
+        - ok
+        - muted
+        - busy
+        - warning
+        - failure
+      - name: rss
+        title: Received signal strength
+        type: byte
+        units: '%'
+      - name: snr
+        title: Signal to noise ratio
+        type: real
+        units: u
+      - name: temp
+        title: Modem temperature
+        type: real
+        units: C
+      - name: voltage
+        title: Modem voltage
+        type: real
+        units: V
+      - name: current
+        title: Modem current
+        type: real
+        units: A
+      - name: hdg
+        title: Radio heading
+        type: real
+        units: rad
+      - name: dme
+        title: Radio distance
+        type: real
+        units: m
+      - name: roll
+        title: Antenna roll
+        type: real
+        units: rad
+      - name: pitch
+        title: Antenna pitch
+        type: real
+        units: rad
+      - name: yaw
+        title: Antenna yaw
+        type: real
+        units: rad
+      name: com
+      title: Datalink
+      type: real
+    - content:
+      - name: rt
+        title: Room temperature
+        type: real
+        units: C
+      - name: gear
+        title: Landing gear
+        type: option
+        units:
+        - down
+        - retracted
+      - name: fgear
+        title: Landing gear force
+        type: real
+        units: u
+      name: aux
+      title: Auxillary sensors
+      type: real
+    - content:
+      - name: status
+        title: ERS status
+        type: option
+        units:
+        - unknown
+        - ok
+        - disarmed
+        - busy
+        - failure
+      - name: block
+        title: ERS disable switch
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      name: ers
+      title: Emergency Rescue System
+      type: real
+    - content:
+      - name: pos
+        title: Encoder position
+        type: real
+        units: su
+      - name: dpos
+        title: Delta position
+        type: real
+        units: su
+      - name: power
+        title: Power
+        type: real
+        units: su
+      name: srv
+      title: Servo
+      type: real
+    - content:
+      - name: roll
+        title: Cam roll
+        type: real
+        units: rad
+      - name: pitch
+        title: Cam pitch
+        type: real
+        units: rad
+      - name: yaw
+        title: Cam yaw
+        type: real
+        units: rad
+      - name: droll
+        title: Delta roll
+        type: real
+        units: rad
+      - name: dpitch
+        title: Delta pitch
+        type: real
+        units: rad
+      - name: dyaw
+        title: Delta yaw
+        type: real
+        units: rad
+      - name: fov
+        title: Cam field of view
+        type: real
+        units: rad
+      - name: range
+        title: Payload range
+        type: real
+        units: m
+      name: cam
+      title: Camera sensors
+      type: real
+    - content:
+      - name: roll
+        title: Turret roll
+        type: real
+        units: rad
+      - name: pitch
+        title: Turret pitch
+        type: real
+        units: rad
+      - name: yaw
+        title: Turret yaw
+        type: real
+        units: rad
+      - name: status
+        title: Turret status
+        type: option
+        units:
+        - ready
+        - shooting
+        - reloading
+      - name: capacity
+        title: Payload capacity
+        type: byte
+      name: turret
+      title: Turret sensors
+      type: real
+    descr: Environmental sensors. Data used as inputs for filters to estimate vehicle
+      state and safety conditions.
+    name: env
+    title: Environment
+    type: real
+  descr: Read only data sources, measured by sensors from physical parameters.
+  name: sns
+  title: Sensors
+  type: real
+- content:
+  - content:
+    - content:
+      - name: ail
+        title: Ailerons
+        type: real
+        units: su
+      - name: elv
+        title: Elevator
+        type: real
+        units: su
+      - name: rud
+        title: Rudder
+        type: real
+        units: su
+      - name: col
+        title: Collective
+        type: real
+        units: su
+      name: att
+      title: Attitude controls
+      type: real
+      units: su
+    - content:
+      - name: thr
+        title: Throttle
+        type: real
+        units: u
+      - name: prop
+        title: Prop pitch
+        type: real
+        units: su
+      - name: choke
+        title: Choke
+        type: real
+        units: u
+      - name: tune
+        title: Engine tuning
+        type: real
+        units: su
+      - name: tvec
+        title: Thrust vector
+        type: real
+        units: su
+      - name: starter
+        title: Engine starter
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: ign1
+        title: Ignition 1
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: ign2
+        title: Ignition 2
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: fpump
+        title: Fuel pump
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      name: eng
+      title: Engine controls
+      type: real
+    - content:
+      - name: flaps
+        title: Flaps
+        type: real
+        units: u
+      - name: airbrk
+        title: Airbrakes
+        type: real
+        units: u
+      - name: slats
+        title: Slats
+        type: real
+        units: u
+      - name: sweep
+        title: Sweep
+        type: real
+        units: su
+      - name: buo
+        title: Buoyancy
+        type: real
+        units: su
+      name: wing
+      title: Wing mechanization
+      type: real
+    - content:
+      - name: brake
+        title: Brake
+        type: real
+        units: u
+      - name: gear
+        title: Landing gear
+        type: option
+        units:
+        - down
+        - retract
+      - name: rud
+        title: Steering
+        type: real
+        units: su
+      name: str
+      title: Steering controls
+      type: real
+    descr: Controls used for vehicle stabilization. Data published by controllers
+      for aerodynamic controls.
+    name: nav
+    title: Navigation
+    type: real
+  - content:
+    - content:
+      - name: ap
+        suffix: Avionics
+        title: Power Avionics
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: servo
+        suffix: servo
+        title: Power servo
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: ignition
+        suffix: Ignition
+        title: Power Ignition
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: payload
+        suffix: Payload
+        title: Power Payload
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: agl
+        suffix: AGL
+        title: Power AGL
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: xpdr
+        suffix: XPDR
+        title: Power XPDR
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: satcom
+        suffix: Satcom
+        title: Power Satcom
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: rfamp
+        suffix: RF amplifier
+        title: Power RF amplifier
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: ice
+        suffix: Anti-ice
+        title: Power Anti-ice
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: las
+        suffix: Landing Assistance
+        title: Power Landing Assistance
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      name: pwr
+      title: Power
+      type: option
+      units:
+      - 'off'
+      - 'on'
+    - content:
+      - name: horn
+        title: Horn signal
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      name: aux
+      title: Auxillary
+      type: option
+      units:
+      - 'off'
+      - 'on'
+    - content:
+      - name: launch
+        title: ERS launch
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: rel
+        title: ERS release
+        type: option
+        units:
+        - locked
+        - released
+      name: ers
+      title: Emergency Recovery
+      type: option
+    - content:
+      - name: nav
+        title: Navigation lights
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: taxi
+        title: Taxi lights
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: beacon
+        title: Beacon light
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: landing
+        title: Landing lights
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: strobe
+        title: Strobe lights
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      name: light
+      title: Lighting
+      type: option
+      units:
+      - 'off'
+      - 'on'
+    - content:
+      - name: main
+        title: Main door
+        type: option
+        units:
+        - locked
+        - open
+      - name: drop
+        title: Drop-off
+        type: option
+        units:
+        - locked
+        - open
+      name: door
+      title: Doors and latches
+      type: option
+      units:
+      - locked
+      - open
+    - content:
+      - name: roll
+        suffix: ctr roll
+        title: Camera ctr roll
+        type: real
+        units: su
+      - name: pitch
+        suffix: ctr pitch
+        title: Camera ctr pitch
+        type: real
+        units: su
+      - name: yaw
+        suffix: ctr yaw
+        title: Camera ctr yaw
+        type: real
+        units: su
+      - name: rec
+        suffix: record
+        title: Camera record
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: shot
+        suffix: shot
+        title: Camera shot
+        type: option
+        units:
+        - 'off'
+        - single
+        - series
+      - name: arm
+        suffix: arm focus
+        title: Camera arm focus
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: zin
+        suffix: zoom in
+        title: Camera zoom in
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: zout
+        suffix: zoom out
+        title: Camera zoom out
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: aux
+        suffix: auxillary control
+        title: Camera auxillary control
+        type: byte
+      name: cam
+      title: Camera
+      type: real
+    - content:
+      - name: roll
+        title: ATS ctr roll
+        type: real
+        units: su
+      - name: pitch
+        title: ATS ctr pitch
+        type: real
+        units: su
+      - name: yaw
+        title: ATS ctr yaw
+        type: real
+        units: su
+      name: ats
+      title: ATS controls
+      type: real
+    - content:
+      - name: roll
+        title: Turret ctr roll
+        type: real
+        units: su
+      - name: pitch
+        title: Turret ctr pitch
+        type: real
+        units: su
+      - name: yaw
+        title: Turret ctr yaw
+        type: real
+        units: su
+      - name: op
+        title: Turret op
+        type: option
+        units:
+        - 'off'
+        - arm
+        - shoot
+        - shooting
+        - reload
+      name: turret
+      title: Turret controls
+      type: real
+    - content:
+      - name: u1
+        title: User ctr 1
+        type: real
+      - name: u2
+        title: User ctr 2
+        type: real
+      - name: u3
+        title: User ctr 3
+        type: real
+      - name: u4
+        title: User ctr 4
+        type: real
+      - name: u5
+        title: User ctr 5
+        type: real
+      - name: u6
+        title: User ctr 6
+        type: real
+      - name: u7
+        title: User ctr 7
+        type: real
+      - name: u8
+        title: User ctr 8
+        type: real
+      - name: ub1
+        title: User ctr byte 1
+        type: byte
+      - name: ub2
+        title: User ctr byte 2
+        type: byte
+      - name: ub3
+        title: User ctr byte 3
+        type: byte
+      - name: ub4
+        title: User ctr byte 4
+        type: byte
+      - name: ub5
+        title: User ctr byte 5
+        type: byte
+      - name: ub6
+        title: User ctr byte 6
+        type: byte
+      - name: ub7
+        title: User ctr byte 7
+        type: byte
+      name: usr
+      title: User controls
+      type: real
+    - content:
+      - name: s1
+        title: Scr 1
+        type: real
+      - name: s2
+        title: Scr 2
+        type: real
+      - name: s3
+        title: Scr 3
+        type: real
+      - name: s4
+        title: Scr 4
+        type: real
+      - name: s5
+        title: Scr 5
+        type: real
+      - name: s6
+        title: Scr 6
+        type: real
+      - name: s7
+        title: Scr 7
+        type: real
+      - name: s8
+        title: Scr 8
+        type: real
+      - name: s9
+        title: Scr 9
+        type: real
+      - name: s10
+        title: Scr 10
+        type: real
+      - name: s11
+        title: Scr 11
+        type: real
+      - name: s12
+        title: Scr 12
+        type: real
+      - name: s13
+        title: Scr 13
+        type: real
+      - name: s14
+        title: Scr 14
+        type: real
+      - name: s15
+        title: Scr 15
+        type: real
+      name: scr
+      title: Script controls
+      type: real
+    descr: Environmental controls. Data generated by internal logic.
+    name: env
+    title: Environment
+    type: real
+  descr: Controls for vehicle drives and servos. Published by regulators.
+  name: ctr
+  title: Controls
+  type: real
+- content:
+  - content:
+    - content:
+      - name: status
+        suffix: status
+        title: Attitude status
+        type: option
+        units:
+        - unknown
+        - ok
+        - busy
+        - warning
+        - critical
+        - failure
+      - name: valid
+        suffix: validity
+        title: Attitude validity
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      - name: roll
+        suffix: roll
+        title: Attitude roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: pitch
+        title: Attitude pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: yaw
+        title: Attitude yaw
+        type: real
+        units: rad
+      - name: mag
+        title: Magnetometer
+        type: option
+        units:
+        - unknown
+        - 3D
+        - HDG
+        - blocked
+        - warning
+        - failure
+      - name: rest
+        title: At rest
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      name: att
+      title: Attitude
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Global Position status
+        type: option
+        units:
+        - unknown
+        - ok
+        - busy
+        - warning
+        - critical
+        - failure
+      - name: valid
+        suffix: validity
+        title: Global Position validity
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      - name: lat
+        title: Latitude
+        type: real
+        units: deg
+      - name: lon
+        title: Longitude
+        type: real
+        units: deg
+      - name: hmsl
+        title: Altitude MSL
+        type: real
+        units: m
+      - name: agl
+        title: Altitude above ground
+        type: real
+        units: m
+      - name: course
+        title: Moving direction
+        type: real
+        units: rad
+      - name: speed
+        title: Ground speed
+        type: real
+        units: m/s
+      - name: altitude
+        title: Flight altitude
+        type: real
+        units: m
+      - name: vspeed
+        title: Vertical speed
+        type: real
+        units: m/s
+      - name: hsrc
+        title: Height source
+        type: option
+        units:
+        - none
+        - baro
+        - gps
+        - range
+        - vision
+      name: pos
+      title: Global Position
+      type: real
+    - content:
+      - name: valid
+        suffix: validity
+        title: Angular rate validity
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      - name: x
+        suffix: X
+        title: Angular rate X
+        type: real
+        units: rad/s
+      - name: y
+        suffix: Y
+        title: Angular rate Y
+        type: real
+        units: rad/s
+      - name: z
+        suffix: Z
+        title: Angular rate Z
+        type: real
+        units: rad/s
+      - name: ax
+        title: Angular acceleration X
+        type: real
+        units: rad/s^2
+      - name: ay
+        title: Angular acceleration Y
+        type: real
+        units: rad/s^2
+      - name: az
+        title: Angular acceleration Z
+        type: real
+        units: rad/s^2
+      name: gyro
+      title: Angular rate
+      type: real
+    - content:
+      - name: valid
+        suffix: validity
+        title: Acceleration validity
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      - name: x
+        suffix: X
+        title: Acceleration X
+        type: real
+        units: m/s^2
+      - name: y
+        suffix: Y
+        title: Acceleration Y
+        type: real
+        units: m/s^2
+      - name: z
+        suffix: Z
+        title: Acceleration Z
+        type: real
+        units: m/s^2
+      name: acc
+      title: Acceleration
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Local position status
+        type: option
+        units:
+        - unknown
+        - ok
+        - busy
+        - warning
+        - critical
+        - failure
+      - name: ax
+        title: Linear acceleration X
+        type: real
+        units: m/s^2
+      - name: ay
+        title: Linear acceleration Y
+        type: real
+        units: m/s^2
+      - name: az
+        title: Linear acceleration Z
+        type: real
+        units: m/s^2
+      - name: vx
+        title: Velocity X
+        type: real
+        units: m/s
+      - name: vy
+        title: Velocity Y
+        type: real
+        units: m/s
+      - name: vz
+        title: Velocity Z
+        type: real
+        units: m/s
+      - name: dx
+        title: Delta X
+        type: real
+        units: m
+      - name: dy
+        title: Delta Y
+        type: real
+        units: m
+      - name: dz
+        title: Delta Z
+        type: real
+        units: m
+      name: lpos
+      title: Local position
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Ref point status
+        type: option
+        units:
+        - unavailable
+        - initialized
+      - name: lat
+        title: Reference latitude
+        type: real
+        units: deg
+      - name: lon
+        title: Reference latitude
+        type: real
+        units: deg
+      - name: hmsl
+        title: MSL Altitude offset
+        type: real
+        units: m
+      name: ref
+      title: Ref point
+      type: real
+    - content:
+      - name: airspeed
+        title: Airspeed
+        type: real
+        units: m/s
+      - name: slip
+        title: Slip angle
+        type: real
+        units: rad
+      - name: aoa
+        title: Angle of attack
+        type: real
+        units: rad
+      - name: ld
+        title: Glide ratio
+        type: real
+        units: L/D
+      - name: vse
+        title: Energy variometer correction
+        type: real
+        units: m/s
+      - name: rho
+        title: Air density
+        type: real
+        units: kg/m^3
+      - name: ktas
+        title: EAS to TAS multiplier
+        type: real
+        units: K
+      - name: keas
+        title: IAS to EAS multiplier
+        type: real
+        units: K
+      - name: stab
+        title: Stability
+        type: real
+        units: u
+      - name: stall
+        title: STALL
+        type: option
+        units:
+        - unknown
+        - ok
+        - warning
+        - critical
+      name: air
+      title: Air data
+      type: real
+    - content:
+      - name: eta
+        title: Estimated time of arrival
+        type: word
+        units: s
+      - name: dist
+        title: Distance to waypoint
+        type: real
+        units: m
+      - name: hdg
+        title: Waypoint heading
+        type: real
+        units: rad
+      - name: xtrack
+        title: Crosstrack error
+        type: real
+        units: m
+      - name: delta
+        title: Touchdown error
+        type: real
+        units: m
+      - name: thdg
+        title: Tangent heading
+        type: real
+        units: rad
+      name: wpt
+      title: Mission navigation
+      type: real
+    descr: Estimated data used for vehicle regulators. Filtered sensor data.
+    name: nav
+    title: Navigation
+    type: real
+  - content:
+    - content:
+      - name: mode
+        suffix: mode
+        title: System mode
+        type: option
+        units:
+        - busy
+        - ground
+        - check
+        - taxi
+        - ready
+        - airborne
+      - name: health
+        suffix: health
+        title: System health
+        type: option
+        units:
+        - unknown
+        - normal
+        - warning
+        - critical
+      - name: time
+        suffix: time
+        title: System time
+        type: dword
+        units: s
+      - name: uptime
+        title: Uptime
+        type: dword
+        units: ms
+      - name: ttl
+        title: Time to live
+        type: dword
+        units: s
+      - name: energy
+        title: Energy capacity
+        type: real
+        units: u
+      - name: weight
+        title: Vehicle weight
+        type: real
+        units: kg
+      - name: corr
+        title: Correlator output
+        type: real
+        units: K
+      name: sys
+      title: System
+      type: real
+    - content:
+      - name: status
+        title: Wind
+        type: option
+        units:
+        - unknown
+        - available
+      - name: speed
+        title: Wind speed
+        type: real
+        units: m/s
+      - name: heading
+        title: Wind heading
+        type: real
+        units: rad
+      name: wind
+      title: Wind estimator
+      type: real
+    - content:
+      - name: roll
+        suffix: roll
+        title: ATS roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: pitch
+        title: ATS pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: yaw
+        title: ATS yaw
+        type: real
+        units: rad
+      name: ats
+      title: ATS
+      type: real
+    - content:
+      - name: roll
+        suffix: roll
+        title: Cam roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: pitch
+        title: Cam pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: yaw
+        title: Cam yaw
+        type: real
+        units: rad
+      - name: lat
+        suffix: latitude
+        title: Cam latitude
+        type: real
+        units: deg
+      - name: lon
+        suffix: longitude
+        title: Cam longitude
+        type: real
+        units: deg
+      - name: hmsl
+        suffix: altitude MSL
+        title: Cam altitude MSL
+        type: real
+        units: m
+      descr: Camera axis est
+      name: cam
+      title: Cam
+      type: real
+    - content:
+      - name: roll
+        suffix: roll
+        title: Turret roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: pitch
+        title: Turret pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: yaw
+        title: Turret yaw
+        type: real
+        units: rad
+      - name: lat
+        suffix: latitude
+        title: Turret latitude
+        type: real
+        units: deg
+      - name: lon
+        suffix: longitude
+        title: Turret longitude
+        type: real
+        units: deg
+      - name: hmsl
+        suffix: altitude MSL
+        title: Turret altitude MSL
+        type: real
+        units: m
+      descr: Turret axis est
+      name: turret
+      title: Turret
+      type: real
+    - content:
+      - name: u1
+        title: User value 1
+        type: real
+      - name: u2
+        title: User value 2
+        type: real
+      - name: u3
+        title: User value 3
+        type: real
+      - name: u4
+        title: User value 4
+        type: real
+      - name: u5
+        title: User value 5
+        type: real
+      - name: u6
+        title: User value 6
+        type: real
+      - name: u7
+        title: User value 7
+        type: real
+      - name: u8
+        title: User value 8
+        type: real
+      - name: ub1
+        title: User byte 1
+        type: byte
+      - name: ub2
+        title: User byte 2
+        type: byte
+      - name: ub3
+        title: User byte 3
+        type: byte
+      - name: ub4
+        title: User byte 4
+        type: byte
+      - name: ub5
+        title: User byte 5
+        type: byte
+      - name: ub6
+        title: User byte 6
+        type: byte
+      - name: ub7
+        title: User byte 7
+        type: byte
+      name: usr
+      title: User values
+      type: real
+    - content:
+      - name: shape
+        suffix: dihedral angle
+        title: HAPS dihedral angle
+        type: real
+        units: rad
+      - name: cshape
+        suffix: cmd dihedral angle
+        title: HAPS cmd dihedral angle
+        type: real
+        units: rad
+      - name: roll
+        suffix: central roll
+        title: HAPS central roll
+        type: real
+        units: rad
+      - name: roll1
+        suffix: roll1
+        title: HAPS roll1
+        type: real
+        units: rad
+      - name: roll2
+        suffix: roll2
+        title: HAPS roll2
+        type: real
+        units: rad
+      - name: pitch1
+        suffix: pitch1
+        title: HAPS pitch1
+        type: real
+        units: rad
+      - name: pitch2
+        suffix: pitch2
+        title: HAPS pitch2
+        type: real
+        units: rad
+      - name: cpitch1
+        suffix: cmd pitch1
+        title: HAPS cmd pitch1
+        type: real
+        units: rad
+      - name: cpitch2
+        suffix: cmd pitch2
+        title: HAPS cmd pitch2
+        type: real
+        units: rad
+      - name: spd1
+        suffix: airspeed1
+        title: HAPS airspeed1
+        type: real
+        units: m/s
+      - name: spd2
+        suffix: airspeed2
+        title: HAPS airspeed2
+        type: real
+        units: m/s
+      - name: ail1
+        suffix: aileron1
+        title: HAPS aileron1
+        type: real
+        units: su
+      - name: ail2
+        suffix: aileron2
+        title: HAPS aileron2
+        type: real
+        units: su
+      name: haps
+      title: HAPS
+      type: real
+    descr: Processed data of current vehicle conditions. Can be overridden by GCS
+      uplink.
+    name: env
+    title: Environment
+    type: real
+  descr: Current vehicle state. Estimated values of sensors and current navigator
+    status.
+  name: est
+  title: Estimators
+  type: real
+- content:
+  - content:
+    - content:
+      - name: mode
+        title: Procedure
+        type: option
+        units:
+        - EMG
+        - RPV
+        - UAV
+        - WPT
+        - STBY
+        - TAXI
+        - TAKEOFF
+        - LANDING
+      - name: stage
+        title: Procedure stage
+        type: byte
+      - name: wp
+        title: Selected waypoint
+        type: word
+      - name: rw
+        title: Selected runway
+        type: word
+      - name: pi
+        title: Selected point of interest
+        type: word
+      - name: action
+        title: Procedure action
+        type: option
+        units:
+        - idle
+        - next
+        - reset
+        - inc
+        - dec
+      - name: adj
+        title: Maneuver adjust
+        type: real
+        units: m
+      - name: loops
+        title: Remaining loops
+        type: word
+      - name: timeout
+        title: Procedure timeout
+        type: word
+        units: s
+      name: proc
+      title: Procedures
+      type: real
+    - content:
+      - name: att
+        title: Attitude control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: pos
+        title: Position control
+        type: option
+        units:
+        - 'off'
+        - hdg
+        - direct
+        - track
+        - loiter
+        - hover
+      - name: spd
+        title: Airspeed control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: alt
+        title: Altitude control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: eng
+        title: Engine control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: yaw
+        title: Yaw control
+        type: option
+        units:
+        - 'off'
+        - hdg
+        - slip
+        - taxi
+        - track
+      - name: str
+        title: Steering control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: taxi
+        title: Taxi track control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: brk
+        title: Brakes control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: flaps
+        title: Flaps control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: airbrk
+        title: Airbrakes control
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      name: reg
+      title: Regulators configuration
+      type: option
+      units:
+      - 'off'
+      - 'on'
+    - content:
+      - name: inair
+        title: AHRS airdata
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      - name: nogps
+        title: Block GPS
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      - name: nomag
+        title: Block magnetometer
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      - name: hsrc
+        title: Select height source
+        type: option
+        units:
+        - baro
+        - gps
+        - range
+        - vision
+      - name: hagl
+        title: AGL altitude
+        type: option
+        units:
+        - 'no'
+        - 'yes'
+      name: ahrs
+      title: AHRS options
+      type: option
+      units:
+      - 'no'
+      - 'yes'
+    - content:
+      - name: roll
+        title: Cmd roll
+        type: real
+        units: rad
+      - name: pitch
+        title: Cmd pitch
+        type: real
+        units: rad
+      - name: yaw
+        title: Cmd yaw
+        type: real
+        units: rad
+      - name: slip
+        title: Cmd slip
+        type: real
+        units: rad
+      name: att
+      title: Attitude regulators
+      type: real
+    - content:
+      - name: lat
+        title: Cmd latitude
+        type: real
+        units: deg
+      - name: lon
+        title: Cmd latitude
+        type: real
+        units: deg
+      - name: hmsl
+        title: Cmd altitude MSL
+        type: real
+        units: m
+      - name: course
+        title: Cmd course
+        type: real
+        units: rad
+      - name: airspeed
+        title: Cmd airspeed
+        type: real
+        units: m/s
+      - name: altitude
+        title: Cmd altitude
+        type: real
+        units: m
+      - name: vspeed
+        title: Cmd vspeed
+        type: real
+        units: m/s
+      - name: tecs
+        title: TECS weighting factor
+        type: real
+        units: u
+      - name: radius
+        title: Loiter radius
+        type: real
+        units: m
+      name: pos
+      title: Position regulators
+      type: real
+    - content:
+      - name: rpm
+        title: Cmd RPM
+        type: real
+        units: rpm
+      - name: cut
+        title: Throttle cut
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: ovr
+        title: Throttle override
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      name: eng
+      title: Engine regulators
+      type: real
+    - content:
+      - name: ovr
+        suffix: override
+        title: RC override
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: roll
+        suffix: roll
+        title: RC roll
+        type: real
+        units: su
+      - name: pitch
+        suffix: pitch
+        title: RC pitch
+        type: real
+        units: su
+      - name: thr
+        suffix: throttle
+        title: RC throttle
+        type: real
+        units: u
+      - name: yaw
+        suffix: yaw
+        title: RC yaw
+        type: real
+        units: su
+      name: rc
+      title: RC
+      type: real
+    - content:
+      - name: zoom
+        title: Cam zoom level
+        type: real
+        units: u
+      - name: focus
+        title: Cam focus
+        type: real
+        units: u
+      - name: ch
+        title: Video channel
+        type: byte
+      - name: range
+        title: Rangefinder
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: mode
+        title: Shotting mode
+        type: option
+        units:
+        - 'off'
+        - single
+        - distance
+        - time
+      - name: dshot
+        title: Shotting distance
+        type: word
+        units: m
+      - name: tshot
+        title: Shotting time
+        type: word
+        units: ms
+      - name: pf
+        title: Picture flip
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: nir
+        title: NIR filter
+        type: option
+        units:
+        - 'off'
+        - 'on'
+      - name: fm
+        title: Focus mode
+        type: option
+        units:
+        - auto
+        - infinity
+      - name: ft
+        title: Focus type
+        type: option
+        units:
+        - auto
+        - manual
+      name: cam
+      title: Camera
+      type: real
+    - content:
+      - name: mode
+        suffix: mode
+        title: Gimbal cmd mode
+        type: option
+        units:
+        - 'off'
+        - stab
+        - pos
+        - speed
+        - target
+        - fixed
+        - track
+      - name: roll
+        suffix: roll
+        title: Gimbal cmd roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: pitch
+        title: Gimbal cmd pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: yaw
+        title: Gimbal cmd yaw
+        type: real
+        units: rad
+      - name: broll
+        suffix: bias roll
+        title: Gimbal cmd bias roll
+        type: real
+        units: rad/s
+      - name: bpitch
+        suffix: bias pitch
+        title: Gimbal cmd bias pitch
+        type: real
+        units: rad/s
+      - name: byaw
+        suffix: bias yaw
+        title: Gimbal cmd bias yaw
+        type: real
+        units: rad/s
+      - name: lat
+        suffix: latitude
+        title: Gimbal cmd latitude
+        type: real
+        units: deg
+      - name: lon
+        suffix: latitude
+        title: Gimbal cmd latitude
+        type: real
+        units: deg
+      - name: hmsl
+        suffix: altitude MSL
+        title: Gimbal cmd altitude MSL
+        type: real
+        units: m
+      name: gimbal
+      title: Gimbal cmd
+      type: real
+    - content:
+      - name: mode
+        suffix: mode
+        title: ATS cmd mode
+        type: option
+        units:
+        - 'off'
+        - track
+        - manual
+        - search
+      - name: roll
+        suffix: roll
+        title: ATS cmd roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: pitch
+        title: ATS cmd pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: yaw
+        title: ATS cmd yaw
+        type: real
+        units: rad
+      - name: p
+        suffix: roll rate
+        title: ATS cmd roll rate
+        type: real
+        units: rad/s
+      - name: q
+        suffix: pitch rate
+        title: ATS cmd pitch rate
+        type: real
+        units: rad/s
+      - name: r
+        suffix: yaw rate
+        title: ATS cmd yaw rate
+        type: real
+        units: rad/s
+      name: ats
+      title: ATS cmd
+      type: real
+    - content:
+      - name: mode
+        suffix: mode
+        title: Turret cmd mode
+        type: option
+        units:
+        - 'off'
+        - fixed
+        - stab
+        - position
+        - speed
+      - name: roll
+        suffix: roll
+        title: Turret cmd roll
+        type: real
+        units: rad
+      - name: pitch
+        suffix: pitch
+        title: Turret cmd pitch
+        type: real
+        units: rad
+      - name: yaw
+        suffix: yaw
+        title: Turret cmd yaw
+        type: real
+        units: rad
+      - name: p
+        suffix: roll rate
+        title: Turret cmd roll rate
+        type: real
+        units: rad/s
+      - name: q
+        suffix: pitch rate
+        title: Turret cmd pitch rate
+        type: real
+        units: rad/s
+      - name: r
+        suffix: yaw rate
+        title: Turret cmd yaw rate
+        type: real
+        units: rad/s
+      - name: broll
+        suffix: bias roll
+        title: Turret cmd bias roll
+        type: real
+        units: rad/s
+      - name: bipitch
+        suffix: bias pitch
+        title: Turret cmd bias pitch
+        type: real
+        units: rad/s
+      - name: byaw
+        suffix: bias yaw
+        title: Turret cmd bias yaw
+        type: real
+        units: rad/s
+      name: turret
+      title: Turret cmd
+      type: real
+    descr: Commanded values generated by controllers.
+    name: nav
+    title: Navigation
+    type: real
+  - content:
+    - content:
+      - descr: '`squawk` `uid` [`ident`]
+
+          '
+        name: ident
+        title: Vehicle Identification
+        type: byte
+      - descr: '`squawk` `uid_seq` `pid` `data...`
+
+          '
+        name: downlink
+        title: Data packet from vehicle to GCS
+        type: byte
+      - descr: '`squawk` [`pid` `data...`] or empty for heartbeat
+
+          '
+        name: uplink
+        title: Data packet from GCS to vehicle
+        type: byte
+      name: vehicle
+      title: Vehicle object data
+      type: byte
+    - content:
+      - descr: '`time` `hash feed` `fmt feed` `packed data...`
+
+          '
+        name: data
+        title: Telemetry data
+        type: byte
+      - descr: 'req `part`, re `part` `parts_cnt` `format feed block 256 bytes`
+
+          '
+        name: format
+        title: Telemetry format array
+        type: byte
+      - descr: '`xpdr`
+
+          '
+        name: xpdr
+        title: Transponder data
+        type: byte
+      name: telemetry
+      title: Telemetry stream
+      type: byte
+    - content:
+      - descr: '`vcp_id` `raw data`
+
+          '
+        name: vcp
+        title: Virtual Comm Port channel data
+        type: byte
+      - descr: '`sensor uid` `raw sensor data`
+
+          '
+        name: calib
+        title: Calibration data
+        type: byte
+      - name: pld
+        title: Payload data
+        type: byte
+      name: stream
+      title: Data streams
+      type: byte
+    - content:
+      - name: sns
+        title: Sensors data
+        type: byte
+      - name: ctr
+        title: Controls
+        type: byte
+      - name: cfg
+        title: Controls assignments
+        type: byte
+      - name: display
+        title: Visualization
+        type: byte
+      name: sim
+      title: Simulator data
+      type: byte
+    - content:
+      - descr: '`function name`
+
+          '
+        name: vmexec
+        title: Execute VM script onboard
+        type: byte
+      - descr: '`script text`
+
+          '
+        name: jsexec
+        title: Execute JS script on GCS
+        type: byte
+      name: script
+      title: Scripting commands
+      type: byte
+    - content:
+      - descr: '`uid` `data`
+
+          '
+        name: gcs
+        title: GCS data
+        type: byte
+      - descr: '`uid` `data`
+
+          '
+        name: pld
+        title: Payload data
+        type: byte
+      - descr: '`uid` `data`
+
+          '
+        name: hid
+        title: Human interface
+        type: byte
+      name: aux
+      title: Auxillary data
+      type: byte
+    - content:
+      - name: alive
+        title: Autopilot alive notify
+        type: byte
+      name: redundancy
+      title: Redundancy data
+      type: byte
+    - content:
+      - name: haps
+        title: HAPS shared data
+        type: byte
+      - name: left
+        title: Left wing data
+        type: byte
+      - name: right
+        title: Right wing data
+        type: byte
+      - name: center
+        title: Center wing data
+        type: byte
+      name: formation
+      title: Formation data
+      type: byte
+    - content:
+      - descr: Broadcast request, re <uid>
+        name: search
+        title: Search nodes
+        type: byte
+      - descr: '`ident_s` `strings:name+version+hardware` `filenames`
+
+          '
+        name: ident
+        title: Node identification
+        type: byte
+      - descr: '`name` `fop_e` [`data`]
+
+          '
+        name: file
+        title: File operations
+        type: byte
+      - descr: '`type_e`
+
+          '
+        name: reboot
+        title: System reboot
+        type: byte
+      - descr: '`type_e` `string`
+
+          '
+        name: msg
+        title: Text message
+        type: byte
+      - descr: '`fid_t` `data`
+
+          '
+        name: upd
+        title: Update parameter
+        type: byte
+      - descr: '`op_e`
+
+          '
+        name: mod
+        title: Modules tree
+        type: byte
+      - descr: '`cmd_s` [`data`]
+
+          '
+        name: usr
+        title: Node specific command
+        type: byte
+      - descr: '`uid1` [`uid2`..`uidN`]
+
+          '
+        name: tree
+        title: Trace packet route
+        type: byte
+      - descr: '`data`
+
+          '
+        name: debug
+        title: Debug data
+        type: byte
+      name: nmt
+      title: Network Management
+      type: byte
+    descr: Special protocols and data wrappers.
+    name: env
+    title: System data identifiers
+    type: byte
+  descr: Commanded values. Received from the GCS or provided by navigator as commands
+    for regulators.
+  name: cmd
+  title: Commands
+  type: real
+descr: Vehicle state data structure.
+inheritance:
+- type
+- units
+name: mandala
+title: Mandala
+type: real
+uid_base: 0
+uid_bits:
+- 2
+- 1
+- 4
+- 4

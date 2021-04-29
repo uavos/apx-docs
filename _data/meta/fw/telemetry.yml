@@ -1,0 +1,92 @@
+conf:
+- Telemetry
+label: telemetry
+module: telemetry
+name: telemetry
+nodes:
+- ghanta
+- nav
+- sim
+- com
+params:
+- content:
+  - descr: "* `auto`: the stream will be sent to GCS upon reception of \ntelemetry\
+      \ requests from the GCS, i.e. when the vehicle is active \nand selected on the\
+      \ GCS UI. When there's no requests from GCS - \nthe module will send just short\
+      \ [XPDR data packets](https://github.com/uavos/apx-lib/blob/main/xbus/XbusVehicle.h)\n\
+      to the GCS once a second;\n* `always`: the telemetry stream will always be set,\
+      \ regardless of \nuplink availability and GCS requests;\n"
+    name: mode
+    title: Stream mode
+    type: option
+    units:
+    - 'off'
+    - auto
+    - always
+  - descr: '`10Hz` is the default and used for the most cases.
+
+      '
+    name: rate
+    title: Stream packets rate
+    type: option
+    units:
+    - 10Hz
+    - 1Hz
+    - 5Hz
+    - 20Hz
+    - 50Hz
+    - 100Hz
+  - descr: "Normally, the telemetry stream will be sent to the only node interface\n\
+      to optimize bandwidth, to be later transmitted by [com](/hw/com) node to the\
+      \ GCS.\nThe interface is detected automatically based on requests routes from\
+      \ the GCS.\nIn case you have to forward telemetry stream to other redundant\
+      \ modems \n(f.ex. connected to a [VCP](ports_vcp)), this option should be turned\
+      \ on\nto make data broadcasted and available to other modules/nodes.\n"
+    name: broadcast
+    title: Broadcast to all interfaces
+    type: option
+  - content:
+    - name: cam
+      title: Gimbal payload related data
+      type: option
+    - name: usr
+      title: User related data
+      type: option
+    - name: ats
+      title: Tracking antenna related data
+      type: option
+    - name: turret
+      title: Turret related data
+      type: option
+    - name: haps
+      title: HAPS related data
+      type: option
+    - name: redundancy
+      title: Source of sensors
+      type: option
+    - content:
+      - array: 16
+        name: bind
+        type: bind
+      - array: 16
+        name: format
+        type: option
+        units:
+        - byte
+        - bit
+        - option
+        - real
+        - integer
+        - precise
+      descr: 'Auxillary mandala variables to be included in the stream.
+
+        '
+      name: aux
+    descr: "To limit the bandwidth, stream can have included or excluded \nspecific\
+      \ variable groups. \nSee [source code](https://github.com/uavos/apx-lib/blob/main/xbus/telemetry/TelemetryDataset.h)\n\
+      for details.\n"
+    name: data
+  descr: Telemetry data stream
+  name: telemetry
+  title: Telemetry
+title: Telemetry streamer

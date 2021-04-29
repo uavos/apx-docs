@@ -1,0 +1,42 @@
+conf:
+- Script
+label: script
+module: script
+name: script
+nodes:
+- ghanta
+- nav
+- sim
+- com
+- ifc
+params:
+- content:
+  - name: restart
+    title: Restart
+    type: command
+  - name: start
+    title: Start
+    type: command
+  - name: stop
+    title: Stop
+    type: command
+  - descr: "* `off`: the module is turned off;\n* `manual`: the script is available\
+      \ for editing and uploading, \nbut started manually, via command from GCS;\n\
+      * `auto`: script will be executed automatically upon power up;\n"
+    name: mode
+    title: Scripting engine mode
+    type: option
+    units:
+    - 'off'
+    - manual
+    - auto
+  - descr: 'Contains pre-compiled WASM binary bytecode and packed source code;
+
+      '
+    name: code
+    title: Script source code
+    type: script
+  descr: Scripting engine
+  name: script
+  title: Script
+title: WASM engine

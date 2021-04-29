@@ -1,0 +1,18 @@
+conf:
+- ports
+label: ifc_mux
+module: ifc.mux
+name: ifc.mux
+nodes:
+- ifc
+params:
+- content:
+  - content: null
+    descr: 'The parameter `mux` is added to each GPIO channel to map
+
+      signal to node specific physical pin.
+
+      '
+    name: gpio
+  name: ports
+title: PHY Multiplexer

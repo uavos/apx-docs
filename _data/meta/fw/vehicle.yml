@@ -1,0 +1,121 @@
+conf:
+- Vehicle
+label: vehicle
+module: vehicle
+name: vehicle
+nodes:
+- nav
+- sim
+params:
+- content:
+  - name: type
+    title: Type of vehicle
+    type: option
+    units:
+    - STOL
+    - VTOL
+  - content:
+    - array: 16
+      name: bind
+      type: bind
+    - array: 16
+      name: value
+      type: real
+    descr: Initial values
+    name: init
+  - name: mtow
+    title: Max weight
+    type: real
+    units: kg
+  - name: fuel
+    title: Fuel weight
+    type: real
+    units: kg
+  - decimal: 0
+    default: 100
+    increment: 10
+    max: 5000
+    min: 1
+    name: altitude
+    title: safe altitude
+    type: real
+    units: m
+  - decimal: 0
+    default: 200
+    increment: 10
+    max: 10000
+    min: 0
+    name: radius
+    title: Loiter radius
+    type: word
+    units: m
+  - decimal: 1
+    increment: 1
+    max: 100
+    min: 0
+    name: ld
+    title: glide ratio
+    type: real
+  - decimal: 1
+    default: 30
+    increment: 1
+    max: 1000
+    min: 3
+    name: VC
+    title: cruise
+    type: real
+    units: m/s
+  - decimal: 1
+    default: 18
+    increment: 1
+    max: 1000
+    min: 3
+    name: VSO
+    title: stall with flaps
+    type: real
+    units: m/s
+  - decimal: 1
+    increment: 1
+    max: 1000
+    min: 0
+    name: VSI
+    title: stall with no flaps
+    type: real
+    units: m/s
+  - decimal: 0
+    increment: 1
+    max: 1000
+    min: 0
+    name: VFE
+    title: max with flaps
+    type: real
+    units: m/s
+  - decimal: 0
+    increment: 1
+    max: 1000
+    min: 0
+    name: VY
+    title: max climbing rate
+    type: real
+    units: m/s
+  - decimal: 0
+    increment: 1
+    max: 1000
+    min: 0
+    name: VNO
+    title: normal operation
+    type: real
+    units: m/s
+  - decimal: 0
+    default: 50
+    increment: 1
+    max: 1000
+    min: 0
+    name: VNE
+    title: never exceed
+    type: real
+    units: m/s
+  descr: Vehicle parameters
+  name: vehicle
+  title: Vehicle
+title: Vehicle limits

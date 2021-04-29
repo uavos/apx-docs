@@ -1,0 +1,44 @@
+conf:
+- Identity
+label: identity
+module: identity
+name: identity
+nodes:
+- ghanta
+- sim
+- com
+params:
+- content:
+  - descr: 'The human readable vehicle name is used in GCS for display only.
+
+      '
+    name: callsign
+    title: Vehicle callsign
+    type: string
+  - descr: 'Used by GCS for vehicle display styles only.
+
+      '
+    name: vtype
+    title: Vehicle type
+    type: option
+    units:
+    - UAV
+    - GCS
+  - content:
+    - descr: 'Enables the [VCP](ports_vcp) forwarding feature to the external interface.
+
+        '
+      name: enable
+      type: option
+    - array: 4
+      descr: "Selects the VCP IDs to be forwarded. \nThe VCP data should be traslated\
+        \ to LAN if the port is located on different node.\n"
+      name: id
+      type: byte
+    descr: Virtual Comm Ports forwarding
+    name: vcp
+    title: vcp
+  descr: Vehicle identity
+  name: ident
+  title: Identity
+title: Vehicle Identity

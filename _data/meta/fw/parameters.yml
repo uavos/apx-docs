@@ -1,0 +1,2215 @@
+- content:
+  - descr: 'The priority of data, published by the module.
+
+      All priorities, except `local` are broadcasting data in network.
+
+      '
+    name: mode
+    title: Operation mode
+    type: option
+    units:
+    - 'off'
+    - local
+    - primary
+    - secondary
+    - failsafe
+    - auxillary
+  - name: model
+    title: Dynamic model
+    type: option
+    units:
+    - default
+    - portable
+    - stationary
+    - pedestrian
+    - automotive
+    - sea
+    - airborne 1g
+    - airborne 2g
+    - airborne 4g
+    - wrist worm watch
+  - name: debug
+    title: Debug level
+    type: option
+    units:
+    - 'off'
+    - error
+    - warning
+    - notice
+    - test
+    - debug
+  - content:
+    - name: mode
+      type: option
+    - name: bb
+      title: Broadband threshold
+      type: byte
+      units: dB
+    - name: cw
+      title: Continuous Wave threshold
+      type: byte
+      units: dB
+    descr: Interference monitor
+    name: itfm
+  descr: GPS Receiver
+  name: gps
+  title: GPS
+- content:
+  - name: flip
+    title: Orientation floor side
+    type: option
+    units:
+    - default
+    - top
+    - left
+    - right
+    - front
+    - rear
+  - name: hdg
+    title: Orientation heading
+    type: option
+    units:
+    - default
+    - '90'
+    - '180'
+    - '270'
+  - content:
+    - name: roll
+      type: real
+      units: deg
+    - name: pitch
+      type: real
+      units: deg
+    - name: yaw
+      type: real
+      units: deg
+    descr: Unit alignment
+    name: align
+  - content:
+    - descr: 'The priority of data, published by the module.
+
+        All priorities, except `local` are broadcasting data in network.
+
+        '
+      name: mode
+      title: Operation mode
+      type: option
+      units:
+      - 'off'
+      - local
+      - primary
+      - secondary
+      - failsafe
+      - auxillary
+    - content:
+      - name: x
+        type: real
+      - name: y
+        type: real
+      - name: z
+        type: real
+      name: bias
+    - content:
+      - name: x
+        type: real
+      - name: y
+        type: real
+      - name: z
+        type: real
+      name: scale
+    name: mag
+    title: Magnetometer
+  - content:
+    - descr: 'The priority of data, published by the module.
+
+        All priorities, except `local` are broadcasting data in network.
+
+        '
+      name: mode
+      title: Operation mode
+      type: option
+      units:
+      - 'off'
+      - local
+      - primary
+      - secondary
+      - failsafe
+      - auxillary
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: deg/s
+        - name: y
+          type: real
+          units: deg/s
+        - name: z
+          type: real
+          units: deg/s
+        descr: Gyro bias
+        name: bias
+      - name: rate
+        title: Sample rate
+        type: option
+        units:
+        - default
+        - 10Hz
+        - 100Hz
+        - 200Hz
+        - 500Hz
+        - 800Hz
+        - 1000Hz
+        - 10KHz
+        - 25KHz
+      descr: IMU chip
+      name: icm20689
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: deg/s
+        - name: y
+          type: real
+          units: deg/s
+        - name: z
+          type: real
+          units: deg/s
+        descr: Gyro bias
+        name: bias
+      - name: rate
+        title: Sample rate
+        type: option
+        units:
+        - default
+        - 10Hz
+        - 100Hz
+        - 200Hz
+        - 500Hz
+        - 800Hz
+        - 1000Hz
+        - 10KHz
+        - 25KHz
+      descr: Gyro chip
+      name: bmg160
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: deg/s
+        - name: y
+          type: real
+          units: deg/s
+        - name: z
+          type: real
+          units: deg/s
+        descr: Gyro bias
+        name: bias
+      - name: rate
+        title: Sample rate
+        type: option
+        units:
+        - default
+        - 10Hz
+        - 100Hz
+        - 200Hz
+        - 500Hz
+        - 800Hz
+        - 1000Hz
+        - 10KHz
+        - 25KHz
+      descr: IMU chip
+      name: mpu6000
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: deg/s
+        - name: y
+          type: real
+          units: deg/s
+        - name: z
+          type: real
+          units: deg/s
+        descr: Gyro bias
+        name: bias
+      descr: IMU chip
+      name: lsm9ds1
+    name: ins
+    title: Inertial
+  descr: Inertial sensors
+  name: imu
+  title: IMU
+- content:
+  - descr: 'The priority of data, published by the module.
+
+      All priorities, except `local` are broadcasting data in network.
+
+      '
+    name: mode
+    title: Operation mode
+    type: option
+    units:
+    - 'off'
+    - local
+    - primary
+    - secondary
+    - failsafe
+    - auxillary
+  descr: Static pressure sensor
+  name: baro
+  title: Barometer
+- content:
+  - descr: 'The priority of data, published by the module.
+
+      All priorities, except `local` are broadcasting data in network.
+
+      '
+    name: mode
+    title: Operation mode
+    type: option
+    units:
+    - 'off'
+    - local
+    - primary
+    - secondary
+    - failsafe
+    - auxillary
+  - name: lpf
+    title: LPF cut-off frequency
+    type: real
+  - name: eas
+    title: IAS to EAS scale
+    type: real
+  - name: bias
+    title: Sensor bias
+    type: real
+    units: Pa
+  descr: Dynamic pressure sensor
+  name: pitot
+  title: Pitot
+- content:
+  - descr: Radio interface mode
+    name: mode
+    type: option
+    units:
+    - 'on'
+    - 'off'
+    - RX
+  - name: scan
+    title: Scan for network
+    type: command
+  - name: conf
+    title: Reconfigure radio
+    type: command
+  - name: cmd
+    title: Enter AT command mode
+    type: command
+  - name: role
+    title: Network role
+    type: option
+    units:
+    - unconfigured
+    - master
+    - slave
+    - repeater
+  - name: network
+    title: Network UID
+    type: dword
+  - name: uid
+    title: Unit address
+    type: dword
+  - descr: 65535 = full roaming, 1-245=master/repeater uid
+    name: roaming
+    title: Repeater unit address
+    type: dword
+  - name: retry
+    title: Retransmissions number
+    type: byte
+  - descr: Slower rates increase range. All modems within a particular network must
+      be configured with the same wireless link rate.
+    name: rate
+    title: Wireless link rate
+    type: option
+    units:
+    - normal
+    - fast
+    - slow
+    - slowest
+    - xpdr
+  - default: 1W
+    name: power
+    title: Output power
+    type: option
+    units:
+    - 100mW
+    - 200mW
+    - 500mW
+    - 1W
+    - 2W
+  - content:
+    - name: mode
+      title: Interface mode
+      type: option
+      units:
+      - 'off'
+      - NODE
+      - LAN
+    - name: id
+      title: VCP port ID
+      type: byte
+    descr: VCP data forwarding
+    name: vcp
+  descr: Radio module
+  name: radio
+  title: Radio
+- content:
+  - array: 4
+    name: vsense
+    title: Voltage sensors
+    type: bind
+  - name: imon
+    title: Power monitor voltage
+    type: bind
+  - content:
+    - name: crc
+      title: enable CRC check
+      type: option
+    - array: 16
+      name: sensors
+      type: bind
+    descr: One Wire sensors
+    name: owire
+  name: adc
+- content:
+  - content:
+    - array: $gpio_channels
+      name: phy
+      reboot: true
+      title: Port options
+      type: option
+      units:
+      - default
+      - FL
+      - PU
+      - PD
+      - OD
+    - array: $gpio_channels
+      descr: '* `off` - the port is shutdown (floating);
+
+        * `OUT` - the port is configured as logical output;
+
+        * `OUT_PWM` - outputs PWM signal for servos;
+
+        * `OUT_DUTY` - outputs PWM signal with controllable duty cycle;
+
+        * `OUT_PULSE` - outputs logical pulse(s) with controllable frequency and width;
+
+        * `IN` - measures logical level `[0/1]`;
+
+        * `IN_FREQ` - measures signal frequency `[Hz]`;
+
+        * `IN_WIDTH` - measures pulse width `[s]`;
+
+        * `IN_DUTY` - measures duty cycle `[1]`;
+
+        * `IN_SET` - measures logical level and sets the binding variable on high
+        level only;
+
+        '
+      name: mode
+      title: GPIO Pin mode
+      type: option
+      units:
+      - 'off'
+      - OUT
+      - OUT_PWM
+      - OUT_DUTY
+      - OUT_PULSE
+      - IN
+      - IN_FREQ
+      - IN_WIDTH
+      - IN_DUTY
+      - IN_SET
+    - array: $gpio_channels
+      descr: "When this option is `on` - the physical TTL level [0/1] of the \npin\
+        \ is inverted. \n* `inputs`: level is inverted before processing, \n* `outputs`:\
+        \ level is inverted after processing, before applying.\n"
+      name: inv
+      title: Signal inverted
+      type: option
+    - array: $gpio_channels
+      descr: "* `inputs`: the measured value will be stored \nin this variable and\
+        \ broadcasted to network, this parameter is mandatory for inputs;\n* `outputs`:\
+        \ the value of the variable will be applied immediately \nto the port logic.\
+        \ If this parameter is omitted - the channel of \n[controls](ports_controls)\
+        \ module output is used as value when assigned, \ni.e. the `ch` of control\
+        \ must be equal to the gpio port number, starting from 1;\n"
+      name: bind
+      title: Binded variable
+      type: bind
+    - array: $gpio_channels
+      descr: "* `OUT`, `OUT_PWM`, `OUT_DUTY`: variable value is multiplied by this\
+        \ factor;\n* `OUT_PULSE`: if this parameter is set more than `bias` - the\
+        \ pulse will be \n  emitted with the set period `[s]`, otherwise, the pulse\
+        \ will be shot just once.\n  The pulse will be emitted when the `bind` value\
+        \ is more than zero. \n  Use cases:\n    * engine starters;\n    * strobe\
+        \ lights;\n* `inputs`: measured value is multiplied by this factor;\n"
+      name: mult
+      title: Value multiplier
+      type: real
+    - array: $gpio_channels
+      descr: "* `outputs`: variable value, after multiplying by `mult` is adjusted\
+        \ \nwith the value of this parameter before applying to TTL logic;\n* `inputs`:\
+        \ this parameter is added to measured value, after \napplying the `mult`;\n"
+      name: bias
+      title: Value bias
+      type: real
+    - array: $gpio_channels
+      descr: "Used for display/notes purposes only, as the value is stored \nin node\
+        \ and can be shared within the crew as a comment.\n"
+      name: label
+      title: User description
+      type: string
+    descr: GPIO ports
+    name: gpio
+  - name: rate
+    title: PWM rate
+    type: option
+    units:
+    - 50Hz
+    - 100Hz
+    - 200Hz
+    - 400Hz
+  - array: 24
+    name: xpl
+    title: Xplane controls
+    type: text
+  - content:
+    - array: 32
+      descr: 'Value of the variable is used as `input value` for the control.
+
+        '
+      name: bind
+      title: Mandala variable binding
+      type: bind
+    - array: 32
+      descr: 'Input value is multiplied by this factor if this setting is not zero.
+
+        F.ex, for servo reverse set this factor to negative value.
+
+        '
+      name: mult
+      title: Value multiplier
+      type: real
+    - array: 32
+      descr: 'Allows to apply different multiplier for positive and negative
+
+        input values. Can be used for differential ailerons implementation.
+
+        * `diff>0`: when input value is positive (>0), then it is multiplied
+
+        by this factor;
+
+        * `diff<0`: when input value is negative (<0), then it is multiplied
+
+        by this factor;
+
+        '
+      name: diff
+      title: Differential multiplier
+      type: real
+    - array: 32
+      descr: 'The slew rate limit for the control, i.e. the value of 0.1 will result
+
+        in 0.1/s rate of change limit. Can be used to slow down servo motion.
+
+        '
+      name: speed
+      title: Slew rate limit
+      type: real
+    - array: 32
+      descr: "The output of the control will be added (mixed) to the specified \n\
+        output channel number. \nWhen this value is zero, the control is disabled.\n"
+      name: ch
+      title: Channel assignment
+      type: byte
+    - array: 24
+      descr: "Output channel value is limited by this number (divided by 100). \n\
+        Used to set servo mechanical limit.\n"
+      name: ch_min
+      title: Channel minimum value
+      type: real
+      units: '%'
+    - array: 24
+      descr: "Output channel value is limited by this number (divided by 100). \n\
+        Used to set servo mechanical limit.\n"
+      name: ch_max
+      title: Channel maximum value
+      type: real
+      units: '%'
+    - array: 24
+      descr: "Output channel value is adjusted by this number (divided by 100). \n\
+        Used to set servo zero position.\n"
+      name: ch_zero
+      title: Channel zero bias
+      type: real
+      units: '%'
+    descr: Servo controls
+    name: controls
+  name: ports
+- content:
+  - descr: 'Stop publishing data on network for all publishers of the node.
+
+      '
+    name: mute
+    title: Stop data broadcast
+    type: command
+  - name: unmute
+    title: Start data broadcast
+    type: command
+  - name: reconf
+    title: Reset configuration
+    type: command
+  name: sys
+- descr: 'Node label.
+
+    User comment for the node configuration used for display purposes only.
+
+    '
+  name: label
+  type: string
+- content:
+  - content:
+    - decimal: 2
+      default: 0.01
+      increment: 0.01
+      max: 1000
+      min: 0
+      name: gyro
+      title: Gyro noise
+      type: real
+      units: deg/s
+    - decimal: 1
+      default: 0.1
+      increment: 0.1
+      max: 1000
+      min: 0
+      name: acc
+      title: Accel noise
+      type: real
+      units: m/s^2
+    - decimal: 2
+      default: 0.01
+      increment: 0.01
+      max: 3
+      min: 0
+      name: mag
+      title: Magnetometer noise
+      type: real
+      units: mgauss
+    descr: Simulated IMU
+    name: imu
+    title: IMU
+  - content:
+    - decimal: 2
+      default: 0.01
+      increment: 0.01
+      max: 10
+      min: 0
+      name: vel
+      title: GPS velocity noise
+      type: real
+      units: m/s
+    - name: herr
+      title: Altitude offset
+      type: bind
+    descr: Simulated GPS
+    name: gps
+    title: GPS
+  - content:
+    - decimal: 2
+      default: 0.01
+      increment: 0.01
+      max: 10
+      min: 0
+      name: baro
+      title: Static pressure noise
+      type: real
+      units: mbar
+    - decimal: 2
+      default: 0.01
+      increment: 0.01
+      max: 10
+      min: 0
+      name: pitot
+      title: Dynamic pressure noise
+      type: real
+      units: Pa
+    - name: herr
+      title: Altitude offset
+      type: bind
+    descr: Simulated Airdata
+    name: air
+    title: Airdata
+  - content:
+    - default: auto
+      name: pwr
+      title: AGL power
+      type: option
+      units:
+      - 'off'
+      - 'on'
+      - auto
+    - default: 1
+      max: 100
+      min: 0
+      name: err
+      title: AGL errors probability
+      type: byte
+      units: '%'
+    - name: herr
+      title: Altitude offset
+      type: bind
+    descr: Simulated AGL sensor
+    name: agl
+    title: AGL
+  descr: Simulation preferences
+  name: sim
+  title: Simulator
+- content:
+  - name: rebias
+    title: Reset IMU bias
+    type: command
+  - name: reset
+    title: Full reset
+    type: command
+  - descr: 'The priority of data, published by the module.
+
+      All priorities, except `local` are broadcasting data in network.
+
+      '
+    name: mode
+    title: Operation mode
+    type: option
+    units:
+    - 'off'
+    - local
+    - primary
+    - secondary
+    - failsafe
+    - auxillary
+  - content:
+    - name: roll
+      type: real
+      units: deg
+    - name: pitch
+      type: real
+      units: deg
+    - name: yaw
+      type: real
+      units: deg
+    descr: Bodyframe parameters
+    name: align
+  - content:
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: IMU position
+      name: imu
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: GPS position
+      name: gps
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: Rangefinder position
+      name: rng
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: Flow focal point position
+      name: flow
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: Vision focal point position
+      name: ev
+    descr: Bodyframe sensors positions
+    name: offset
+  - content:
+    - decimal: 0
+      default: 30
+      increment: 10
+      max: 1000
+      min: 0
+      name: lpf
+      title: LPF cut-off frequency
+      type: word
+      units: Hz
+    - decimal: 0
+      increment: 10
+      max: 1000
+      min: 0
+      name: nf
+      title: Notch filter frequency
+      type: word
+      units: Hz
+    - decimal: 0
+      default: 20
+      increment: 5
+      max: 1000
+      min: 0
+      name: nfbw
+      title: Notch filter bandwidth
+      type: word
+      units: Hz
+    - decimal: 0
+      default: 30
+      increment: 10
+      max: 1000
+      min: 0
+      name: dlpf
+      title: Derivative LPF frequency
+      type: word
+      units: Hz
+    descr: Vehicle angular rate
+    name: gyro
+  - content:
+    - decimal: 0
+      default: 30
+      increment: 10
+      max: 1000
+      min: 0
+      name: lpf
+      title: LPF cut-off frequency
+      type: word
+      units: Hz
+    descr: Vehicle acceleration
+    name: acc
+  - content:
+    - decimal: 1
+      default: 0.3
+      increment: 0.1
+      max: 1000
+      min: 0
+      name: min
+      title: Minimum altitude
+      type: real
+      units: m
+    - default: 50
+      max: 1000
+      min: 0
+      name: max
+      title: Maximum altitude
+      type: word
+      units: m
+    - default: 100
+      max: 1000
+      min: 0
+      name: spd
+      title: Ground speed limit
+      type: word
+      units: m/s
+    - decimal: 1
+      default: 0.1
+      increment: 0.1
+      max: 10
+      min: 0
+      name: gnd
+      title: Ground clearance
+      type: real
+      units: m
+    - max: 1000
+      min: 0
+      name: aid
+      title: Maximum AGL for range height source
+      type: word
+      units: m
+    descr: AGL sensor
+    name: agl
+  - name: mag
+    title: Magnetometer
+    type: option
+    units:
+    - auto
+    - HDG
+    - 3D
+    - indoor
+    - disable
+  - name: hsrc
+    title: Altitude preference
+    type: option
+    units:
+    - baro
+    - gps
+    - range
+    - vision
+  - name: crs
+    title: Course estimation
+    type: option
+    units:
+    - standard
+    - smart
+    - yaw
+  - decimal: 1
+    default: 0.5
+    increment: 0.1
+    max: 10
+    min: 0
+    name: fke
+    title: Kinetic energy rate filter
+    type: real
+    units: s
+  descr: Inertial navigation
+  name: ahrs
+  title: AHRS
+- content:
+  - descr: 'The human readable vehicle name is used in GCS for display only.
+
+      '
+    name: callsign
+    title: Vehicle callsign
+    type: string
+  - descr: 'Used by GCS for vehicle display styles only.
+
+      '
+    name: vtype
+    title: Vehicle type
+    type: option
+    units:
+    - UAV
+    - GCS
+  - content:
+    - descr: 'Enables the [VCP](ports_vcp) forwarding feature to the external interface.
+
+        '
+      name: enable
+      type: option
+    - array: 4
+      descr: "Selects the VCP IDs to be forwarded. \nThe VCP data should be traslated\
+        \ to LAN if the port is located on different node.\n"
+      name: id
+      type: byte
+    descr: Virtual Comm Ports forwarding
+    name: vcp
+    title: vcp
+  descr: Vehicle identity
+  name: ident
+  title: Identity
+- content:
+  - name: type
+    title: Type of vehicle
+    type: option
+    units:
+    - STOL
+    - VTOL
+  - content:
+    - array: 16
+      name: bind
+      type: bind
+    - array: 16
+      name: value
+      type: real
+    descr: Initial values
+    name: init
+  - name: mtow
+    title: Max weight
+    type: real
+    units: kg
+  - name: fuel
+    title: Fuel weight
+    type: real
+    units: kg
+  - decimal: 0
+    default: 100
+    increment: 10
+    max: 5000
+    min: 1
+    name: altitude
+    title: safe altitude
+    type: real
+    units: m
+  - decimal: 0
+    default: 200
+    increment: 10
+    max: 10000
+    min: 0
+    name: radius
+    title: Loiter radius
+    type: word
+    units: m
+  - decimal: 1
+    increment: 1
+    max: 100
+    min: 0
+    name: ld
+    title: glide ratio
+    type: real
+  - decimal: 1
+    default: 30
+    increment: 1
+    max: 1000
+    min: 3
+    name: VC
+    title: cruise
+    type: real
+    units: m/s
+  - decimal: 1
+    default: 18
+    increment: 1
+    max: 1000
+    min: 3
+    name: VSO
+    title: stall with flaps
+    type: real
+    units: m/s
+  - decimal: 1
+    increment: 1
+    max: 1000
+    min: 0
+    name: VSI
+    title: stall with no flaps
+    type: real
+    units: m/s
+  - decimal: 0
+    increment: 1
+    max: 1000
+    min: 0
+    name: VFE
+    title: max with flaps
+    type: real
+    units: m/s
+  - decimal: 0
+    increment: 1
+    max: 1000
+    min: 0
+    name: VY
+    title: max climbing rate
+    type: real
+    units: m/s
+  - decimal: 0
+    increment: 1
+    max: 1000
+    min: 0
+    name: VNO
+    title: normal operation
+    type: real
+    units: m/s
+  - decimal: 0
+    default: 50
+    increment: 1
+    max: 1000
+    min: 0
+    name: VNE
+    title: never exceed
+    type: real
+    units: m/s
+  descr: Vehicle parameters
+  name: vehicle
+  title: Vehicle
+- content:
+  - name: restart
+    title: Restart
+    type: command
+  - name: start
+    title: Start
+    type: command
+  - name: stop
+    title: Stop
+    type: command
+  - descr: "* `off`: the module is turned off;\n* `manual`: the script is available\
+      \ for editing and uploading, \nbut started manually, via command from GCS;\n\
+      * `auto`: script will be executed automatically upon power up;\n"
+    name: mode
+    title: Scripting engine mode
+    type: option
+    units:
+    - 'off'
+    - manual
+    - auto
+  - descr: 'Contains pre-compiled WASM binary bytecode and packed source code;
+
+      '
+    name: code
+    title: Script source code
+    type: script
+  descr: Scripting engine
+  name: script
+  title: Script
+- content:
+  - descr: 'The priority of data, published by the module.
+
+      All priorities, except `local` are broadcasting data in network.
+
+      '
+    name: mode
+    title: Operation mode
+    type: option
+    units:
+    - 'off'
+    - local
+    - primary
+    - secondary
+    - failsafe
+    - auxillary
+  - content:
+    - decimal: 1
+      descr: 'Smaller values make it faster to respond, larger values make it slower
+        to respond.
+
+        The error is divided by this time constant to get the rate setpoint.
+
+        '
+      increment: 0.1
+      max: 100.0
+      min: 1.0
+      name: tc
+      title: Time constant
+      type: real
+      units: s
+    - name: Kp
+      title: proportional gain
+      type: real
+    - name: Ki
+      title: integral gain
+      type: real
+    - name: Kd
+      title: differential gain
+      type: real
+    - name: Kff
+      title: feed forward gain
+      type: real
+    - name: Lp
+      title: rate limit
+      type: real
+      units: deg/s
+    - name: Li
+      title: integral limit
+      type: real
+      units: '%'
+    - name: Lo
+      title: output limit
+      type: real
+      units: '%'
+    - name: rdiff
+      title: rate limit diff
+      type: real
+    - name: ifactor
+      title: integral large error factor
+      type: real
+      units: deg/s
+    - content:
+      - name: low
+        title: low speed trim
+        type: real
+        units: '%'
+      - name: high
+        title: high speed trim
+        type: real
+        units: '%'
+      - name: flaps
+        title: flaps trim
+        type: real
+        units: '%'
+      name: trim
+    - content:
+      - name: low
+        title: low speed gain
+        type: real
+      - name: high
+        title: high speed gain
+        type: real
+      - name: flaps
+        title: flaps gain
+        type: real
+      name: gain
+    - content:
+      - decimal: 0
+        increment: 5
+        max: 80
+        min: 0
+        name: max
+        title: setpoint limit
+        type: real
+        units: deg
+      - decimal: 0
+        increment: 5
+        max: 200
+        min: 0
+        name: slew
+        title: setpoint slew rate limit
+        type: real
+        units: deg/s
+      - decimal: 1
+        increment: 0.1
+        max: 1
+        min: -1
+        name: diff
+        title: setpoint limit diff
+        type: real
+      - decimal: 1
+        increment: 0.1
+        max: 80
+        min: -80
+        name: offset
+        title: setpoint offset
+        type: real
+        units: deg
+      descr: Setpoint
+      name: cmd
+    default:
+      Ki: 2.5
+      Kp: 2.0
+      Li: 10.0
+      Lo: 100.0
+      Lp: 40.0
+      cmd:
+        max: 45
+        slew: 40
+      tc: 0.1
+    descr: Roll [deg] to Ailerons [%]
+    name: roll
+    title: Roll
+  - content:
+    - decimal: 1
+      descr: 'Smaller values make it faster to respond, larger values make it slower
+        to respond.
+
+        The error is divided by this time constant to get the rate setpoint.
+
+        '
+      increment: 0.1
+      max: 100.0
+      min: 1.0
+      name: tc
+      title: Time constant
+      type: real
+      units: s
+    - name: Kp
+      title: proportional gain
+      type: real
+    - name: Ki
+      title: integral gain
+      type: real
+    - name: Kd
+      title: differential gain
+      type: real
+    - name: Kff
+      title: feed forward gain
+      type: real
+    - name: Lp
+      title: rate limit
+      type: real
+      units: deg/s
+    - name: Li
+      title: integral limit
+      type: real
+      units: '%'
+    - name: Lo
+      title: output limit
+      type: real
+      units: '%'
+    - name: rdiff
+      title: rate limit diff
+      type: real
+    - name: ifactor
+      title: integral large error factor
+      type: real
+      units: deg/s
+    - content:
+      - name: low
+        title: low speed trim
+        type: real
+        units: '%'
+      - name: high
+        title: high speed trim
+        type: real
+        units: '%'
+      - name: flaps
+        title: flaps trim
+        type: real
+        units: '%'
+      name: trim
+    - content:
+      - name: low
+        title: low speed gain
+        type: real
+      - name: high
+        title: high speed gain
+        type: real
+      - name: flaps
+        title: flaps gain
+        type: real
+      name: gain
+    - content:
+      - decimal: 0
+        increment: 5
+        max: 80
+        min: 0
+        name: max
+        title: setpoint limit
+        type: real
+        units: deg
+      - decimal: 0
+        increment: 5
+        max: 200
+        min: 0
+        name: slew
+        title: setpoint slew rate limit
+        type: real
+        units: deg/s
+      - decimal: 1
+        increment: 0.1
+        max: 1
+        min: -1
+        name: diff
+        title: setpoint limit diff
+        type: real
+      - decimal: 1
+        increment: 0.1
+        max: 80
+        min: -80
+        name: offset
+        title: setpoint offset
+        type: real
+        units: deg
+      descr: Setpoint
+      name: cmd
+    default:
+      Ki: 3.5
+      Kp: 2.5
+      Li: 25.0
+      Lo: 100.0
+      Lp: 40.0
+      cmd:
+        max: 20
+        slew: 20
+      tc: 0.1
+    descr: Pitch [deg] to Elevator [%]
+    name: pitch
+    title: Pitch
+  - content:
+    - decimal: 1
+      descr: 'Smaller values make it faster to respond, larger values make it slower
+        to respond.
+
+        The error is divided by this time constant to get the rate setpoint.
+
+        '
+      increment: 0.1
+      max: 100.0
+      min: 1.0
+      name: tc
+      title: Time constant
+      type: real
+      units: s
+    - name: Kp
+      title: proportional gain
+      type: real
+    - name: Ki
+      title: integral gain
+      type: real
+    - name: Kd
+      title: differential gain
+      type: real
+    - name: Kff
+      title: feed forward gain
+      type: real
+    - name: Lp
+      title: rate limit
+      type: real
+      units: deg/s
+    - name: Li
+      title: integral limit
+      type: real
+      units: '%'
+    - name: Lo
+      title: output limit
+      type: real
+      units: '%'
+    - name: rdiff
+      title: rate limit diff
+      type: real
+    - name: ifactor
+      title: integral large error factor
+      type: real
+      units: deg/s
+    - content:
+      - name: low
+        title: low speed trim
+        type: real
+        units: '%'
+      - name: high
+        title: high speed trim
+        type: real
+        units: '%'
+      - name: flaps
+        title: flaps trim
+        type: real
+        units: '%'
+      name: trim
+    - content:
+      - name: low
+        title: low speed gain
+        type: real
+      - name: high
+        title: high speed gain
+        type: real
+      - name: flaps
+        title: flaps gain
+        type: real
+      name: gain
+    - decimal: 0
+      default: 80
+      increment: 10
+      max: 1000
+      min: 0
+      name: slew
+      title: Yaw setpoint slew rate limit
+      type: real
+      units: deg/s
+    - decimal: 1
+      default: 1.5
+      increment: 0.1
+      max: 10
+      min: 0
+      name: slip
+      title: Slip error to Yaw rate proportional gain
+      type: real
+    default:
+      Ki: 3.5
+      Kp: 2.5
+      Li: 10.0
+      Lo: 100.0
+      Lp: 120.0
+      tc: 0.1
+    descr: Yaw [deg] to Rudder [%]
+    name: yaw
+    title: Yaw
+  - content:
+    - decimal: 1
+      default: 20.0
+      increment: 1
+      max: 1000.0
+      min: 0.0
+      name: dist
+      title: L1 period
+      type: real
+      units: m
+    - decimal: 1
+      default: 0.75
+      increment: 0.05
+      max: 10.0
+      min: 0.0
+      name: damp
+      title: damping factor
+      type: real
+    - decimal: 0
+      default: 50
+      descr: The waypoint is passed when the distance is lower than this value.
+      increment: 10
+      max: 1000
+      min: 0
+      name: radius
+      title: Waypoint switch radius
+      type: word
+      units: m
+    - decimal: 0
+      default: 10
+      descr: Another way to detect waypoint passed condition, i.e. when the rate of
+        heading to the waypoint is higher than this value - the waypoint is considered
+        to be passed.
+      increment: 1
+      max: 1000
+      min: 0
+      name: trig
+      title: Waypoint heading rate switch trigger
+      type: word
+      units: deg/s
+    descr: Waypoint to Roll [deg]. L1 controller for trajectory navigation.
+    name: crs
+    title: Course
+  - content:
+    - decimal: 1
+      descr: 'Smaller values make it faster to respond, larger values make it slower
+        to respond.
+
+        The error is divided by this time constant to get the rate setpoint.
+
+        '
+      increment: 0.1
+      max: 100.0
+      min: 1.0
+      name: tc
+      title: Time constant
+      type: real
+      units: s
+    - decimal: 2
+      default: 0.01
+      descr: The energy rate error is multiplied by this factor to provide pitch angle.
+      increment: 0.01
+      max: 2.0
+      min: 0.0
+      name: Kp
+      title: Energy rate error gain
+      type: real
+    - decimal: 2
+      default: 0.05
+      descr: Trimming for the pitch angle to maintain commanded rate of energy.
+      increment: 0.05
+      max: 2.0
+      min: 0.0
+      name: Ki
+      title: Integrator gain
+      type: real
+    - decimal: 1
+      default: 1.0
+      descr: This parameter adjusts the amount of weighting that the pitch control
+        applies to speed vs height errors. Setting it to 0 will cause the pitch control
+        to control height and ignore speed errors. This will normally improve height
+        accuracy but give larger airspeed errors. Setting it to 1 will cause the pitch
+        control loop to control speed and ignore height errors. This will normally
+        reduce airspeed errors, but give larger height errors. The value of 0.5 allows
+        the pitch control to simultaneously control height and speed.
+      increment: 0.1
+      max: 1
+      min: 0
+      name: weight
+      title: Speed vs Altitude TECS weighting factor
+      type: real
+    - decimal: 1
+      default: 1.0
+      descr: Commanded airspeed rate of change limit.
+      increment: 0.1
+      max: 100
+      min: 0
+      name: slew
+      title: Speed setpoint slew rate
+      type: real
+      units: m/s^2
+    - decimal: 1
+      default: 7.0
+      descr: "This is the maximum vertical acceleration,\neither up or down, that\
+        \ the controller will use to correct speed\nor height errors. The controller\
+        \ will limit the slew rate of \ncommanded pitch angle to not to exceed this\
+        \ limit.\n"
+      increment: 1
+      max: 50.0
+      min: 1.0
+      name: acc
+      title: Maximum vertical acceleration
+      type: real
+      units: m/s^2
+    default:
+      tc: 4
+    descr: 'Kinetic Energy to Pitch (TECS).
+
+      This controller regulates rate of energy by changing the commanded pitch angle.
+
+      '
+    name: spd
+    title: Airspeed
+  - content:
+    - decimal: 1
+      descr: 'Smaller values make it faster to respond, larger values make it slower
+        to respond.
+
+        The error is divided by this time constant to get the rate setpoint.
+
+        '
+      increment: 0.1
+      max: 100.0
+      min: 1.0
+      name: tc
+      title: Time constant
+      type: real
+      units: s
+    - decimal: 2
+      default: 0.01
+      descr: 'The energy rate error is multiplied by this factor to provide throttle.
+
+        '
+      increment: 0.01
+      max: 5.0
+      min: 0.0
+      name: Kp
+      title: Energy rate error gain
+      type: real
+    - decimal: 1
+      default: 0.2
+      descr: 'Trimming gain for the throttle to maintain commanded rate of energy.
+
+        '
+      increment: 0.1
+      max: 10.0
+      min: 0.0
+      name: Ki
+      title: Integrator gain
+      type: real
+    - decimal: 1
+      default: 0
+      descr: 'Increasing this gain increases the amount of throttle that will
+
+        be used to compensate for the additional drag created by turning.
+
+        '
+      increment: 0.1
+      max: 20.0
+      min: 0.0
+      name: roll
+      title: Roll to Energy rate feedforward
+      type: real
+    - decimal: 1
+      default: 4.0
+      descr: 'This is the best climb rate that the aircraft can achieve with
+
+        the max throttle.
+
+        '
+      increment: 1
+      max: 100.0
+      min: 0.1
+      name: climb
+      title: Maximum climb rate
+      type: real
+      units: m/s
+    - decimal: 1
+      default: 5.0
+      descr: 'This sets the maximum descent rate that the controller will use.
+
+        If this value is too large, the aircraft can over-speed on descent.
+
+        This should be set to a value that can be achieved without
+
+        exceeding the lower pitch angle limit and without over-speeding
+
+        the aircraft.
+
+        '
+      increment: 1
+      max: 100.0
+      min: 1
+      name: sink
+      title: Maximum descent rate
+      type: real
+      units: m/s
+    - decimal: 1
+      default: 2
+      descr: Commanded vertical speed rate of change limit.
+      increment: 1
+      max: 100
+      min: 0
+      name: slew
+      title: Vertical speed setpoint slew rate
+      type: real
+      units: m/s^2
+    default:
+      tc: 7
+    descr: 'Potential Energy to Throttle (TECS).
+
+      This controller regulates rate of energy by changing the engine throttle.
+
+      '
+    name: alt
+    title: Altitude
+  - content:
+    - name: Kp
+      title: proportional gain
+      type: real
+    - name: Kd
+      title: differential gain
+      type: real
+    - decimal: 2
+      default: 0.5
+      increment: 0.05
+      max: 1.0
+      min: 0.0
+      name: Kff
+      title: Feed forward factor
+      type: real
+    - decimal: 1
+      default: 0.1
+      increment: 0.1
+      max: 1.0
+      min: 0.0
+      name: lpf
+      title: RPM LP filter
+      type: real
+    - content:
+      - descr: This is the RPM setting for cruise speed.
+        increment: 100
+        min: 0
+        name: cruise
+        title: Cruise RPM
+        type: dword
+        units: rpm
+      - descr: This is the engine maximum allowed RPM.
+        increment: 100
+        min: 0
+        name: max
+        title: Maximum RPM
+        type: dword
+        units: rpm
+      - descr: This is the engine idle RPM.
+        increment: 100
+        min: 0
+        name: min
+        title: Minimum RPM
+        type: dword
+        units: rpm
+      - default: 500
+        descr: Maximum slew rate for the commanded RPM
+        increment: 100
+        min: 0
+        name: slew
+        title: Commanded RPM max slew rate
+        type: real
+        units: rpm/s
+      descr: Engine RPM
+      name: rpm
+    - content:
+      - decimal: 0
+        default: 100
+        descr: This is the maximum throttle that can be used by the regulator. For
+          overpowered aircraft, this should be reduced to a value that provides sufficient
+          thrust to climb at the maximum pitch angle.
+        increment: 1
+        max: 100
+        min: 0
+        name: max
+        title: Max throttle
+        type: real
+        units: '%'
+      - decimal: 0
+        descr: This is the minimum throttle that can be used by the controller. For
+          electric aircraft this will normally be set to zero, but can be set to a
+          small non-zero value if a folding prop is fitted to prevent the prop from
+          folding and unfolding repeatedly in-flight or to provide some aerodynamic
+          drag from a turning prop to improve the descent rate. For aircraft with
+          internal combustion engine this parameter should be set for desired idle
+          rpm.
+        increment: 1
+        max: 100
+        min: 0
+        name: min
+        title: Min throttle
+        type: real
+        units: '%'
+      - decimal: 0
+        descr: Maximum slew rate for the commanded throttle
+        increment: 10
+        max: 100
+        min: 0
+        name: slew
+        title: Throttle max slew rate
+        type: real
+        units: '%/s'
+      descr: Throttle setpoint
+      name: thr
+    default:
+      Kd: 3.1
+      Kp: 2.5
+    descr: Governor
+    name: eng
+    title: Engine
+  - content:
+    - content:
+      - decimal: 1
+        descr: 'Smaller values make it faster to respond, larger values make it slower
+          to respond.
+
+          The error is divided by this time constant to get the rate setpoint.
+
+          '
+        increment: 0.1
+        max: 100.0
+        min: 1.0
+        name: tc
+        title: Time constant
+        type: real
+        units: s
+      - name: Kp
+        title: proportional gain
+        type: real
+      - name: Ki
+        title: integral gain
+        type: real
+      - name: Kff
+        title: feed forward gain
+        type: real
+      - name: Lp
+        title: rate limit
+        type: real
+        units: deg/s
+      - name: Li
+        title: integral limit
+        type: real
+        units: '%'
+      - decimal: 1
+        default: 0.1
+        increment: 0.1
+        max: 1
+        min: 0
+        name: gain
+        title: Steering high speed gain
+        type: real
+      default:
+        Kff: 0.5
+        Ki: 0.1
+        Kp: 2.5
+        Li: 10.0
+        Lp: 30.0
+        tc: 0.1
+      descr: Yaw [deg] to Steering [%]
+      name: str
+      title: Steering
+    - content:
+      - decimal: 1
+        default: 5.0
+        increment: 1
+        max: 100.0
+        min: 0.0
+        name: dist
+        title: L1 period
+        type: real
+        units: m
+      - decimal: 1
+        default: 0.5
+        increment: 0.05
+        max: 10.0
+        min: 0.0
+        name: damp
+        title: damping factor
+        type: real
+      - decimal: 0
+        default: 5
+        increment: 1
+        max: 100
+        min: 0
+        name: trig
+        title: Taxiway switch radius
+        type: word
+        units: m
+      descr: Crosstrack [m] to Yaw [deg]
+      name: track
+      title: Track
+    - content:
+      - name: Kp
+        title: proportional gain
+        type: real
+      - name: Kd
+        title: differential gain
+        type: real
+      - decimal: 0
+        default: 2
+        increment: 1
+        max: 10
+        min: 0
+        name: speed
+        title: Taxi ground speed
+        type: real
+        units: m/s
+      descr: Speed to Brakes [%]
+      name: brakes
+      title: Brakes
+    descr: Taxiways navigation
+    name: taxi
+    title: Taxi
+  - content:
+    - increment: 10
+      max: 100
+      min: 0
+      name: max
+      title: VSO flaps
+      type: byte
+      units: '%'
+    - increment: 10
+      max: 100
+      min: 0
+      name: min
+      title: VSI flaps
+      type: byte
+      units: '%'
+    - increment: 10
+      max: 100
+      min: 0
+      name: takeoff
+      title: Takeoff flaps
+      type: byte
+      units: '%'
+    - increment: 10
+      max: 100
+      min: 0
+      name: approach
+      title: Approach flaps
+      type: byte
+      units: '%'
+    - increment: 10
+      max: 100
+      min: 0
+      name: final
+      title: Final approach flaps
+      type: byte
+      units: '%'
+    - decimal: 1
+      increment: 0.1
+      max: 1
+      min: 0
+      name: ld
+      title: Flaps LD gain
+      type: real
+    descr: Auto flaps control
+    name: flaps
+    title: Flaps
+  - content:
+    - name: mode
+      title: Takeoff mode
+      type: option
+      units:
+      - runway
+      - launcher
+      - helipad
+    - content:
+      - increment: 1
+        max: 100
+        min: 0
+        name: speed
+        title: Max speed
+        type: byte
+        units: m/s
+      - increment: 1
+        max: 90
+        name: pitch
+        title: Run phase pitch angle
+        type: byte
+        units: deg
+      - decimal: 0
+        increment: 10
+        max: 200
+        min: 0
+        name: tslew
+        title: Throttle rate limit
+        type: real
+        units: '%/s'
+      descr: Takeoff Run phase parameters
+      name: run
+    - content:
+      - increment: 1
+        max: 90
+        name: pitch
+        title: Liftoff phase pitch angle
+        type: byte
+        units: deg
+      - increment: 1
+        max: 100
+        min: 0
+        name: altitude
+        title: Liftoff phase altitude
+        type: byte
+        units: m
+      - increment: 10
+        max: 100
+        name: thr
+        title: Climbing throttle
+        type: byte
+        units: '%'
+      descr: Takeoff Climbing phase parameters
+      name: climb
+    - content:
+      - increment: 1
+        max: 100
+        name: acc
+        title: Launcher trigger acceleration
+        type: byte
+        units: m/s^2
+      - decimal: 1
+        increment: 0.1
+        max: 10
+        min: 0
+        name: tdelay
+        title: Launcher throttle delay
+        type: real
+        units: s
+      - decimal: 1
+        increment: 0.1
+        max: 10
+        min: 0
+        name: cdelay
+        title: Launcher controls delay
+        type: real
+        units: s
+      descr: Launcher parameters
+      name: launcher
+    descr: Takeoff procedure
+    name: takeoff
+    title: Takeoff
+  - content:
+    - name: mode
+      title: Landing mode
+      type: option
+      units:
+      - runway
+      - parachute
+      - helipad
+    - increment: 5
+      max: 1000
+      min: 0
+      name: agl
+      title: AGL correction altitude
+      type: word
+      units: m
+    - content:
+      - decimal: 3
+        default: 0.01
+        increment: 0.01
+        max: 1
+        min: 0
+        name: Kp
+        title: Delta [m] to speed [m/s] gain
+        type: real
+      - default: 10
+        increment: 10
+        max: 100
+        min: 0
+        name: thr
+        title: Approach throttle
+        type: byte
+        units: '%'
+      - decimal: 2
+        increment: 0.1
+        max: 2
+        min: 0.5
+        name: cap
+        title: Energy capacity factor
+        type: real
+      descr: Approach phase parameters
+      name: app
+    - content:
+      - default: 15
+        increment: 1
+        max: 100
+        min: 0
+        name: alt
+        title: Flare phase altitude
+        type: byte
+        units: m
+      - increment: 1
+        max: 90
+        name: pitch
+        title: Flare max pitch angle limit
+        type: byte
+        units: deg
+      - decimal: 1
+        increment: 0.1
+        max: 5
+        min: 0
+        name: sink
+        title: Flare sink rate
+        type: real
+        units: m/s
+      descr: Flare phase parameters
+      name: flare
+    - content:
+      - default: 4
+        increment: 1
+        max: 50
+        min: 0
+        name: alt
+        title: Touchdown phase altitude
+        type: byte
+        units: m
+      - decimal: 0
+        default: 8
+        increment: 1
+        max: 90
+        name: pitch
+        title: Touchdown max pitch angle limit
+        type: byte
+        units: deg
+      - default: 15
+        increment: 1
+        max: 100
+        min: 0
+        name: speed
+        title: Speed to trigger Run phase
+        type: byte
+        units: m/s
+      - default: 5
+        increment: 1
+        max: 100
+        min: 0
+        name: acc
+        title: Acceleration to trigger Run phase
+        type: byte
+        units: m/s^2
+      - increment: 10
+        max: 200
+        min: 0
+        name: brakes
+        title: Brakes slew rate limit
+        type: byte
+        units: '%/s'
+      descr: Touchdown phase parameters
+      name: touch
+    descr: Landing procedure
+    name: landing
+    title: Landing
+  descr: Control parameters
+  name: shiva
+  title: Autopilot
+- content:
+  - descr: "* `auto`: the stream will be sent to GCS upon reception of \ntelemetry\
+      \ requests from the GCS, i.e. when the vehicle is active \nand selected on the\
+      \ GCS UI. When there's no requests from GCS - \nthe module will send just short\
+      \ [XPDR data packets](https://github.com/uavos/apx-lib/blob/main/xbus/XbusVehicle.h)\n\
+      to the GCS once a second;\n* `always`: the telemetry stream will always be set,\
+      \ regardless of \nuplink availability and GCS requests;\n"
+    name: mode
+    title: Stream mode
+    type: option
+    units:
+    - 'off'
+    - auto
+    - always
+  - descr: '`10Hz` is the default and used for the most cases.
+
+      '
+    name: rate
+    title: Stream packets rate
+    type: option
+    units:
+    - 10Hz
+    - 1Hz
+    - 5Hz
+    - 20Hz
+    - 50Hz
+    - 100Hz
+  - descr: "Normally, the telemetry stream will be sent to the only node interface\n\
+      to optimize bandwidth, to be later transmitted by [com](/hw/com) node to the\
+      \ GCS.\nThe interface is detected automatically based on requests routes from\
+      \ the GCS.\nIn case you have to forward telemetry stream to other redundant\
+      \ modems \n(f.ex. connected to a [VCP](ports_vcp)), this option should be turned\
+      \ on\nto make data broadcasted and available to other modules/nodes.\n"
+    name: broadcast
+    title: Broadcast to all interfaces
+    type: option
+  - content:
+    - name: cam
+      title: Gimbal payload related data
+      type: option
+    - name: usr
+      title: User related data
+      type: option
+    - name: ats
+      title: Tracking antenna related data
+      type: option
+    - name: turret
+      title: Turret related data
+      type: option
+    - name: haps
+      title: HAPS related data
+      type: option
+    - name: redundancy
+      title: Source of sensors
+      type: option
+    - content:
+      - array: 16
+        name: bind
+        type: bind
+      - array: 16
+        name: format
+        type: option
+        units:
+        - byte
+        - bit
+        - option
+        - real
+        - integer
+        - precise
+      descr: 'Auxillary mandala variables to be included in the stream.
+
+        '
+      name: aux
+    descr: "To limit the bandwidth, stream can have included or excluded \nspecific\
+      \ variable groups. \nSee [source code](https://github.com/uavos/apx-lib/blob/main/xbus/telemetry/TelemetryDataset.h)\n\
+      for details.\n"
+    name: data
+  descr: Telemetry data stream
+  name: telemetry
+  title: Telemetry
+- content:
+  - content:
+    - descr: '* `NODE`: serial data, transmitted by the protocol is addressed
+
+        to VCP of the same (local) node, i.e. protocol and VCP are in the same node;
+
+        * `LAN`: serial data, transmitted by the protocol is broadcasted
+
+        to all nodes in network, i.e. the protocol can be run on one node,
+
+        but the physical VCP port can be on another node;
+
+        '
+      name: mode
+      title: Interface mode
+      type: option
+      units:
+      - 'off'
+      - NODE
+      - LAN
+    - descr: "Protocol will process data from the VCP with the same `id`. \nAll transmitted\
+        \ data will also be addressed to the specified `id`.\n"
+      name: id
+      title: VCP port ID
+      type: byte
+    - name: interval
+      title: Update interval
+      type: option
+      units:
+      - 7ms
+      - 20ms
+      - 100ms
+      - 500ms
+    descr: Futaba SBUS servo
+    name: sbus
+    title: SBUS
+  descr: VCP protocols
+  name: protocols
+  title: Protocols

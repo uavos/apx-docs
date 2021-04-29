@@ -1,0 +1,50 @@
+conf:
+- Protocols
+label: protocols
+module: protocols
+name: protocols
+nodes:
+- nav
+- com
+- ifc
+params:
+- content:
+  - content:
+    - descr: '* `NODE`: serial data, transmitted by the protocol is addressed
+
+        to VCP of the same (local) node, i.e. protocol and VCP are in the same node;
+
+        * `LAN`: serial data, transmitted by the protocol is broadcasted
+
+        to all nodes in network, i.e. the protocol can be run on one node,
+
+        but the physical VCP port can be on another node;
+
+        '
+      name: mode
+      title: Interface mode
+      type: option
+      units:
+      - 'off'
+      - NODE
+      - LAN
+    - descr: "Protocol will process data from the VCP with the same `id`. \nAll transmitted\
+        \ data will also be addressed to the specified `id`.\n"
+      name: id
+      title: VCP port ID
+      type: byte
+    - name: interval
+      title: Update interval
+      type: option
+      units:
+      - 7ms
+      - 20ms
+      - 100ms
+      - 500ms
+    descr: Futaba SBUS servo
+    name: sbus
+    title: SBUS
+  descr: VCP protocols
+  name: protocols
+  title: Protocols
+title: Protocols

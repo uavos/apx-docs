@@ -1,0 +1,84 @@
+conf:
+- ports
+label: ports_vcp
+module: ports.vcp
+name: ports.vcp
+nodes:
+- nav
+- sim
+- com
+- ifc
+params:
+- content:
+  - descr: "* `off`: the PHY is powered off;\n* **Addressable VCP modes**. In the\
+      \ following modes the port will act as \nnormal VCP data port, addressable via\
+      \ `id`:\n  * `NODE`: VCP port received data is not broadcasted to \n  other\
+      \ nodes in network, although it is available to all node resources;\n  * `LAN`:\
+      \ VCP port received data is broadcasted to other nodes in network\n  and is\
+      \ available to all nodes and their modules;\n* **Network interface modes**.\
+      \ The special port modes can be used to configure the PHY as standard APX bus\n\
+      network interface. Any received data packet is decoded by the node and forwarded\
+      \ \nto other nodes by [`hub`](mod) module:\n  * `NMT`: forward and decode NMT\
+      \ packets of the network, i.e.\n  acts exactly like `CAN` bus interface, but\
+      \ filters everything except NMT packets;\n  * `BUS`: network gate interface,\
+      \ forwards everything from the network;\n  * `TELEMETRY`: C2/telemetry serial\
+      \ link, i.e. transmits telemetry data only;\n"
+    name: mode
+    title: Interface mode
+    type: option
+    units:
+    - 'off'
+    - NODE
+    - LAN
+    - NMT
+    - BUS
+    - TELEMETRY
+  - descr: Used as user comment only.
+    name: name
+    title: Description
+    type: string
+  - descr: 'When the port is configured as VCP, this parameter holds its address.
+
+      '
+    name: id
+    title: Port ID
+    type: byte
+  - name: baud
+    title: Serial baud rate
+    type: dword
+  - name: parity
+    title: Parity bit
+    type: option
+    units:
+    - 'off'
+    - odd
+    - even
+  - name: bits
+    title: Stop bits
+    type: option
+    units:
+    - '1'
+    - '2'
+  - name: line
+    title: Serial line mode
+    type: option
+    units:
+    - RXTX
+    - RX
+    - TX
+  - descr: "[`COBS`](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)\
+      \ \ncan be used to wrap packets and protect data integrity, i.e. all received\n\
+      or transmitted data will be decoded/encoded with the codec.\nSee the [source\
+      \ code](https://github.com/uavos/apx-lib/tree/main/xbus/uart) for implementation\
+      \ details.\n"
+    name: codec
+    title: VCP packet codec
+    type: option
+    units:
+    - 'off'
+    - COBS
+  descr: 'The VCP module defines various serial ports configurations in this group.
+
+    '
+  name: ports
+title: Comm ports

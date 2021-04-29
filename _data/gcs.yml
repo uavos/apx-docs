@@ -1,0 +1,7 @@
+pages:
+- install
+- sim
+- plugins
+- scriptcompiler
+- httpservice
+- protocols

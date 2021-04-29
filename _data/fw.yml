@@ -1,0 +1,16 @@
+pages:
+- mandala
+- shiva
+- ports_vcp
+- ports_controls
+- mod
+- mdb
+- ports_gpio
+- ahrs
+- node
+- ifc_mux
+- protocols
+- telemetry
+- identity
+- vehicle
+- script

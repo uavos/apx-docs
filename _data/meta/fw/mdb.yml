@@ -1,0 +1,19 @@
+conf:
+- sys
+label: mdb
+module: mdb
+name: mdb
+nodes: []
+params:
+- content:
+  - descr: 'Stop publishing data on network for all publishers of the node.
+
+      '
+    name: mute
+    title: Stop data broadcast
+    type: command
+  - name: unmute
+    title: Start data broadcast
+    type: command
+  name: sys
+title: Data Broker

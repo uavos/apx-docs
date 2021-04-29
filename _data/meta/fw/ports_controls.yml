@@ -1,0 +1,86 @@
+conf:
+- ports
+label: ports_controls
+module: ports.controls
+name: ports.controls
+nodes:
+- nav
+- sim
+- com
+- ifc
+params:
+- content:
+  - content:
+    - array: 32
+      descr: 'Value of the variable is used as `input value` for the control.
+
+        '
+      name: bind
+      title: Mandala variable binding
+      type: bind
+    - array: 32
+      descr: 'Input value is multiplied by this factor if this setting is not zero.
+
+        F.ex, for servo reverse set this factor to negative value.
+
+        '
+      name: mult
+      title: Value multiplier
+      type: real
+    - array: 32
+      descr: 'Allows to apply different multiplier for positive and negative
+
+        input values. Can be used for differential ailerons implementation.
+
+        * `diff>0`: when input value is positive (>0), then it is multiplied
+
+        by this factor;
+
+        * `diff<0`: when input value is negative (<0), then it is multiplied
+
+        by this factor;
+
+        '
+      name: diff
+      title: Differential multiplier
+      type: real
+    - array: 32
+      descr: 'The slew rate limit for the control, i.e. the value of 0.1 will result
+
+        in 0.1/s rate of change limit. Can be used to slow down servo motion.
+
+        '
+      name: speed
+      title: Slew rate limit
+      type: real
+    - array: 32
+      descr: "The output of the control will be added (mixed) to the specified \n\
+        output channel number. \nWhen this value is zero, the control is disabled.\n"
+      name: ch
+      title: Channel assignment
+      type: byte
+    - array: 24
+      descr: "Output channel value is limited by this number (divided by 100). \n\
+        Used to set servo mechanical limit.\n"
+      name: ch_min
+      title: Channel minimum value
+      type: real
+      units: '%'
+    - array: 24
+      descr: "Output channel value is limited by this number (divided by 100). \n\
+        Used to set servo mechanical limit.\n"
+      name: ch_max
+      title: Channel maximum value
+      type: real
+      units: '%'
+    - array: 24
+      descr: "Output channel value is adjusted by this number (divided by 100). \n\
+        Used to set servo zero position.\n"
+      name: ch_zero
+      title: Channel zero bias
+      type: real
+      units: '%'
+    descr: Servo controls
+    name: controls
+  name: ports
+title: Controls mixer

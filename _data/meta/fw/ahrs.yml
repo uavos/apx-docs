@@ -1,0 +1,234 @@
+conf:
+- AHRS
+label: ahrs
+module: ahrs
+name: ahrs
+nodes:
+- nav
+- sim
+params:
+- content:
+  - name: rebias
+    title: Reset IMU bias
+    type: command
+  - name: reset
+    title: Full reset
+    type: command
+  - descr: 'The priority of data, published by the module.
+
+      All priorities, except `local` are broadcasting data in network.
+
+      '
+    name: mode
+    title: Operation mode
+    type: option
+    units:
+    - 'off'
+    - local
+    - primary
+    - secondary
+    - failsafe
+    - auxillary
+  - content:
+    - name: roll
+      type: real
+      units: deg
+    - name: pitch
+      type: real
+      units: deg
+    - name: yaw
+      type: real
+      units: deg
+    descr: Bodyframe parameters
+    name: align
+  - content:
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: IMU position
+      name: imu
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: GPS position
+      name: gps
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: Rangefinder position
+      name: rng
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: Flow focal point position
+      name: flow
+    - content:
+      - name: x
+        type: real
+        units: m
+      - name: y
+        type: real
+        units: m
+      - name: z
+        type: real
+        units: m
+      descr: Vision focal point position
+      name: ev
+    descr: Bodyframe sensors positions
+    name: offset
+  - content:
+    - decimal: 0
+      default: 30
+      increment: 10
+      max: 1000
+      min: 0
+      name: lpf
+      title: LPF cut-off frequency
+      type: word
+      units: Hz
+    - decimal: 0
+      increment: 10
+      max: 1000
+      min: 0
+      name: nf
+      title: Notch filter frequency
+      type: word
+      units: Hz
+    - decimal: 0
+      default: 20
+      increment: 5
+      max: 1000
+      min: 0
+      name: nfbw
+      title: Notch filter bandwidth
+      type: word
+      units: Hz
+    - decimal: 0
+      default: 30
+      increment: 10
+      max: 1000
+      min: 0
+      name: dlpf
+      title: Derivative LPF frequency
+      type: word
+      units: Hz
+    descr: Vehicle angular rate
+    name: gyro
+  - content:
+    - decimal: 0
+      default: 30
+      increment: 10
+      max: 1000
+      min: 0
+      name: lpf
+      title: LPF cut-off frequency
+      type: word
+      units: Hz
+    descr: Vehicle acceleration
+    name: acc
+  - content:
+    - decimal: 1
+      default: 0.3
+      increment: 0.1
+      max: 1000
+      min: 0
+      name: min
+      title: Minimum altitude
+      type: real
+      units: m
+    - default: 50
+      max: 1000
+      min: 0
+      name: max
+      title: Maximum altitude
+      type: word
+      units: m
+    - default: 100
+      max: 1000
+      min: 0
+      name: spd
+      title: Ground speed limit
+      type: word
+      units: m/s
+    - decimal: 1
+      default: 0.1
+      increment: 0.1
+      max: 10
+      min: 0
+      name: gnd
+      title: Ground clearance
+      type: real
+      units: m
+    - max: 1000
+      min: 0
+      name: aid
+      title: Maximum AGL for range height source
+      type: word
+      units: m
+    descr: AGL sensor
+    name: agl
+  - name: mag
+    title: Magnetometer
+    type: option
+    units:
+    - auto
+    - HDG
+    - 3D
+    - indoor
+    - disable
+  - name: hsrc
+    title: Altitude preference
+    type: option
+    units:
+    - baro
+    - gps
+    - range
+    - vision
+  - name: crs
+    title: Course estimation
+    type: option
+    units:
+    - standard
+    - smart
+    - yaw
+  - decimal: 1
+    default: 0.5
+    increment: 0.1
+    max: 10
+    min: 0
+    name: fke
+    title: Kinetic energy rate filter
+    type: real
+    units: s
+  descr: Inertial navigation
+  name: ahrs
+  title: AHRS
+title: Inertial Navigation
