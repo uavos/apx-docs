@@ -1,5 +1,9 @@
 <ul>
   {% for item in content %}
+    {% if item.name %}
+    {% else %}
+      {% continue %}
+    {% endif %}
     <li>
       {% if item.content %}
       <!-- GROUP OF PARAMETERS -->
@@ -38,8 +42,8 @@
 
     <!-- RECURSIVE TREE -->
     {% if item.content %}
-      {% assign params = item.content %}
-      {% include params_tree.html %}
+      {% assign content = item.content %}
+      {% include mandala.html %}
     {% endif %}
 
   {% endfor %}

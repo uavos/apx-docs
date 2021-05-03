@@ -2725,6 +2725,20 @@ content:
       name: formation
       title: Formation data
       type: byte
+    - reserved: 8
+      type: byte
+    - reserved: 9
+      type: byte
+    - reserved: 10
+      type: byte
+    - reserved: 11
+      type: byte
+    - reserved: 12
+      type: byte
+    - reserved: 13
+      type: byte
+    - reserved: 14
+      type: byte
     - content:
       - descr: Broadcast request, re <uid>
         name: search
