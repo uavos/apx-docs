@@ -7,8 +7,7 @@ nodes:
 - ifc
 params:
 - content:
-  - content: null
-    descr: 'The parameter `mux` is added to each GPIO channel to map
+  - descr: 'The parameter `mux` is added to each GPIO channel to map
 
       signal to node specific physical pin.
 

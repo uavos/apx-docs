@@ -379,7 +379,9 @@
       type: bind
     descr: One Wire sensors
     name: owire
+  descr: Analog inputs
   name: adc
+  title: Analog
 - content:
   - content:
     - array: $gpio_channels
@@ -470,7 +472,11 @@
       name: label
       title: User description
       type: string
-    descr: GPIO ports
+    descr: 'The parameter `mux` is added to each GPIO channel to map
+
+      signal to node specific physical pin.
+
+      '
     name: gpio
   - name: rate
     title: PWM rate
@@ -556,7 +562,9 @@
       units: '%'
     descr: Servo controls
     name: controls
+  descr: Physical interfaces
   name: ports
+  title: Ports
 - content:
   - descr: 'Stop publishing data on network for all publishers of the node.
 
@@ -584,7 +592,6 @@
       default: 0.01
       increment: 0.01
       max: 1000
-      min: 0
       name: gyro
       title: Gyro noise
       type: real
@@ -593,7 +600,6 @@
       default: 0.1
       increment: 0.1
       max: 1000
-      min: 0
       name: acc
       title: Accel noise
       type: real
@@ -602,7 +608,6 @@
       default: 0.01
       increment: 0.01
       max: 3
-      min: 0
       name: mag
       title: Magnetometer noise
       type: real
@@ -615,7 +620,6 @@
       default: 0.01
       increment: 0.01
       max: 10
-      min: 0
       name: vel
       title: GPS velocity noise
       type: real
@@ -631,7 +635,6 @@
       default: 0.01
       increment: 0.01
       max: 10
-      min: 0
       name: baro
       title: Static pressure noise
       type: real
@@ -640,7 +643,6 @@
       default: 0.01
       increment: 0.01
       max: 10
-      min: 0
       name: pitot
       title: Dynamic pressure noise
       type: real
@@ -662,7 +664,6 @@
       - auto
     - default: 1
       max: 100
-      min: 0
       name: err
       title: AGL errors probability
       type: byte
@@ -774,37 +775,29 @@
     descr: Bodyframe sensors positions
     name: offset
   - content:
-    - decimal: 0
-      default: 30
+    - default: 30
       increment: 10
       max: 1000
-      min: 0
       name: lpf
       title: LPF cut-off frequency
       type: word
       units: Hz
-    - decimal: 0
-      increment: 10
+    - increment: 10
       max: 1000
-      min: 0
       name: nf
       title: Notch filter frequency
       type: word
       units: Hz
-    - decimal: 0
-      default: 20
+    - default: 20
       increment: 5
       max: 1000
-      min: 0
       name: nfbw
       title: Notch filter bandwidth
       type: word
       units: Hz
-    - decimal: 0
-      default: 30
+    - default: 30
       increment: 10
       max: 1000
-      min: 0
       name: dlpf
       title: Derivative LPF frequency
       type: word
@@ -812,11 +805,9 @@
     descr: Vehicle angular rate
     name: gyro
   - content:
-    - decimal: 0
-      default: 30
+    - default: 30
       increment: 10
       max: 1000
-      min: 0
       name: lpf
       title: LPF cut-off frequency
       type: word
@@ -828,21 +819,18 @@
       default: 0.3
       increment: 0.1
       max: 1000
-      min: 0
       name: min
       title: Minimum altitude
       type: real
       units: m
     - default: 50
       max: 1000
-      min: 0
       name: max
       title: Maximum altitude
       type: word
       units: m
     - default: 100
       max: 1000
-      min: 0
       name: spd
       title: Ground speed limit
       type: word
@@ -851,13 +839,11 @@
       default: 0.1
       increment: 0.1
       max: 10
-      min: 0
       name: gnd
       title: Ground clearance
       type: real
       units: m
     - max: 1000
-      min: 0
       name: aid
       title: Maximum AGL for range height source
       type: word
@@ -881,22 +867,40 @@
     - gps
     - range
     - vision
-  - name: crs
-    title: Course estimation
+  - name: bearing
+    title: Bearing estimation
     type: option
     units:
-    - standard
-    - smart
+    - vel
     - yaw
   - decimal: 1
     default: 0.5
     increment: 0.1
     max: 10
-    min: 0
     name: fke
     title: Kinetic energy rate filter
     type: real
     units: s
+  - name: slip
+    title: Slip estimator
+    type: option
+    units:
+    - acc
+    - sensor
+  - default: 100
+    descr: 'Will emit warning on GCS and apply either reverse ailerons or negative
+      elevator.
+
+      Lower values make detector more sensitive. The `stability`
+
+      is estimated based on rate of turn and energy flow.
+
+      '
+    increment: 10
+    max: 1000
+    name: stab
+    title: Stability detector sensitivity
+    type: word
   descr: Inertial navigation
   name: ahrs
   title: AHRS
@@ -957,20 +961,17 @@
     title: Fuel weight
     type: real
     units: kg
-  - decimal: 0
-    default: 100
+  - default: 100
     increment: 10
     max: 5000
     min: 1
     name: altitude
     title: safe altitude
-    type: real
+    type: word
     units: m
-  - decimal: 0
-    default: 200
+  - default: 200
     increment: 10
     max: 10000
-    min: 0
     name: radius
     title: Loiter radius
     type: word
@@ -978,7 +979,6 @@
   - decimal: 1
     increment: 1
     max: 100
-    min: 0
     name: ld
     title: glide ratio
     type: real
@@ -1003,42 +1003,89 @@
   - decimal: 1
     increment: 1
     max: 1000
-    min: 0
     name: VSI
     title: stall with no flaps
     type: real
     units: m/s
-  - decimal: 0
-    increment: 1
+  - increment: 1
     max: 1000
-    min: 0
     name: VFE
     title: max with flaps
     type: real
     units: m/s
-  - decimal: 0
-    increment: 1
+  - increment: 1
     max: 1000
-    min: 0
     name: VY
     title: max climbing rate
     type: real
     units: m/s
-  - decimal: 0
-    increment: 1
+  - increment: 1
     max: 1000
-    min: 0
     name: VNO
     title: normal operation
     type: real
     units: m/s
-  - decimal: 0
-    default: 50
+  - default: 50
     increment: 1
     max: 1000
-    min: 0
     name: VNE
     title: never exceed
+    type: real
+    units: m/s
+  - default: 1
+    descr: 'Safe ground speed to make maneuvers.
+
+      '
+    increment: 1
+    max: 10
+    name: GS
+    title: Taxi ground speed
+    type: real
+    units: m/s
+  - decimal: 1
+    default: 7.0
+    descr: "This is the maximum vertical acceleration,\neither up or down, that the\
+      \ controller will use to correct speed\nor height errors. The controller will\
+      \ limit the slew rate of \ncommanded pitch angle to not to exceed this limit.\n"
+    increment: 1
+    max: 50.0
+    min: 1.0
+    name: acc
+    title: Maximum acceleration
+    type: real
+    units: m/s^2
+  - decimal: 1
+    default: 4.0
+    descr: 'This is the best climb rate that the aircraft can achieve with
+
+      the max throttle.
+
+      '
+    increment: 1
+    max: 100.0
+    min: 0.1
+    name: climb
+    title: Maximum climb rate
+    type: real
+    units: m/s
+  - decimal: 1
+    default: 5.0
+    descr: 'This sets the maximum descent rate that the controller will use.
+
+      If this value is too large, the aircraft can over-speed on descent.
+
+      This should be set to a value that can be achieved without
+
+      exceeding the lower pitch angle limit and without over-speeding
+
+      the aircraft.
+
+      '
+    increment: 1
+    max: 100.0
+    min: 1
+    name: sink
+    title: Maximum descent rate
     type: real
     units: m/s
   descr: Vehicle parameters
@@ -1148,6 +1195,9 @@
         title: flaps trim
         type: real
         units: '%'
+      descr: 'Regulator output trimming factors.
+
+        '
       name: trim
     - content:
       - name: low
@@ -1159,20 +1209,43 @@
       - name: flaps
         title: flaps gain
         type: real
+      - decimal: 2
+        descr: 'This value is the gain multiplier for ailerons control when
+
+          estimated stability is 1 (unstable). I.e. when parameter set to
+
+          `0.2` - the ailerons output will be multiplied by `0.2` when in stall
+
+          condition, thus lowering the output value. For reverse ailerons -
+
+          set parameter to negative, i.e. when set to `-0.5`, the ailerons gain
+
+          will be `-0.5` in stall condition, making it reversed, and zero at about
+
+          `0.5` of estimated stability. See [chart](https://www.geogebra.org/classic/bpd7p56q)
+
+          for details.
+
+          '
+        increment: 0.1
+        max: 1
+        min: -1
+        name: stab
+        title: Stability gain
+        type: real
+      descr: 'Regulator output gains.
+
+        '
       name: gain
     - content:
-      - decimal: 0
-        increment: 5
+      - increment: 5
         max: 80
-        min: 0
         name: max
         title: setpoint limit
         type: real
         units: deg
-      - decimal: 0
-        increment: 5
+      - increment: 5
         max: 200
-        min: 0
         name: slew
         title: setpoint slew rate limit
         type: real
@@ -1266,6 +1339,22 @@
         title: flaps trim
         type: real
         units: '%'
+      - decimal: 2
+        descr: 'The estimated stability value will be multiplied by this factor
+
+          and subtracted from elevator control. This will make elevator down
+
+          when in stall condition.
+
+          '
+        increment: 0.1
+        max: 10
+        name: stab
+        title: Stall condition multiplier
+        type: real
+      descr: 'Regulator output trimming factors.
+
+        '
       name: trim
     - content:
       - name: low
@@ -1277,20 +1366,19 @@
       - name: flaps
         title: flaps gain
         type: real
+      descr: 'Regulator output gains.
+
+        '
       name: gain
     - content:
-      - decimal: 0
-        increment: 5
+      - increment: 5
         max: 80
-        min: 0
         name: max
         title: setpoint limit
         type: real
         units: deg
-      - decimal: 0
-        increment: 5
+      - increment: 5
         max: 200
-        min: 0
         name: slew
         title: setpoint slew rate limit
         type: real
@@ -1384,6 +1472,9 @@
         title: flaps trim
         type: real
         units: '%'
+      descr: 'Regulator output trimming factors.
+
+        '
       name: trim
     - content:
       - name: low
@@ -1395,12 +1486,13 @@
       - name: flaps
         title: flaps gain
         type: real
+      descr: 'Regulator output gains.
+
+        '
       name: gain
-    - decimal: 0
-      default: 80
+    - default: 80
       increment: 10
       max: 1000
-      min: 0
       name: slew
       title: Yaw setpoint slew rate limit
       type: real
@@ -1409,7 +1501,6 @@
       default: 1.5
       increment: 0.1
       max: 10
-      min: 0
       name: slip
       title: Slip error to Yaw rate proportional gain
       type: real
@@ -1428,7 +1519,6 @@
       default: 20.0
       increment: 1
       max: 1000.0
-      min: 0.0
       name: dist
       title: L1 period
       type: real
@@ -1437,35 +1527,43 @@
       default: 0.75
       increment: 0.05
       max: 10.0
-      min: 0.0
       name: damp
       title: damping factor
       type: real
-    - decimal: 0
-      default: 50
+    - default: 50
       descr: The waypoint is passed when the distance is lower than this value.
       increment: 10
       max: 1000
-      min: 0
       name: radius
       title: Waypoint switch radius
       type: word
       units: m
-    - decimal: 0
-      default: 10
-      descr: Another way to detect waypoint passed condition, i.e. when the rate of
-        heading to the waypoint is higher than this value - the waypoint is considered
+    - default: 10
+      descr: 'Another way to detect waypoint passed condition, i.e. when the rate
+        of heading to the waypoint is higher than this value - the waypoint is considered
         to be passed.
+
+        '
       increment: 1
       max: 1000
-      min: 0
       name: trig
       title: Waypoint heading rate switch trigger
       type: word
       units: deg/s
+    - descr: 'Enabling this option will optimize turn directions to avoid large bank
+        angle changes. I.e. for U-turns this makes aircraft to continue existing turn
+        maneuver when applicable.
+
+        '
+      name: topt
+      title: Turn direction optimization
+      type: option
+      units:
+      - optimized
+      - shortest
     descr: Waypoint to Roll [deg]. L1 controller for trajectory navigation.
-    name: crs
-    title: Course
+    name: bearing
+    title: Bearing
   - content:
     - decimal: 1
       descr: 'Smaller values make it faster to respond, larger values make it slower
@@ -1486,7 +1584,6 @@
       descr: The energy rate error is multiplied by this factor to provide pitch angle.
       increment: 0.01
       max: 2.0
-      min: 0.0
       name: Kp
       title: Energy rate error gain
       type: real
@@ -1495,7 +1592,6 @@
       descr: Trimming for the pitch angle to maintain commanded rate of energy.
       increment: 0.05
       max: 2.0
-      min: 0.0
       name: Ki
       title: Integrator gain
       type: real
@@ -1510,7 +1606,6 @@
         the pitch control to simultaneously control height and speed.
       increment: 0.1
       max: 1
-      min: 0
       name: weight
       title: Speed vs Altitude TECS weighting factor
       type: real
@@ -1519,22 +1614,8 @@
       descr: Commanded airspeed rate of change limit.
       increment: 0.1
       max: 100
-      min: 0
       name: slew
       title: Speed setpoint slew rate
-      type: real
-      units: m/s^2
-    - decimal: 1
-      default: 7.0
-      descr: "This is the maximum vertical acceleration,\neither up or down, that\
-        \ the controller will use to correct speed\nor height errors. The controller\
-        \ will limit the slew rate of \ncommanded pitch angle to not to exceed this\
-        \ limit.\n"
-      increment: 1
-      max: 50.0
-      min: 1.0
-      name: acc
-      title: Maximum vertical acceleration
       type: real
       units: m/s^2
     default:
@@ -1568,7 +1649,6 @@
         '
       increment: 0.01
       max: 5.0
-      min: 0.0
       name: Kp
       title: Energy rate error gain
       type: real
@@ -1579,12 +1659,10 @@
         '
       increment: 0.1
       max: 10.0
-      min: 0.0
       name: Ki
       title: Integrator gain
       type: real
     - decimal: 1
-      default: 0
       descr: 'Increasing this gain increases the amount of throttle that will
 
         be used to compensate for the additional drag created by turning.
@@ -1592,50 +1670,14 @@
         '
       increment: 0.1
       max: 20.0
-      min: 0.0
       name: roll
       title: Roll to Energy rate feedforward
       type: real
-    - decimal: 1
-      default: 4.0
-      descr: 'This is the best climb rate that the aircraft can achieve with
-
-        the max throttle.
-
-        '
-      increment: 1
-      max: 100.0
-      min: 0.1
-      name: climb
-      title: Maximum climb rate
-      type: real
-      units: m/s
-    - decimal: 1
-      default: 5.0
-      descr: 'This sets the maximum descent rate that the controller will use.
-
-        If this value is too large, the aircraft can over-speed on descent.
-
-        This should be set to a value that can be achieved without
-
-        exceeding the lower pitch angle limit and without over-speeding
-
-        the aircraft.
-
-        '
-      increment: 1
-      max: 100.0
-      min: 1
-      name: sink
-      title: Maximum descent rate
-      type: real
-      units: m/s
     - decimal: 1
       default: 2
       descr: Commanded vertical speed rate of change limit.
       increment: 1
       max: 100
-      min: 0
       name: slew
       title: Vertical speed setpoint slew rate
       type: real
@@ -1660,7 +1702,6 @@
       default: 0.5
       increment: 0.05
       max: 1.0
-      min: 0.0
       name: Kff
       title: Feed forward factor
       type: real
@@ -1668,28 +1709,24 @@
       default: 0.1
       increment: 0.1
       max: 1.0
-      min: 0.0
       name: lpf
       title: RPM LP filter
       type: real
     - content:
       - descr: This is the RPM setting for cruise speed.
         increment: 100
-        min: 0
         name: cruise
         title: Cruise RPM
         type: dword
         units: rpm
       - descr: This is the engine maximum allowed RPM.
         increment: 100
-        min: 0
         name: max
         title: Maximum RPM
         type: dword
         units: rpm
       - descr: This is the engine idle RPM.
         increment: 100
-        min: 0
         name: min
         title: Minimum RPM
         type: dword
@@ -1697,7 +1734,6 @@
       - default: 500
         descr: Maximum slew rate for the commanded RPM
         increment: 100
-        min: 0
         name: slew
         title: Commanded RPM max slew rate
         type: real
@@ -1705,20 +1741,17 @@
       descr: Engine RPM
       name: rpm
     - content:
-      - decimal: 0
-        default: 100
+      - default: 100
         descr: This is the maximum throttle that can be used by the regulator. For
           overpowered aircraft, this should be reduced to a value that provides sufficient
           thrust to climb at the maximum pitch angle.
         increment: 1
         max: 100
-        min: 0
         name: max
         title: Max throttle
         type: real
         units: '%'
-      - decimal: 0
-        descr: This is the minimum throttle that can be used by the controller. For
+      - descr: This is the minimum throttle that can be used by the controller. For
           electric aircraft this will normally be set to zero, but can be set to a
           small non-zero value if a folding prop is fitted to prevent the prop from
           folding and unfolding repeatedly in-flight or to provide some aerodynamic
@@ -1727,16 +1760,13 @@
           rpm.
         increment: 1
         max: 100
-        min: 0
         name: min
         title: Min throttle
         type: real
         units: '%'
-      - decimal: 0
-        descr: Maximum slew rate for the commanded throttle
+      - descr: Maximum slew rate for the commanded throttle
         increment: 10
         max: 100
-        min: 0
         name: slew
         title: Throttle max slew rate
         type: real
@@ -1786,7 +1816,6 @@
         default: 0.1
         increment: 0.1
         max: 1
-        min: 0
         name: gain
         title: Steering high speed gain
         type: real
@@ -1805,7 +1834,6 @@
         default: 5.0
         increment: 1
         max: 100.0
-        min: 0.0
         name: dist
         title: L1 period
         type: real
@@ -1814,15 +1842,12 @@
         default: 0.5
         increment: 0.05
         max: 10.0
-        min: 0.0
         name: damp
         title: damping factor
         type: real
-      - decimal: 0
-        default: 5
+      - default: 5
         increment: 1
         max: 100
-        min: 0
         name: trig
         title: Taxiway switch radius
         type: word
@@ -1837,15 +1862,6 @@
       - name: Kd
         title: differential gain
         type: real
-      - decimal: 0
-        default: 2
-        increment: 1
-        max: 10
-        min: 0
-        name: speed
-        title: Taxi ground speed
-        type: real
-        units: m/s
       descr: Speed to Brakes [%]
       name: brakes
       title: Brakes
@@ -1855,35 +1871,30 @@
   - content:
     - increment: 10
       max: 100
-      min: 0
       name: max
       title: VSO flaps
       type: byte
       units: '%'
     - increment: 10
       max: 100
-      min: 0
       name: min
       title: VSI flaps
       type: byte
       units: '%'
     - increment: 10
       max: 100
-      min: 0
       name: takeoff
       title: Takeoff flaps
       type: byte
       units: '%'
     - increment: 10
       max: 100
-      min: 0
       name: approach
       title: Approach flaps
       type: byte
       units: '%'
     - increment: 10
       max: 100
-      min: 0
       name: final
       title: Final approach flaps
       type: byte
@@ -1891,7 +1902,6 @@
     - decimal: 1
       increment: 0.1
       max: 1
-      min: 0
       name: ld
       title: Flaps LD gain
       type: real
@@ -1907,9 +1917,29 @@
       - launcher
       - helipad
     - content:
+      - descr: 'Will cancel takeoff if heading error is more than this value
+
+          '
+        increment: 5
+        max: 60
+        name: hdg
+        title: Heading error
+        type: byte
+        units: deg
+      - descr: 'Will cancel takeoff if crosstrack error is more than this value
+
+          '
+        increment: 1
+        max: 20
+        name: xtrack
+        title: Crosstrack error
+        type: byte
+        units: m
+      descr: Checks to perform before takeoff
+      name: check
+    - content:
       - increment: 1
         max: 100
-        min: 0
         name: speed
         title: Max speed
         type: byte
@@ -1920,10 +1950,8 @@
         title: Run phase pitch angle
         type: byte
         units: deg
-      - decimal: 0
-        increment: 10
+      - increment: 10
         max: 200
-        min: 0
         name: tslew
         title: Throttle rate limit
         type: real
@@ -1939,7 +1967,6 @@
         units: deg
       - increment: 1
         max: 100
-        min: 0
         name: altitude
         title: Liftoff phase altitude
         type: byte
@@ -1962,7 +1989,6 @@
       - decimal: 1
         increment: 0.1
         max: 10
-        min: 0
         name: tdelay
         title: Launcher throttle delay
         type: real
@@ -1970,7 +1996,6 @@
       - decimal: 1
         increment: 0.1
         max: 10
-        min: 0
         name: cdelay
         title: Launcher controls delay
         type: real
@@ -1990,7 +2015,6 @@
       - helipad
     - increment: 5
       max: 1000
-      min: 0
       name: agl
       title: AGL correction altitude
       type: word
@@ -2000,14 +2024,12 @@
         default: 0.01
         increment: 0.01
         max: 1
-        min: 0
         name: Kp
         title: Delta [m] to speed [m/s] gain
         type: real
       - default: 10
         increment: 10
         max: 100
-        min: 0
         name: thr
         title: Approach throttle
         type: byte
@@ -2025,7 +2047,6 @@
       - default: 15
         increment: 1
         max: 100
-        min: 0
         name: alt
         title: Flare phase altitude
         type: byte
@@ -2039,7 +2060,6 @@
       - decimal: 1
         increment: 0.1
         max: 5
-        min: 0
         name: sink
         title: Flare sink rate
         type: real
@@ -2050,13 +2070,11 @@
       - default: 4
         increment: 1
         max: 50
-        min: 0
         name: alt
         title: Touchdown phase altitude
         type: byte
         units: m
-      - decimal: 0
-        default: 8
+      - default: 8
         increment: 1
         max: 90
         name: pitch
@@ -2066,7 +2084,6 @@
       - default: 15
         increment: 1
         max: 100
-        min: 0
         name: speed
         title: Speed to trigger Run phase
         type: byte
@@ -2074,18 +2091,23 @@
       - default: 5
         increment: 1
         max: 100
-        min: 0
         name: acc
         title: Acceleration to trigger Run phase
         type: byte
         units: m/s^2
       - increment: 10
         max: 200
-        min: 0
         name: brakes
         title: Brakes slew rate limit
         type: byte
         units: '%/s'
+      - name: thr
+        title: Throttle blocking
+        type: option
+        units:
+        - cut
+        - override
+        - ignore
       descr: Touchdown phase parameters
       name: touch
     descr: Landing procedure
@@ -2157,12 +2179,12 @@
         name: format
         type: option
         units:
+        - real
+        - precise
+        - word
         - byte
         - bit
         - option
-        - real
-        - integer
-        - precise
       descr: 'Auxillary mandala variables to be included in the stream.
 
         '

@@ -93,10 +93,6 @@ QML widget for inspecting of datalink packets. Displays data packets decoded by 
 
 QML widget to show live chart of defined UAV physical values for easy tuning.
 
-## Heading instrument
-
-A simple QML compiled in a binary plugin, provided as an example. Shown on the  instruments panel of the GCS.
-
 ## Video Streaming
 
 [GStreamer](https://gstreamer.freedesktop.org) based video streaming.

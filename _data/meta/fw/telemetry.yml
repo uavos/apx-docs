@@ -72,12 +72,12 @@ params:
         name: format
         type: option
         units:
+        - real
+        - precise
+        - word
         - byte
         - bit
         - option
-        - real
-        - integer
-        - precise
       descr: 'Auxillary mandala variables to be included in the stream.
 
         '

@@ -1545,7 +1545,7 @@ content:
         title: Altitude above ground
         type: real
         units: m
-      - name: course
+      - name: bearing
         title: Moving direction
         type: real
         units: rad
@@ -1608,6 +1608,10 @@ content:
         title: Angular acceleration Z
         type: real
         units: rad/s^2
+      - name: turn
+        title: Turn rate
+        type: real
+        units: rad/s
       name: gyro
       title: Angular rate
       type: real
@@ -2278,8 +2282,8 @@ content:
         title: Cmd altitude MSL
         type: real
         units: m
-      - name: course
-        title: Cmd course
+      - name: bearing
+        title: Cmd bearing
         type: real
         units: rad
       - name: airspeed

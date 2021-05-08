@@ -20,7 +20,7 @@ The unique identifier of any value consists of 11 bits. Each packet in the netwo
 
 Mandala tree is available in GCS Java Script context and facts tree and created for every recognized vehicle.
 
-GCS UI and JS context have simplified structure, where `type` component is **omitted**.
+>GCS UI and JS context have simplified structure, where `type` component is **omitted**. Moreover, on GCS side **radians are converted to degrees**.
 
 F.ex., in [GCS Terminal](/gcs/plugins#terminal), which evaluates in JS context, any mandala value item can be accessed as `class.subsystem.field`.
 

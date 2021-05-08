@@ -31,20 +31,17 @@ params:
     title: Fuel weight
     type: real
     units: kg
-  - decimal: 0
-    default: 100
+  - default: 100
     increment: 10
     max: 5000
     min: 1
     name: altitude
     title: safe altitude
-    type: real
+    type: word
     units: m
-  - decimal: 0
-    default: 200
+  - default: 200
     increment: 10
     max: 10000
-    min: 0
     name: radius
     title: Loiter radius
     type: word
@@ -52,7 +49,6 @@ params:
   - decimal: 1
     increment: 1
     max: 100
-    min: 0
     name: ld
     title: glide ratio
     type: real
@@ -77,42 +73,89 @@ params:
   - decimal: 1
     increment: 1
     max: 1000
-    min: 0
     name: VSI
     title: stall with no flaps
     type: real
     units: m/s
-  - decimal: 0
-    increment: 1
+  - increment: 1
     max: 1000
-    min: 0
     name: VFE
     title: max with flaps
     type: real
     units: m/s
-  - decimal: 0
-    increment: 1
+  - increment: 1
     max: 1000
-    min: 0
     name: VY
     title: max climbing rate
     type: real
     units: m/s
-  - decimal: 0
-    increment: 1
+  - increment: 1
     max: 1000
-    min: 0
     name: VNO
     title: normal operation
     type: real
     units: m/s
-  - decimal: 0
-    default: 50
+  - default: 50
     increment: 1
     max: 1000
-    min: 0
     name: VNE
     title: never exceed
+    type: real
+    units: m/s
+  - default: 1
+    descr: 'Safe ground speed to make maneuvers.
+
+      '
+    increment: 1
+    max: 10
+    name: GS
+    title: Taxi ground speed
+    type: real
+    units: m/s
+  - decimal: 1
+    default: 7.0
+    descr: "This is the maximum vertical acceleration,\neither up or down, that the\
+      \ controller will use to correct speed\nor height errors. The controller will\
+      \ limit the slew rate of \ncommanded pitch angle to not to exceed this limit.\n"
+    increment: 1
+    max: 50.0
+    min: 1.0
+    name: acc
+    title: Maximum acceleration
+    type: real
+    units: m/s^2
+  - decimal: 1
+    default: 4.0
+    descr: 'This is the best climb rate that the aircraft can achieve with
+
+      the max throttle.
+
+      '
+    increment: 1
+    max: 100.0
+    min: 0.1
+    name: climb
+    title: Maximum climb rate
+    type: real
+    units: m/s
+  - decimal: 1
+    default: 5.0
+    descr: 'This sets the maximum descent rate that the controller will use.
+
+      If this value is too large, the aircraft can over-speed on descent.
+
+      This should be set to a value that can be achieved without
+
+      exceeding the lower pitch angle limit and without over-speeding
+
+      the aircraft.
+
+      '
+    increment: 1
+    max: 100.0
+    min: 1
+    name: sink
+    title: Maximum descent rate
     type: real
     units: m/s
   descr: Vehicle parameters
