@@ -74,6 +74,7 @@ params:
         units:
         - real
         - precise
+        - dword
         - word
         - byte
         - bit

@@ -33,58 +33,82 @@ params:
 
         '
       increment: 0.1
-      max: 100.0
-      min: 1.0
+      min: 0
       name: tc
       title: Time constant
       type: real
       units: s
-    - default: 2.0
+    - default: 2
+      increment: 0.1
+      min: 0
       name: Kp
       title: proportional gain
       type: real
     - default: 2.5
+      increment: 0.1
+      min: 0
       name: Ki
       title: integral gain
       type: real
-    - name: Kd
+    - increment: 0.1
+      min: 0
+      name: Kd
       title: differential gain
       type: real
-    - name: Kff
+    - increment: 0.1
+      min: 0
+      name: Kff
       title: feed forward gain
       type: real
-    - default: 40.0
+    - default: 40
+      increment: 1
+      min: 0
       name: Lp
       title: rate limit
       type: real
       units: deg/s
-    - default: 10.0
+    - default: 10
+      max: 100
       name: Li
       title: integral limit
-      type: real
+      type: byte
       units: '%'
-    - default: 100.0
+    - default: 100
+      max: 100
       name: Lo
       title: output limit
-      type: real
+      type: byte
       units: '%'
-    - name: rdiff
+    - increment: 0.1
+      max: 1
+      min: -1
+      name: rdiff
       title: rate limit diff
       type: real
-    - name: ifactor
+    - increment: 10
+      name: ifactor
       title: integral large error factor
-      type: real
+      type: word
       units: deg/s
     - content:
-      - name: low
+      - increment: 1
+        max: 100
+        min: -100
+        name: low
         title: low speed trim
         type: real
         units: '%'
-      - name: high
+      - increment: 1
+        max: 100
+        min: -100
+        name: high
         title: high speed trim
         type: real
         units: '%'
-      - name: flaps
+      - increment: 1
+        max: 100
+        min: -100
+        name: flaps
         title: flaps trim
         type: real
         units: '%'
@@ -93,13 +117,20 @@ params:
         '
       name: trim
     - content:
-      - name: low
+      - increment: 0.1
+        min: 0
+        name: low
         title: low speed gain
         type: real
-      - name: high
+      - increment: 0.1
+        max: 1
+        min: 0
+        name: high
         title: high speed gain
         type: real
-      - name: flaps
+      - increment: 0.1
+        min: 0
+        name: flaps
         title: flaps gain
         type: real
       - decimal: 2
@@ -131,19 +162,21 @@ params:
         '
       name: gain
     - content:
-      - default: 45
+      - decimal: 0
+        default: 45
         increment: 5
         max: 80
+        min: 0
         name: max
         title: setpoint limit
         type: real
         units: deg
       - default: 40
-        increment: 5
-        max: 200
+        increment: 10
+        max: 1000
         name: slew
         title: setpoint slew rate limit
-        type: real
+        type: word
         units: deg/s
       - decimal: 1
         increment: 0.1
@@ -167,7 +200,7 @@ params:
     title: Roll
   - content:
     - decimal: 1
-      default: 0.1
+      default: 0.5
       descr: 'Smaller values make it faster to respond, larger values make it slower
         to respond.
 
@@ -175,86 +208,116 @@ params:
 
         '
       increment: 0.1
-      max: 100.0
-      min: 1.0
+      min: 0
       name: tc
       title: Time constant
       type: real
       units: s
-    - default: 2.5
+    - default: 6
+      increment: 0.1
+      min: 0
       name: Kp
       title: proportional gain
       type: real
     - default: 3.5
+      increment: 0.1
+      min: 0
       name: Ki
       title: integral gain
       type: real
-    - name: Kd
+    - increment: 0.1
+      min: 0
+      name: Kd
       title: differential gain
       type: real
-    - name: Kff
+    - increment: 0.1
+      min: 0
+      name: Kff
       title: feed forward gain
       type: real
-    - default: 40.0
+    - default: 40
+      increment: 1
+      min: 0
       name: Lp
       title: rate limit
       type: real
       units: deg/s
-    - default: 25.0
+    - default: 25
+      max: 100
       name: Li
       title: integral limit
-      type: real
+      type: byte
       units: '%'
-    - default: 100.0
+    - default: 100
+      max: 100
       name: Lo
       title: output limit
-      type: real
+      type: byte
       units: '%'
-    - name: rdiff
+    - increment: 0.1
+      max: 1
+      min: -1
+      name: rdiff
       title: rate limit diff
       type: real
-    - name: ifactor
+    - increment: 10
+      name: ifactor
       title: integral large error factor
-      type: real
+      type: word
       units: deg/s
     - content:
-      - name: low
+      - increment: 1
+        max: 100
+        min: -100
+        name: low
         title: low speed trim
         type: real
         units: '%'
-      - name: high
+      - increment: 1
+        max: 100
+        min: -100
+        name: high
         title: high speed trim
         type: real
         units: '%'
-      - name: flaps
+      - increment: 1
+        max: 100
+        min: -100
+        name: flaps
         title: flaps trim
         type: real
         units: '%'
-      - decimal: 2
-        descr: 'The estimated stability value will be multiplied by this factor
+      - descr: 'The estimated stability value will be multiplied by this factor
 
-          and subtracted from elevator control. This will make elevator down
+          and subtracted from elevator control [%]. This will make elevator down
 
           when in stall condition.
 
           '
-        increment: 0.1
-        max: 10
+        increment: 1
         name: stab
-        title: Stall condition multiplier
-        type: real
+        title: Stall condition trim
+        type: byte
+        units: '%'
       descr: 'Regulator output trimming factors.
 
         '
       name: trim
     - content:
-      - name: low
+      - increment: 0.1
+        min: 0
+        name: low
         title: low speed gain
         type: real
-      - name: high
+      - increment: 0.1
+        max: 1
+        min: 0
+        name: high
         title: high speed gain
         type: real
-      - name: flaps
+      - increment: 0.1
+        min: 0
+        name: flaps
         title: flaps gain
         type: real
       descr: 'Regulator output gains.
@@ -262,19 +325,21 @@ params:
         '
       name: gain
     - content:
-      - default: 20
+      - decimal: 0
+        default: 20
         increment: 5
         max: 80
+        min: 0
         name: max
         title: setpoint limit
         type: real
         units: deg
-      - default: 20
-        increment: 5
-        max: 200
+      - default: 10
+        increment: 10
+        max: 1000
         name: slew
         title: setpoint slew rate limit
-        type: real
+        type: word
         units: deg/s
       - decimal: 1
         increment: 0.1
@@ -298,7 +363,7 @@ params:
     title: Pitch
   - content:
     - decimal: 1
-      default: 0.1
+      default: 2.5
       descr: 'Smaller values make it faster to respond, larger values make it slower
         to respond.
 
@@ -306,58 +371,82 @@ params:
 
         '
       increment: 0.1
-      max: 100.0
-      min: 1.0
+      min: 0
       name: tc
       title: Time constant
       type: real
       units: s
-    - default: 2.5
+    - default: 6
+      increment: 0.1
+      min: 0
       name: Kp
       title: proportional gain
       type: real
-    - default: 3.5
+    - default: 1.1
+      increment: 0.1
+      min: 0
       name: Ki
       title: integral gain
       type: real
-    - name: Kd
+    - increment: 0.1
+      min: 0
+      name: Kd
       title: differential gain
       type: real
-    - name: Kff
+    - increment: 0.1
+      min: 0
+      name: Kff
       title: feed forward gain
       type: real
-    - default: 120.0
+    - default: 40
+      increment: 1
+      min: 0
       name: Lp
       title: rate limit
       type: real
       units: deg/s
-    - default: 10.0
+    - default: 5
+      max: 100
       name: Li
       title: integral limit
-      type: real
+      type: byte
       units: '%'
-    - default: 100.0
+    - default: 100
+      max: 100
       name: Lo
       title: output limit
-      type: real
+      type: byte
       units: '%'
-    - name: rdiff
+    - increment: 0.1
+      max: 1
+      min: -1
+      name: rdiff
       title: rate limit diff
       type: real
-    - name: ifactor
+    - increment: 10
+      name: ifactor
       title: integral large error factor
-      type: real
+      type: word
       units: deg/s
     - content:
-      - name: low
+      - increment: 1
+        max: 100
+        min: -100
+        name: low
         title: low speed trim
         type: real
         units: '%'
-      - name: high
+      - increment: 1
+        max: 100
+        min: -100
+        name: high
         title: high speed trim
         type: real
         units: '%'
-      - name: flaps
+      - increment: 1
+        max: 100
+        min: -100
+        name: flaps
         title: flaps trim
         type: real
         units: '%'
@@ -366,30 +455,36 @@ params:
         '
       name: trim
     - content:
-      - name: low
+      - increment: 0.1
+        min: 0
+        name: low
         title: low speed gain
         type: real
-      - name: high
+      - increment: 0.1
+        max: 1
+        min: 0
+        name: high
         title: high speed gain
         type: real
-      - name: flaps
+      - increment: 0.1
+        min: 0
+        name: flaps
         title: flaps gain
         type: real
       descr: 'Regulator output gains.
 
         '
       name: gain
-    - default: 80
-      increment: 10
+    - increment: 10
       max: 1000
       name: slew
       title: Yaw setpoint slew rate limit
-      type: real
+      type: word
       units: deg/s
     - decimal: 1
-      default: 1.5
+      default: 2
       increment: 0.1
-      max: 10
+      min: 0
       name: slip
       title: Slip error to Yaw rate proportional gain
       type: real
@@ -398,17 +493,18 @@ params:
     title: Yaw
   - content:
     - decimal: 1
-      default: 20.0
+      default: 25
       increment: 1
-      max: 1000.0
+      max: 1000
+      min: 0
       name: dist
       title: L1 period
       type: real
       units: m
     - decimal: 1
-      default: 0.75
-      increment: 0.05
-      max: 10.0
+      default: 0.9
+      increment: 0.1
+      min: 0
       name: damp
       title: damping factor
       type: real
@@ -416,6 +512,7 @@ params:
       descr: The waypoint is passed when the distance is lower than this value.
       increment: 10
       max: 1000
+      min: 0
       name: radius
       title: Waypoint switch radius
       type: word
@@ -423,11 +520,12 @@ params:
     - default: 10
       descr: 'Another way to detect waypoint passed condition, i.e. when the rate
         of heading to the waypoint is higher than this value - the waypoint is considered
-        to be passed.
+        as passed.
 
         '
       increment: 1
       max: 1000
+      min: 0
       name: trig
       title: Waypoint heading rate switch trigger
       type: word
@@ -448,7 +546,7 @@ params:
     title: Bearing
   - content:
     - decimal: 1
-      default: 4
+      default: 6
       descr: 'Smaller values make it faster to respond, larger values make it slower
         to respond.
 
@@ -456,30 +554,29 @@ params:
 
         '
       increment: 0.1
-      max: 100.0
-      min: 1.0
+      min: 0
       name: tc
       title: Time constant
       type: real
       units: s
     - decimal: 2
-      default: 0.01
+      default: 0.5
       descr: The energy rate error is multiplied by this factor to provide pitch angle.
-      increment: 0.01
-      max: 2.0
+      increment: 0.1
+      min: 0
       name: Kp
       title: Energy rate error gain
       type: real
     - decimal: 2
-      default: 0.05
+      default: 1.1
       descr: Trimming for the pitch angle to maintain commanded rate of energy.
-      increment: 0.05
-      max: 2.0
+      increment: 0.1
+      min: 0
       name: Ki
       title: Integrator gain
       type: real
     - decimal: 1
-      default: 1.0
+      default: 1
       descr: This parameter adjusts the amount of weighting that the pitch control
         applies to speed vs height errors. Setting it to 0 will cause the pitch control
         to control height and ignore speed errors. This will normally improve height
@@ -489,14 +586,15 @@ params:
         the pitch control to simultaneously control height and speed.
       increment: 0.1
       max: 1
+      min: 0
       name: weight
       title: Speed vs Altitude TECS weighting factor
       type: real
     - decimal: 1
-      default: 1.0
+      default: 1
       descr: Commanded airspeed rate of change limit.
       increment: 0.1
-      max: 100
+      min: 0
       name: slew
       title: Speed setpoint slew rate
       type: real
@@ -510,7 +608,7 @@ params:
     title: Airspeed
   - content:
     - decimal: 1
-      default: 7
+      default: 10
       descr: 'Smaller values make it faster to respond, larger values make it slower
         to respond.
 
@@ -518,29 +616,28 @@ params:
 
         '
       increment: 0.1
-      max: 100.0
-      min: 1.0
+      min: 0
       name: tc
       title: Time constant
       type: real
       units: s
     - decimal: 2
-      default: 0.01
+      default: 0.3
       descr: 'The energy rate error is multiplied by this factor to provide throttle.
 
         '
-      increment: 0.01
-      max: 5.0
+      increment: 0.1
+      min: 0
       name: Kp
       title: Energy rate error gain
       type: real
     - decimal: 1
-      default: 0.2
+      default: 0.1
       descr: 'Trimming gain for the throttle to maintain commanded rate of energy.
 
         '
       increment: 0.1
-      max: 10.0
+      min: 0
       name: Ki
       title: Integrator gain
       type: real
@@ -551,15 +648,15 @@ params:
 
         '
       increment: 0.1
-      max: 20.0
+      min: 0
       name: roll
       title: Roll to Energy rate feedforward
       type: real
     - decimal: 1
-      default: 2
+      default: 1
       descr: Commanded vertical speed rate of change limit.
       increment: 1
-      max: 100
+      min: 0
       name: slew
       title: Vertical speed setpoint slew rate
       type: real
@@ -573,42 +670,51 @@ params:
     title: Altitude
   - content:
     - default: 2.5
+      increment: 0.1
+      min: 0
       name: Kp
       title: proportional gain
       type: real
     - default: 3.1
+      increment: 0.1
+      min: 0
       name: Kd
       title: differential gain
       type: real
     - decimal: 2
       default: 0.5
       increment: 0.05
-      max: 1.0
+      max: 1
+      min: 0
       name: Kff
       title: Feed forward factor
       type: real
     - decimal: 1
       default: 0.1
       increment: 0.1
-      max: 1.0
+      max: 1
+      min: 0
       name: lpf
       title: RPM LP filter
       type: real
     - content:
       - descr: This is the RPM setting for cruise speed.
-        increment: 100
+        increment: 10
+        min: 0
         name: cruise
         title: Cruise RPM
         type: dword
         units: rpm
       - descr: This is the engine maximum allowed RPM.
         increment: 100
+        min: 0
         name: max
         title: Maximum RPM
         type: dword
         units: rpm
       - descr: This is the engine idle RPM.
         increment: 100
+        min: 0
         name: min
         title: Minimum RPM
         type: dword
@@ -616,6 +722,7 @@ params:
       - default: 500
         descr: Maximum slew rate for the commanded RPM
         increment: 100
+        min: 0
         name: slew
         title: Commanded RPM max slew rate
         type: real
@@ -631,7 +738,7 @@ params:
         max: 100
         name: max
         title: Max throttle
-        type: real
+        type: byte
         units: '%'
       - descr: This is the minimum throttle that can be used by the controller. For
           electric aircraft this will normally be set to zero, but can be set to a
@@ -644,14 +751,13 @@ params:
         max: 100
         name: min
         title: Min throttle
-        type: real
+        type: byte
         units: '%'
       - descr: Maximum slew rate for the commanded throttle
         increment: 10
-        max: 100
         name: slew
         title: Throttle max slew rate
-        type: real
+        type: byte
         units: '%/s'
       descr: Throttle setpoint
       name: thr
@@ -661,7 +767,7 @@ params:
   - content:
     - content:
       - decimal: 1
-        default: 0.1
+        default: 2.5
         descr: 'Smaller values make it faster to respond, larger values make it slower
           to respond.
 
@@ -669,38 +775,47 @@ params:
 
           '
         increment: 0.1
-        max: 100.0
-        min: 1.0
+        min: 0
         name: tc
         title: Time constant
         type: real
         units: s
-      - default: 2.5
+      - default: 5
+        increment: 0.1
+        min: 0
         name: Kp
         title: proportional gain
         type: real
       - default: 0.1
+        increment: 0.1
+        min: 0
         name: Ki
         title: integral gain
         type: real
-      - default: 0.5
+      - default: 0
+        increment: 0.1
+        min: 0
         name: Kff
         title: feed forward gain
         type: real
-      - default: 30.0
+      - default: 1000
+        increment: 1
+        min: 0
         name: Lp
         title: rate limit
         type: real
         units: deg/s
-      - default: 10.0
+      - default: 5
+        max: 100
         name: Li
         title: integral limit
-        type: real
+        type: byte
         units: '%'
       - decimal: 1
         default: 0.1
         increment: 0.1
         max: 1
+        min: 0
         name: gain
         title: Steering high speed gain
         type: real
@@ -709,21 +824,23 @@ params:
       title: Steering
     - content:
       - decimal: 1
-        default: 5.0
+        default: 6
         increment: 1
-        max: 100.0
+        max: 100
+        min: 0
         name: dist
         title: L1 period
         type: real
         units: m
       - decimal: 1
-        default: 0.5
+        default: 1.7
         increment: 0.05
-        max: 10.0
+        max: 10
+        min: 0
         name: damp
         title: damping factor
         type: real
-      - default: 5
+      - default: 15
         increment: 1
         max: 100
         name: trig
@@ -734,10 +851,15 @@ params:
       name: track
       title: Track
     - content:
-      - name: Kp
+      - default: 10
+        increment: 0.1
+        min: 0
+        name: Kp
         title: proportional gain
         type: real
-      - name: Kd
+      - increment: 0.1
+        min: 0
+        name: Kd
         title: differential gain
         type: real
       descr: Speed to Brakes [%]
@@ -778,8 +900,16 @@ params:
       type: byte
       units: '%'
     - decimal: 1
+      descr: 'Flaps level will affect proportionally the LD ratio when this parameter
+        is set. The corrected LD ratio is used by landing procedure only to estimate
+        landing patterns. F.ex. when set to `0.6` - full flaps will make LD ratio
+        (used by landing procedure) to be 0.6 of estimated LD, but 50% flaps will
+        make LD to be 0.8 of estimated value.
+
+        '
       increment: 0.1
       max: 1
+      min: 0
       name: ld
       title: Flaps LD gain
       type: real
@@ -798,7 +928,7 @@ params:
       - descr: 'Will cancel takeoff if heading error is more than this value
 
           '
-        increment: 5
+        increment: 10
         max: 60
         name: hdg
         title: Heading error
@@ -828,11 +958,10 @@ params:
         title: Run phase pitch angle
         type: byte
         units: deg
-      - increment: 10
-        max: 200
+      - increment: 1
         name: tslew
         title: Throttle rate limit
-        type: real
+        type: byte
         units: '%/s'
       descr: Takeoff Run phase parameters
       name: run
@@ -859,7 +988,6 @@ params:
       name: climb
     - content:
       - increment: 1
-        max: 100
         name: acc
         title: Launcher trigger acceleration
         type: byte
@@ -867,6 +995,7 @@ params:
       - decimal: 1
         increment: 0.1
         max: 10
+        min: 0
         name: tdelay
         title: Launcher throttle delay
         type: real
@@ -874,6 +1003,7 @@ params:
       - decimal: 1
         increment: 0.1
         max: 10
+        min: 0
         name: cdelay
         title: Launcher controls delay
         type: real
@@ -891,7 +1021,7 @@ params:
       - runway
       - parachute
       - helipad
-    - increment: 5
+    - increment: 1
       max: 1000
       name: agl
       title: AGL correction altitude
@@ -899,13 +1029,13 @@ params:
       units: m
     - content:
       - decimal: 3
-        default: 0.01
+        default: 0.1
         increment: 0.01
-        max: 1
+        min: 0
         name: Kp
         title: Delta [m] to speed [m/s] gain
         type: real
-      - default: 10
+      - default: 5
         increment: 10
         max: 100
         name: thr
@@ -914,17 +1044,16 @@ params:
         units: '%'
       - decimal: 2
         increment: 0.1
-        max: 2
-        min: 0.5
+        max: 4
+        min: 0
         name: cap
         title: Energy capacity factor
         type: real
       descr: Approach phase parameters
       name: app
     - content:
-      - default: 15
+      - default: 20
         increment: 1
-        max: 100
         name: alt
         title: Flare phase altitude
         type: byte
@@ -936,8 +1065,10 @@ params:
         type: byte
         units: deg
       - decimal: 1
+        default: 0.5
         increment: 0.1
         max: 5
+        min: 0
         name: sink
         title: Flare sink rate
         type: real
@@ -945,36 +1076,31 @@ params:
       descr: Flare phase parameters
       name: flare
     - content:
-      - default: 4
+      - default: 3
         increment: 1
         max: 50
         name: alt
         title: Touchdown phase altitude
         type: byte
         units: m
-      - default: 8
+      - default: 6
         increment: 1
         max: 90
         name: pitch
         title: Touchdown max pitch angle limit
         type: byte
         units: deg
-      - default: 15
-        increment: 1
-        max: 100
+      - increment: 1
         name: speed
         title: Speed to trigger Run phase
         type: byte
         units: m/s
-      - default: 5
-        increment: 1
-        max: 100
+      - increment: 1
         name: acc
         title: Acceleration to trigger Run phase
         type: byte
         units: m/s^2
       - increment: 10
-        max: 200
         name: brakes
         title: Brakes slew rate limit
         type: byte

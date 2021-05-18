@@ -20,14 +20,20 @@ The unique identifier of any value consists of 11 bits. Each packet in the netwo
 
 Mandala tree is available in GCS Java Script context and facts tree and created for every recognized vehicle.
 
->GCS UI and JS context have simplified structure, where `type` component is **omitted**. Moreover, on GCS side **radians are converted to degrees**.
+>GCS UI and JS context have simplified structure, where `type` component is **omitted**. Moreover, on GCS side - **radians are converted to degrees**.
 
-F.ex., in [GCS Terminal](/gcs/plugins#terminal), which evaluates in JS context, any mandala value item can be accessed as `class.subsystem.field`.
+F.ex., in [GCS Terminal](/gcs/plugins#terminal), which evaluates in JS context, any mandala value item, of the current selected vehicle, can be accessed as `class.subsystem.field` reference:
 
 * `cmd.pos.altitude=800` will set commanded altitude to 800m;
 * `ctr.wing.flaps=0.8` extracts flaps to 80%;
 * `cmd.proc.mode = proc_mode_TAXI` will enter TAXI procedure;
 * `cmd.proc.action = proc_action_next` will trigger the next stage of the current procedure;
+
+>The examples above are using shortcuts with pre-defined getters/setters of the `Fact` object's `value` property.
+
+Another way to access mandala field `Fact` of a vehicle form the JS context is to use the following reference form:
+
+* `apx.vehicles.current.mandala.cmd.pos.altitude.value=800` will set commanded altitude of the current selected vehicle to 800m;
 
 ## Data synchronization
 

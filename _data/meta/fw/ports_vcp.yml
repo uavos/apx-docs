@@ -5,7 +5,6 @@ module: ports.vcp
 name: ports.vcp
 nodes:
 - nav
-- sim
 - com
 - ifc
 params:

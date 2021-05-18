@@ -12,7 +12,7 @@ params:
     title: Type of vehicle
     type: option
     units:
-    - STOL
+    - CTOL
     - VTOL
   - content:
     - array: 16
@@ -21,17 +21,118 @@ params:
     - array: 16
       name: value
       type: real
-    descr: Initial values
+    descr: 'Initial values. Upon power-on procedure, the vehicle will set the corresponding
+      `bind`ed mandala fields to defined values. Useful for applying `brakes` or `ignition`
+      power on reboot.
+
+      '
     name: init
-  - name: mtow
-    title: Max weight
-    type: real
-    units: kg
-  - name: fuel
-    title: Fuel weight
-    type: real
-    units: kg
+  - content:
+    - decimal: 1
+      default: 30
+      descr: 'Airspeed with the maximum LD ratio.  Used as cruise airspeed in mission,
+        and in `landing` procedure as mid-point for speed control for precise landing.
+
+        '
+      increment: 1
+      max: 1000
+      min: 0
+      name: VC
+      title: cruise
+      type: real
+      units: m/s
+    - decimal: 1
+      default: 20
+      descr: 'Minimum allowed airspeed.
+
+        '
+      increment: 1
+      max: 1000
+      min: 0
+      name: VSO
+      title: stall with flaps
+      type: real
+      units: m/s
+    - decimal: 1
+      descr: 'This airspeed is used by the auto flaps regulator to apply flaps when
+        the airspeed is close to the parameter value.
+
+        '
+      increment: 1
+      max: 1000
+      min: 0
+      name: VSI
+      title: stall with no flaps
+      type: real
+      units: m/s
+    - decimal: 0
+      descr: 'When set, will retract flaps on high speeds to avoid airframe damage.
+
+        '
+      increment: 1
+      max: 1000
+      min: 0
+      name: VFE
+      title: max with flaps
+      type: real
+      units: m/s
+    - decimal: 0
+      descr: 'When set, used by `takeoff` procedure to set the commanded airspeed
+        on `climbing` phase.
+
+        '
+      increment: 1
+      max: 1000
+      min: 0
+      name: VY
+      title: max climbing rate
+      type: real
+      units: m/s
+    - decimal: 0
+      descr: 'Used by `landing` procedure to limit the maximum airspeed when performing
+        maneuvers.
+
+        '
+      increment: 1
+      max: 1000
+      min: 0
+      name: VNO
+      title: normal operation
+      type: real
+      units: m/s
+    - decimal: 0
+      default: 50
+      descr: 'Used as a limit for maximum commanded airspeed.
+
+        '
+      increment: 1
+      max: 1000
+      min: 0
+      name: VNE
+      title: never exceed
+      type: real
+      units: m/s
+    - decimal: 0
+      default: 1
+      descr: 'Safe ground speed to make maneuvers. Used by `taxi` procedure for safe
+        taxi speed and by bearing estimator  as the minimum ground speed to use velocity
+        rather than yaw angle for bearing.
+
+        '
+      increment: 1
+      max: 10
+      min: 0
+      name: GS
+      title: Taxi ground speed
+      type: real
+      units: m/s
+    descr: Speeds
+    name: speed
   - default: 100
+    descr: 'The altitude, where it is safe for the vehicle to perform maneuvers. Used
+      by the `landing` procedure to select the best altitude to start the maneuver.
+
+      '
     increment: 10
     max: 5000
     min: 1
@@ -39,96 +140,36 @@ params:
     title: safe altitude
     type: word
     units: m
-  - default: 200
+  - decimal: 0
+    default: 200
+    descr: 'The default loitering radius. Also used by `landing` procedure to estimate
+      the landing pattern for precise landing. Should be set to the minimum radius
+      of turn, capable to be performed by vehicle, with the margin of 10%.
+
+      '
     increment: 10
     max: 10000
+    min: 0
     name: radius
     title: Loiter radius
     type: word
     units: m
   - decimal: 1
+    descr: 'The expected glide ratio of the vehicle. The actual (immediate) LD will
+      be estimated, based on this starting point.
+
+      '
     increment: 1
     max: 100
+    min: 0
     name: ld
     title: glide ratio
     type: real
   - decimal: 1
-    default: 30
-    increment: 1
-    max: 1000
-    min: 3
-    name: VC
-    title: cruise
-    type: real
-    units: m/s
-  - decimal: 1
-    default: 18
-    increment: 1
-    max: 1000
-    min: 3
-    name: VSO
-    title: stall with flaps
-    type: real
-    units: m/s
-  - decimal: 1
-    increment: 1
-    max: 1000
-    name: VSI
-    title: stall with no flaps
-    type: real
-    units: m/s
-  - increment: 1
-    max: 1000
-    name: VFE
-    title: max with flaps
-    type: real
-    units: m/s
-  - increment: 1
-    max: 1000
-    name: VY
-    title: max climbing rate
-    type: real
-    units: m/s
-  - increment: 1
-    max: 1000
-    name: VNO
-    title: normal operation
-    type: real
-    units: m/s
-  - default: 50
-    increment: 1
-    max: 1000
-    name: VNE
-    title: never exceed
-    type: real
-    units: m/s
-  - default: 1
-    descr: 'Safe ground speed to make maneuvers.
-
-      '
-    increment: 1
-    max: 10
-    name: GS
-    title: Taxi ground speed
-    type: real
-    units: m/s
-  - decimal: 1
-    default: 7.0
-    descr: "This is the maximum vertical acceleration,\neither up or down, that the\
-      \ controller will use to correct speed\nor height errors. The controller will\
-      \ limit the slew rate of \ncommanded pitch angle to not to exceed this limit.\n"
-    increment: 1
-    max: 50.0
-    min: 1.0
-    name: acc
-    title: Maximum acceleration
-    type: real
-    units: m/s^2
-  - decimal: 1
     default: 4.0
-    descr: 'This is the best climb rate that the aircraft can achieve with
-
-      the max throttle.
+    descr: 'This is the best climb rate that the aircraft can achieve with the max
+      throttle. Used as the limit of climbing rate of the vehicle, used by the TECS
+      controls.
 
       '
     increment: 1
@@ -158,6 +199,65 @@ params:
     title: Maximum descent rate
     type: real
     units: m/s
+  - decimal: 1
+    default: 7.0
+    descr: "This is the maximum vertical acceleration,\neither up or down, that the\
+      \ controller will use to correct speed\nor height errors. The controller will\
+      \ limit the slew rate of \ncommanded pitch angle to not to exceed this limit.\n"
+    increment: 1
+    max: 50.0
+    min: 1.0
+    name: acc
+    title: Maximum acceleration
+    type: real
+    units: m/s^2
+  - descr: 'Used by some control loops gains. Although, gain coefficients are estimated,
+      based on the `fuel` weight. This parameter should reflect the maximum weight
+      of the vehicle, when  the fuel capacity is full.
+
+      '
+    increment: 10
+    name: mtow
+    title: Max weight
+    type: word
+    units: kg
+  - content:
+    - descr: 'When set, will affect the estimated vehicle weight, used for control
+        loops gains. When equals to zero - means EV (battery powered).
+
+        '
+      increment: 10
+      name: weight
+      title: Fuel weight
+      type: word
+      units: kg
+    - descr: 'Maximum flight time. Autopilot estimates range and TTL when fuel  level
+        sensor is not available. Critical for some built-in safety procedures.
+
+        '
+      increment: 10
+      name: endurance
+      title: Maximum endurance
+      type: word
+      units: min
+    - descr: 'Used when the fuel level or fuel rate sensor is not available.  The
+        endurance will be estimated based on fuel level, and the fuel rate will  be
+        estimated with the throttle control divided by this factor.  I.e., cruise
+        throttle, or the `endurance` parameter value is correct, when  the throttle
+        is equal to this parameter value. F.ex., when set to `1` - flying with full
+        throttle will not affect the endurance  and low throttle will increase endurance,
+        or when set to `0.5` - the endurance is half the value, when the throttle
+        is full.
+
+        '
+      increment: 0.1
+      max: 1
+      min: 0
+      name: thr
+      title: Throttle to endurance factor
+      type: real
+    descr: Vehicle fuel capacity
+    name: fuel
   descr: Vehicle parameters
   name: vehicle
   title: Vehicle

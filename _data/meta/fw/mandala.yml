@@ -694,16 +694,16 @@ content:
       title: Generator
       type: real
     - content:
-      - name: capacity
-        suffix: capacity
-        title: Fuel capacity
+      - name: level
+        suffix: level
+        title: Fuel level
         type: real
-        units: l
+        units: u
       - name: rate
         suffix: flow rate
         title: Fuel flow rate
         type: real
-        units: l/h
+        units: u/h
       - name: temp
         suffix: temperature
         title: Fuel temperature
@@ -1677,16 +1677,16 @@ content:
         title: Velocity Z
         type: real
         units: m/s
-      - name: dx
-        title: Delta X
+      - name: n
+        title: North
         type: real
         units: m
-      - name: dy
-        title: Delta Y
+      - name: e
+        title: East
         type: real
         units: m
-      - name: dz
-        title: Delta Z
+      - name: d
+        title: Down
         type: real
         units: m
       name: lpos
@@ -1817,27 +1817,38 @@ content:
         - normal
         - warning
         - critical
-      - name: time
+      - descr: 'GPS time or when not available - system CPU time.
+
+          '
+        name: time
         suffix: time
         title: System time
         type: dword
         units: s
-      - name: uptime
+      - descr: 'Number of milliseconds passed since system powered on. Value updated
+          by `telemetry` module. Used for telemetry purposes only.
+
+          '
+        name: uptime
         title: Uptime
         type: dword
         units: ms
-      - name: ttl
-        title: Time to live
-        type: dword
-        units: s
-      - name: energy
-        title: Energy capacity
-        type: real
-        units: u
+      - name: fuel
+        title: Fuel capacity
+        type: byte
+        units: '%'
       - name: weight
         title: Vehicle weight
-        type: real
+        type: word
         units: kg
+      - name: ttl
+        title: Time to live
+        type: word
+        units: min
+      - name: range
+        title: Maximum range
+        type: word
+        units: km
       - name: corr
         title: Correlator output
         type: real

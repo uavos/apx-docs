@@ -2,7 +2,6 @@
 badge: sim
 modules:
 - shiva
-- ports.vcp
 - ports.controls
 - ahrs
 - telemetry
