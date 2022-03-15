@@ -39,9 +39,9 @@ sh [<node name>] [<module name>] [<module name>...] [*] [ls|rst]
 ### Examples
 
 * `sh cpu` - will print cpu usage performance counters for all nodes;
-* `sh nav cpu` - will print cpu usage performance counter for `nav` node`;
-* `sh nav cpu` - will print cpu usage performance counter for `nav` node`;
-* `sh nav ahrs *` - will print all `ahrs` related modules and their stats for `nav` node`;
-* `sh nav * rst` - resets all performance counters for `nav` node`;
-* `sh nav hub ls` - prints modules tree structure under `hub` module for `nav` node`;
+* `sh nav cpu` - will print cpu usage performance counter for `nav` node;
+* `sh nav cpu` - will print cpu usage performance counter for `nav` node;
+* `sh nav ahrs *` - will print all `ahrs` related modules and their stats for `nav` node;
+* `sh nav * rst` - resets all performance counters for `nav` node;
+* `sh nav hub ls` - prints modules tree structure under `hub` module for `nav` node;
 * `sh imon` - prints power usage monitors data for all nodes;

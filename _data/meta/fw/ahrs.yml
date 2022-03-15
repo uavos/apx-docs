@@ -6,6 +6,7 @@ name: ahrs
 nodes:
 - nav
 - sim
+- com
 params:
 - content:
   - name: rebias
@@ -195,6 +196,68 @@ params:
       units: m
     descr: AGL sensor
     name: agl
+  - content:
+    - name: airspeed
+      title: Airspeed source
+      type: option
+      units:
+      - sensor
+      - vel
+    - decimal: 1
+      default: 20
+      increment: 0.1
+      max: 100
+      min: 0
+      name: err
+      title: Airspeed measurement error
+      type: real
+      units: m/s
+    - decimal: 1
+      default: 0.001
+      increment: 0.01
+      max: 1
+      min: 0
+      name: proc
+      title: Process noise
+      type: real
+    - decimal: 1
+      default: 0.01
+      increment: 0.01
+      max: 1
+      min: 0
+      name: bias
+      title: Process noise for bias
+      type: real
+    - decimal: 1
+      default: 0.01
+      increment: 0.01
+      max: 1
+      min: 0
+      name: lpf
+      title: Energy derivative LP filter
+      type: real
+    - name: slip
+      title: Slip source
+      type: option
+      units:
+      - acc
+      - sensor
+    - default: 100
+      descr: 'Will emit warning on GCS and apply either reverse ailerons or negative
+        elevator.
+
+        Lower values make detector more sensitive. The `stability`
+
+        is estimated based on rate of turn and energy flow.
+
+        '
+      increment: 10
+      max: 1000
+      name: stab
+      title: Stability detector sensitivity
+      type: word
+    descr: Airdata parameters
+    name: air
   - name: mag
     title: Magnetometer
     type: option
@@ -218,35 +281,6 @@ params:
     units:
     - vel
     - yaw
-  - decimal: 1
-    default: 0.5
-    increment: 0.1
-    max: 10
-    min: 0
-    name: fke
-    title: Kinetic energy rate filter
-    type: real
-    units: s
-  - name: slip
-    title: Slip estimator
-    type: option
-    units:
-    - acc
-    - sensor
-  - default: 100
-    descr: 'Will emit warning on GCS and apply either reverse ailerons or negative
-      elevator.
-
-      Lower values make detector more sensitive. The `stability`
-
-      is estimated based on rate of turn and energy flow.
-
-      '
-    increment: 10
-    max: 1000
-    name: stab
-    title: Stability detector sensitivity
-    type: word
   descr: Inertial navigation
   name: ahrs
   title: AHRS

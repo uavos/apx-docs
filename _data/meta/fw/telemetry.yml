@@ -13,7 +13,7 @@ params:
   - descr: "* `auto`: the stream will be sent to GCS upon reception of \ntelemetry\
       \ requests from the GCS, i.e. when the vehicle is active \nand selected on the\
       \ GCS UI. When there's no requests from GCS - \nthe module will send just short\
-      \ [XPDR data packets](https://github.com/uavos/apx-lib/blob/main/xbus/XbusVehicle.h)\n\
+      \ [XPDR data packets](https://github.com/uavos/apx-lib/blob/main/xbus/telemetry/TelemetryFormat.h)\n\
       to the GCS once a second;\n* `always`: the telemetry stream will always be set,\
       \ regardless of \nuplink availability and GCS requests;\n"
     name: mode
@@ -35,7 +35,6 @@ params:
     - 5Hz
     - 20Hz
     - 50Hz
-    - 100Hz
   - descr: "Normally, the telemetry stream will be sent to the only node interface\n\
       to optimize bandwidth, to be later transmitted by [com](/hw/com) node to the\
       \ GCS.\nThe interface is detected automatically based on requests routes from\
@@ -83,7 +82,7 @@ params:
 
         '
       name: aux
-    descr: "To limit the bandwidth, stream can have included or excluded \nspecific\
+    descr: "To limit the bandwidth, stream can have included (or excluded) \nspecific\
       \ variable groups. \nSee [source code](https://github.com/uavos/apx-lib/blob/main/xbus/telemetry/TelemetryDataset.h)\n\
       for details.\n"
     name: data

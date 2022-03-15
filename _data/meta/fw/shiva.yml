@@ -6,6 +6,7 @@ name: shiva
 nodes:
 - nav
 - sim
+- com
 params:
 - content:
   - descr: 'The priority of data, published by the module.
@@ -575,6 +576,11 @@ params:
       name: Ki
       title: Integrator gain
       type: real
+    - max: 45
+      name: Li
+      title: integral limit
+      type: byte
+      units: deg
     - decimal: 1
       default: 1
       descr: This parameter adjusts the amount of weighting that the pitch control
@@ -681,23 +687,43 @@ params:
       name: Kd
       title: differential gain
       type: real
-    - decimal: 2
-      default: 0.5
-      increment: 0.05
-      max: 1
+    - increment: 0.1
+      min: 0
+      name: Ki
+      title: integral gain
+      type: real
+    - default: 0.5
+      increment: 0.1
       min: 0
       name: Kff
-      title: Feed forward factor
-      type: real
-    - decimal: 1
-      default: 0.1
-      increment: 0.1
-      max: 1
-      min: 0
-      name: lpf
-      title: RPM LP filter
+      title: feed forward gain
       type: real
     - content:
+      - content:
+        - default: 100
+          increment: 10
+          name: err
+          title: RPM measurement error
+          type: word
+          units: rpm
+        - decimal: 1
+          default: 0.2
+          increment: 0.1
+          max: 1
+          min: 0
+          name: proc
+          title: Process noise
+          type: real
+        - decimal: 1
+          default: 0.1
+          increment: 0.1
+          max: 1
+          min: 0
+          name: rate
+          title: RPM rate LP filter
+          type: real
+        descr: Kalman filter
+        name: filter
       - descr: This is the RPM setting for cruise speed.
         increment: 10
         min: 0
@@ -722,10 +748,15 @@ params:
       - default: 500
         descr: Maximum slew rate for the commanded RPM
         increment: 100
-        min: 0
         name: slew
-        title: Commanded RPM max slew rate
-        type: real
+        title: RPM setpoint max slew rate
+        type: word
+        units: rpm/s
+      - descr: Maximum slew rate for the commanded RPM on startup procedure
+        increment: 10
+        name: start
+        title: Startup RPM slew rate
+        type: word
         units: rpm/s
       descr: Engine RPM
       name: rpm
@@ -740,7 +771,7 @@ params:
         title: Max throttle
         type: byte
         units: '%'
-      - descr: This is the minimum throttle that can be used by the controller. For
+      - descr: This is the minimum throttle that can be used by the regulator. For
           electric aircraft this will normally be set to zero, but can be set to a
           small non-zero value if a folding prop is fitted to prevent the prop from
           folding and unfolding repeatedly in-flight or to provide some aerodynamic
@@ -759,9 +790,57 @@ params:
         title: Throttle max slew rate
         type: byte
         units: '%/s'
+      - default: 10
+        descr: Maximum slew rate for the commanded throttle on startup procedure
+        increment: 1
+        name: start
+        title: Startup throttle slew rate
+        type: byte
+        units: '%/s'
       descr: Throttle setpoint
       name: thr
-    descr: Governor
+    - content:
+      - default: 100
+        descr: This is the maximum prop pitch that can be used by the regulator.
+        increment: 1
+        max: 100
+        min: 0
+        name: max
+        title: Max prop pitch
+        type: real
+        units: '%'
+      - descr: This is the minimum prop pitch that can be used by the regulator.
+        increment: 1
+        max: 0
+        min: -100
+        name: min
+        title: Min prop pitch
+        type: real
+        units: '%'
+      - descr: Maximum slew rate for the commanded prop
+        increment: 10
+        name: slew
+        title: Prop max slew rate
+        type: byte
+        units: '%/s'
+      - increment: 10
+        max: 100
+        min: -100
+        name: start
+        title: Prop setting on startup
+        type: real
+        units: '%'
+      - decimals: 1
+        default: 0.1
+        increment: 0.1
+        max: 1
+        min: 0
+        name: gain
+        title: Prop multiplier on low RPM
+        type: real
+      descr: Prop pitch
+      name: prop
+    descr: RPM to Throttle governor
     name: eng
     title: Engine
   - content:
@@ -917,6 +996,98 @@ params:
     name: flaps
     title: Flaps
   - content:
+    - decimal: 1
+      default: 4
+      descr: 'Smaller values make it faster to respond, larger values make it slower
+        to respond.
+
+        The error is divided by this time constant to get the rate setpoint.
+
+        '
+      increment: 0.1
+      min: 0
+      name: tc
+      title: Time constant
+      type: real
+      units: s
+    - content:
+      - default: 3
+        increment: 0.1
+        min: 0
+        name: Kp
+        title: proportional gain
+        type: real
+      - default: 0.1
+        increment: 0.1
+        min: 0
+        name: Ki
+        title: integral gain
+        type: real
+      - increment: 0.1
+        min: 0
+        name: Kd
+        title: differential gain
+        type: real
+      - increment: 0.1
+        min: 0
+        name: Kff
+        title: feed forward gain
+        type: real
+      - default: 8
+        max: 80
+        name: Li
+        title: integral limit
+        type: byte
+        units: deg
+      - increment: 0.1
+        min: 0
+        name: vel
+        title: speed limit
+        type: real
+        units: m/s
+      descr: Velocity X [m/s] to Pitch [deg]
+      name: pitch
+    - content:
+      - default: 3
+        increment: 0.1
+        min: 0
+        name: Kp
+        title: proportional gain
+        type: real
+      - default: 0.1
+        increment: 0.1
+        min: 0
+        name: Ki
+        title: integral gain
+        type: real
+      - increment: 0.1
+        min: 0
+        name: Kd
+        title: differential gain
+        type: real
+      - increment: 0.1
+        min: 0
+        name: Kff
+        title: feed forward gain
+        type: real
+      - default: 5
+        max: 80
+        name: Li
+        title: integral limit
+        type: byte
+        units: deg
+      - increment: 0.1
+        min: 0
+        name: vel
+        title: speed limit
+        type: real
+        units: m/s
+      descr: Velocity Y [m/s] to Roll [deg]
+      name: roll
+    descr: Hovering regulators
+    name: hover
+    title: Hover
+  - content:
     - name: mode
       title: Takeoff mode
       type: option
@@ -925,6 +1096,12 @@ params:
       - launcher
       - helipad
     - content:
+      - descr: 'Will cancel takeoff if power is not valid
+
+          '
+        name: pwr
+        title: Power state
+        type: option
       - descr: 'Will cancel takeoff if heading error is more than this value
 
           '
@@ -958,11 +1135,6 @@ params:
         title: Run phase pitch angle
         type: byte
         units: deg
-      - increment: 1
-        name: tslew
-        title: Throttle rate limit
-        type: byte
-        units: '%/s'
       descr: Takeoff Run phase parameters
       name: run
     - content:
@@ -1090,6 +1262,9 @@ params:
         title: Touchdown max pitch angle limit
         type: byte
         units: deg
+      descr: Touchdown phase parameters
+      name: touch
+    - content:
       - increment: 1
         name: speed
         title: Speed to trigger Run phase
@@ -1100,6 +1275,9 @@ params:
         title: Acceleration to trigger Run phase
         type: byte
         units: m/s^2
+      - name: alt
+        title: Altitude check to trigger Run phase
+        type: option
       - increment: 10
         name: brakes
         title: Brakes slew rate limit
@@ -1111,9 +1289,10 @@ params:
         units:
         - cut
         - override
+        - shutdown
         - ignore
-      descr: Touchdown phase parameters
-      name: touch
+      descr: Run phase parameters
+      name: run
     descr: Landing procedure
     name: landing
     title: Landing

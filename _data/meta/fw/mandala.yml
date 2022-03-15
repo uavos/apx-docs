@@ -520,18 +520,6 @@ content:
     type: real
   - content:
     - content:
-      - name: status
-        suffix: status
-        title: Engine status
-        type: option
-        units:
-        - unknown
-        - ready
-        - start
-        - stop
-        - running
-        - warning
-        - failure
       - name: rpm
         suffix: RPM
         title: Engine RPM
@@ -547,16 +535,6 @@ content:
         title: Engine temperature
         type: real
         units: C
-      - name: voltage
-        suffix: ECU voltage
-        title: Engine ECU voltage
-        type: real
-        units: V
-      - name: current
-        suffix: ECU current
-        title: Engine ECU current
-        type: real
-        units: A
       - name: ot
         title: Oil temperature
         type: real
@@ -581,6 +559,26 @@ content:
         title: Intake air box pressure
         type: real
         units: kPa
+      - name: voltage
+        suffix: ECU voltage
+        title: Engine ECU voltage
+        type: real
+        units: V
+      - name: current
+        suffix: ECU current
+        title: Engine ECU current
+        type: real
+        units: A
+      - name: health
+        suffix: health status
+        title: Engine health status
+        type: option
+        units:
+        - unknown
+        - idle
+        - running
+        - warning
+        - failure
       - name: tc
         title: Turbocharger
         type: option
@@ -591,12 +589,6 @@ content:
         - warning
         - critical
         - failure
-      - name: block
-        title: Disable starter switch
-        type: option
-        units:
-        - 'off'
-        - 'on'
       name: eng
       title: Engine
       type: real
@@ -845,6 +837,12 @@ content:
       title: Datalink
       type: real
     - content:
+      - name: srv
+        title: Maintenance service switch
+        type: option
+        units:
+        - 'off'
+        - 'on'
       - name: rt
         title: Room temperature
         type: real
@@ -983,10 +981,6 @@ content:
         title: Rudder
         type: real
         units: su
-      - name: col
-        title: Collective
-        type: real
-        units: su
       name: att
       title: Attitude controls
       type: real
@@ -1102,9 +1096,9 @@ content:
         units:
         - 'off'
         - 'on'
-      - name: ignition
-        suffix: Ignition
-        title: Power Ignition
+      - name: eng
+        suffix: Engine
+        title: Power Engine
         type: option
         units:
         - 'off'
@@ -1764,6 +1758,12 @@ content:
       title: Air data
       type: real
     - content:
+      - name: status
+        title: Maneuver status
+        type: option
+        units:
+        - ongoing
+        - ok
       - name: eta
         title: Estimated time of arrival
         type: word
@@ -1873,6 +1873,30 @@ content:
         units: rad
       name: wind
       title: Wind estimator
+      type: real
+    - content:
+      - name: status
+        suffix: status
+        title: Engine status
+        type: option
+        units:
+        - idle
+        - ok
+        - warning
+        - failure
+      - name: rpm
+        suffix: RPM
+        title: Engine RPM
+        type: real
+        units: rpm
+      - name: drpm
+        suffix: RPM rate
+        title: Engine RPM rate
+        type: real
+        units: rpm/s
+      descr: Engine estimated and filtered values
+      name: eng
+      title: Engine
       type: real
     - content:
       - name: roll
@@ -2170,6 +2194,7 @@ content:
         units:
         - 'off'
         - 'on'
+        - rate
       - name: eng
         title: Engine control
         type: option
@@ -2321,6 +2346,13 @@ content:
       title: Position regulators
       type: real
     - content:
+      - name: mode
+        title: Engine mode
+        type: option
+        units:
+        - auto
+        - start
+        - spin
       - name: rpm
         title: Cmd RPM
         type: real
@@ -2619,6 +2651,18 @@ content:
         name: uplink
         title: Data packet from GCS to vehicle
         type: byte
+      - descr: '`squawk` `packed data`
+
+          '
+        name: telemetry
+        title: Telemetry data
+        type: byte
+      - descr: '`squawk` `data`
+
+          '
+        name: xpdr
+        title: Transponder data
+        type: byte
       name: vehicle
       title: Vehicle object data
       type: byte
@@ -2635,7 +2679,7 @@ content:
         name: format
         title: Telemetry format array
         type: byte
-      - descr: '`xpdr`
+      - descr: '`data`
 
           '
         name: xpdr

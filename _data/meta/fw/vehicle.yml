@@ -6,6 +6,7 @@ name: vehicle
 nodes:
 - nav
 - sim
+- com
 params:
 - content:
   - name: type
@@ -21,9 +22,10 @@ params:
     - array: 16
       name: value
       type: real
-    descr: 'Initial values. Upon power-on procedure, the vehicle will set the corresponding
-      `bind`ed mandala fields to defined values. Useful for applying `brakes` or `ignition`
-      power on reboot.
+    descr: 'Local initial values. Upon power-on procedure, the vehicle will set the
+      corresponding `bind`ed mandala fields to defined values. Useful for applying
+      `brakes` or `ignition` power on reboot. Should be used to set local node variables
+      only. The values are not broadcasted on network.
 
       '
     name: init
@@ -43,7 +45,8 @@ params:
       units: m/s
     - decimal: 1
       default: 20
-      descr: 'Minimum allowed airspeed.
+      descr: 'Minimum allowed airspeed. For VTOLs this parameter affects the hover
+        transitions and climb/sink rates.
 
         '
       increment: 1
@@ -166,21 +169,21 @@ params:
     title: glide ratio
     type: real
   - decimal: 1
-    default: 4.0
+    default: 4
     descr: 'This is the best climb rate that the aircraft can achieve with the max
       throttle. Used as the limit of climbing rate of the vehicle, used by the TECS
       controls.
 
       '
     increment: 1
-    max: 100.0
-    min: 0.1
+    max: 100
+    min: 0
     name: climb
     title: Maximum climb rate
     type: real
     units: m/s
   - decimal: 1
-    default: 5.0
+    default: 5
     descr: 'This sets the maximum descent rate that the controller will use.
 
       If this value is too large, the aircraft can over-speed on descent.
@@ -193,8 +196,8 @@ params:
 
       '
     increment: 1
-    max: 100.0
-    min: 1
+    max: 100
+    min: 0.1
     name: sink
     title: Maximum descent rate
     type: real
@@ -221,6 +224,40 @@ params:
     title: Max weight
     type: word
     units: kg
+  - descr: 'Used by ailerons and elevator control loops gains. Gain coefficients are
+      estimated, based on the `Altitude` and `True airspeed` weight.
+
+      '
+    name: ktas
+    title: TAS to cruise gain for ail, elv
+    type: option
+  - content:
+    - decimal: 1
+      default: 2
+      descr: 'This is the maximum climb rate that the helicopter can safely maintain  while
+        hovering.
+
+        '
+      increment: 1
+      max: 100
+      min: 0
+      name: hclimb
+      title: Hover mode maximum climb rate
+      type: real
+      units: m/s
+    - decimal: 1
+      default: 3
+      descr: "This is the maximum descending rate that the helicopter can safely maintain\
+        \ \nwhile hovering.\n"
+      increment: 1
+      max: 100
+      min: 0
+      name: hsink
+      title: Hover mode maximum descent rate
+      type: real
+      units: m/s
+    descr: Helicopter specific parameters
+    name: heli
   - content:
     - descr: 'When set, will affect the estimated vehicle weight, used for control
         loops gains. When equals to zero - means EV (battery powered).

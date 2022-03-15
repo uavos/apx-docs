@@ -1,16 +1,20 @@
 ---
 badge: com
 documents:
-- assets/mhx-AP10-footprint.pdf
-- assets/mhx-AP9-footprint.pdf
-- assets/mhx-AP9R1-footprint.pdf
+- assets/com-AP9R1-footprint.pdf
+- assets/com-AP9-footprint.pdf
+- assets/com-AP10-footprint.pdf
+- assets/com-DLF1-footprint.pdf
 modules:
+- shiva
 - ports.vcp
 - ports.controls
 - ports.gpio
+- ahrs
 - protocols
 - telemetry
 - identity
+- vehicle
 - script
 node: com
 order: 20
