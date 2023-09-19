@@ -7,9 +7,9 @@ documents:
 - assets/com-DLF1-footprint.pdf
 modules:
 - shiva
-- ports.vcp
-- ports.controls
-- ports.gpio
+- vcp
+- controls
+- controls.gpio
 - ahrs
 - protocols
 - telemetry

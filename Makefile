@@ -10,7 +10,7 @@ view:
 
 check:
 	@bundle exec jekyll build
-	@htmlproofer _site --disable-external --allow-hash-href --assume-extension
+	@htmlproofer _site --disable-external --allow-hash-href --assume-extension '.html'
 
 
 FILES = $(shell find _data ! -name _data ! -name sections.yml)

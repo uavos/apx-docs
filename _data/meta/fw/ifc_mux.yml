@@ -1,5 +1,5 @@
 conf:
-- ports
+- controls
 label: ifc_mux
 module: ifc.mux
 name: ifc.mux
@@ -13,5 +13,5 @@ params:
 
       '
     name: gpio
-  name: ports
+  name: controls
 title: PHY Multiplexer

@@ -39,17 +39,41 @@ params:
       to optimize bandwidth, to be later transmitted by [com](/hw/com) node to the\
       \ GCS.\nThe interface is detected automatically based on requests routes from\
       \ the GCS.\nIn case you have to forward telemetry stream to other redundant\
-      \ modems \n(f.ex. connected to a [VCP](ports_vcp)), this option should be turned\
-      \ on\nto make data broadcasted and available to other modules/nodes.\n"
+      \ modems \n(f.ex. connected to a [VCP](vcp)), this option should be turned on\n\
+      to make data broadcasted and available to other modules/nodes.\n"
     name: broadcast
     title: Broadcast to all interfaces
     type: option
   - content:
-    - name: cam
-      title: Gimbal payload related data
+    - descr: '* `default`: autopilot telemetry dataset, used for experimental flights;
+
+        * `minimal`: minimal vehicle telemetry;
+
+        * `normal`: same as `default` dataset with some values removed, enough for
+        normal operation;
+
+        * `none`: no data fields selected;
+
+        '
+      name: mode
+      title: Default dataset selection
+      type: option
+      units:
+      - default
+      - minimal
+      - normal
+      - none
+    - name: sync
+      title: Auto add modified data fields
       type: option
     - name: usr
       title: User related data
+      type: option
+    - name: srcs
+      title: Redundancy of sensors
+      type: option
+    - name: cam
+      title: Gimbal payload related data
       type: option
     - name: ats
       title: Tracking antenna related data
@@ -60,28 +84,12 @@ params:
     - name: haps
       title: HAPS related data
       type: option
-    - name: redundancy
-      title: Source of sensors
-      type: option
-    - content:
-      - array: 16
-        name: bind
-        type: bind
-      - array: 16
-        name: format
-        type: option
-        units:
-        - real
-        - precise
-        - dword
-        - word
-        - byte
-        - bit
-        - option
+    - array: 24
       descr: 'Auxillary mandala variables to be included in the stream.
 
         '
       name: aux
+      type: bind
     descr: "To limit the bandwidth, stream can have included (or excluded) \nspecific\
       \ variable groups. \nSee [source code](https://github.com/uavos/apx-lib/blob/main/xbus/telemetry/TelemetryDataset.h)\n\
       for details.\n"

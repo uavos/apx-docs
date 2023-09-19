@@ -1,6 +1,7 @@
 pages:
 - install
 - sim
+- flow
 - plugins
 - scriptcompiler
 - httpservice

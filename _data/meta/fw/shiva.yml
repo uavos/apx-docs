@@ -840,6 +840,24 @@ params:
         type: real
       descr: Prop pitch
       name: prop
+    - content:
+      - increment: 0.1
+        min: 0
+        name: Kp
+        title: proportional gain
+        type: real
+      - increment: 0.1
+        min: 0
+        name: Kd
+        title: differential gain
+        type: real
+      - increment: 0.1
+        min: 0
+        name: Ki
+        title: integral gain
+        type: real
+      descr: Engine Governor RPM to Prop pitch [%]
+      name: glider
     descr: RPM to Throttle governor
     name: eng
     title: Engine
@@ -958,6 +976,12 @@ params:
       max: 100
       name: min
       title: VSI flaps
+      type: byte
+      units: '%'
+    - increment: 5
+      max: 100
+      name: step
+      title: Step in automatic mode
       type: byte
       units: '%'
     - increment: 10
@@ -1221,6 +1245,40 @@ params:
         name: cap
         title: Energy capacity factor
         type: real
+      - content:
+        - increment: 0.1
+          min: 0
+          name: Kp
+          title: proportional gain
+          type: real
+        - increment: 0.1
+          min: 0
+          name: Ki
+          title: integral gain
+          type: real
+        - min: 0
+          name: Lp
+          title: proportional limit
+          type: byte
+          units: '%'
+        - max: 100
+          name: Li
+          title: integral limit
+          type: byte
+          units: '%'
+        - max: 100
+          name: Lo
+          title: output limit
+          type: byte
+          units: '%'
+        - max: 100
+          name: bias
+          title: bias
+          type: byte
+          units: '%'
+        descr: Distance error[m] to airbrake[%]
+        name: airbrk
+        title: airbrk
       descr: Approach phase parameters
       name: app
     - content:
@@ -1234,7 +1292,7 @@ params:
         max: 90
         name: pitch
         title: Flare max pitch angle limit
-        type: byte
+        type: real
         units: deg
       - decimal: 1
         default: 0.5
@@ -1245,6 +1303,20 @@ params:
         title: Flare sink rate
         type: real
         units: m/s
+      - content:
+        - increment: 0.1
+          min: 0
+          name: Kp
+          title: proportional gain
+          type: real
+        - max: 100
+          name: Lo
+          title: output limit
+          type: byte
+          units: '%'
+        descr: Vertical speed error[m/s] to airbrake[%]
+        name: airbrk
+        title: airbrk
       descr: Flare phase parameters
       name: flare
     - content:
@@ -1262,6 +1334,19 @@ params:
         title: Touchdown max pitch angle limit
         type: byte
         units: deg
+      - decimal: 1
+        default: 0
+        descr: 'This speed is defined as the one-G stall speed at which  the airplane
+          can develop a lift force (normal to the flight path)  equal to its weight.
+
+          '
+        increment: 1
+        max: 1000
+        min: 0
+        name: VS1G
+        title: Stall speed at 1g load factor
+        type: real
+        units: m/s
       descr: Touchdown phase parameters
       name: touch
     - content:

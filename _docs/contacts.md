@@ -22,12 +22,4 @@ Aliaksei Stratsilatau <sa@uavos.com>
 
 All `issues`, `bugs` and `feature requests` can be reported in appropriate repository.
 
->The old documentation site of v10.xx and below is accessible here: [apx-v10](http://uavos.github.io/apx-v10).
-
-## Subscribe for updates
-
-Receive emails about new versions of Ground Control.
-
-{% include_relative subscribe.html %}
-
 >Documentation updated {{ site.time }}

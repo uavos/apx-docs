@@ -2,8 +2,9 @@
 badge: sim
 modules:
 - shiva
-- ports.controls
+- controls
 - ahrs
+- protocols
 - telemetry
 - identity
 - vehicle

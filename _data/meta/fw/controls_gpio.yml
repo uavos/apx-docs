@@ -1,0 +1,94 @@
+conf:
+- controls
+label: controls_gpio
+module: controls.gpio
+name: controls.gpio
+nodes:
+- ghanta
+- nav
+- com
+- ifc
+params:
+- content:
+  - content:
+    - array: $controls_gpio
+      descr: '* `off` - the port is shutdown (floating);
+
+        * `OUT` - the port is configured as logical output;
+
+        * `OUT_PWM` - outputs PWM signal for servos;
+
+        * `OUT_DUTY` - outputs PWM signal with controllable duty cycle;
+
+        * `OUT_PULSE` - outputs logical pulse(s) with controllable frequency and width;
+
+        * `IN` - measures logical level `[0/1]`;
+
+        * `IN_FREQ` - measures signal frequency `[Hz]`;
+
+        * `IN_WIDTH` - measures pulse width `[s]`;
+
+        * `IN_DUTY` - measures duty cycle `[1]`;
+
+        * `IN_SET` - measures logical level and sets the binding variable on high
+        level only;
+
+        '
+      name: mode
+      title: GPIO Pin mode
+      type: option
+      units:
+      - 'off'
+      - OUT
+      - OUT_PWM
+      - OUT_DUTY
+      - OUT_PULSE
+      - IN
+      - IN_FREQ
+      - IN_WIDTH
+      - IN_DUTY
+      - IN_SET
+    - array: $controls_gpio
+      descr: "When this option is `on` - the physical TTL level [0/1] of the \npin\
+        \ is inverted. \n* `inputs`: level is inverted before processing, \n* `outputs`:\
+        \ level is inverted after processing, before applying.\n"
+      name: inv
+      title: Signal inverted
+      type: option
+    - array: $controls_gpio
+      descr: "* `inputs`: the measured value will be stored \nin this variable and\
+        \ broadcasted to network, this parameter is mandatory for inputs;\n* `outputs`:\
+        \ the value of the variable will be applied immediately \nto the port logic.\
+        \ If this parameter is omitted - the channel of \n[controls](controls) module\
+        \ output is used as value when assigned, \ni.e. the `ch` of control must be\
+        \ equal to the gpio port number, starting from 1;\n"
+      name: bind
+      title: Binded variable
+      type: bind
+    - array: $controls_gpio
+      descr: "* `OUT`, `OUT_PWM`, `OUT_DUTY`: variable value is multiplied by this\
+        \ factor;\n* `OUT_PULSE`: if this parameter is set more than `bias` - the\
+        \ pulse will be \n  emitted with the set period `[s]`, otherwise, the pulse\
+        \ will be shot just once.\n  The pulse will be emitted when the `bind` value\
+        \ is more than zero. \n  Use cases:\n    * engine starters;\n    * strobe\
+        \ lights;\n* `inputs`: measured value is multiplied by this factor;\n"
+      name: mult
+      title: Value multiplier
+      type: real
+    - array: $controls_gpio
+      descr: "* `outputs`: variable value, after multiplying by `mult` is adjusted\
+        \ \nwith the value of this parameter before applying to TTL logic;\n* `inputs`:\
+        \ this parameter is added to measured value, after \napplying the `mult`;\n"
+      name: bias
+      title: Value bias
+      type: real
+    - array: $controls_gpio
+      descr: "Used for display/notes purposes only, as the value is stored \nin node\
+        \ and can be shared within the crew as a comment.\n"
+      name: label
+      title: User description
+      type: string
+    descr: GPIO Mapping
+    name: gpio
+  name: controls
+title: GPIO ports

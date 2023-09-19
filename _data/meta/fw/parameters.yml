@@ -86,55 +86,6 @@
     descr: Unit alignment
     name: align
   - content:
-    - descr: 'The priority of data, published by the module.
-
-        All priorities, except `local` are broadcasting data in network.
-
-        '
-      name: mode
-      title: Operation mode
-      type: option
-      units:
-      - 'off'
-      - local
-      - primary
-      - secondary
-      - failsafe
-      - auxillary
-    - content:
-      - name: x
-        type: real
-      - name: y
-        type: real
-      - name: z
-        type: real
-      name: bias
-    - content:
-      - name: x
-        type: real
-      - name: y
-        type: real
-      - name: z
-        type: real
-      name: scale
-    name: mag
-    title: Magnetometer
-  - content:
-    - descr: 'The priority of data, published by the module.
-
-        All priorities, except `local` are broadcasting data in network.
-
-        '
-      name: mode
-      title: Operation mode
-      type: option
-      units:
-      - 'off'
-      - local
-      - primary
-      - secondary
-      - failsafe
-      - auxillary
     - content:
       - content:
         - name: x
@@ -148,20 +99,15 @@
           units: deg/s
         descr: Gyro bias
         name: bias
-      - name: rate
-        title: Sample rate
-        type: option
-        units:
-        - default
-        - 10Hz
-        - 100Hz
-        - 200Hz
-        - 500Hz
-        - 800Hz
-        - 1000Hz
-        - 10KHz
-        - 25KHz
-      descr: IMU chip
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Gyro scale
+        name: scale
       name: icm20689
     - content:
       - content:
@@ -176,20 +122,15 @@
           units: deg/s
         descr: Gyro bias
         name: bias
-      - name: rate
-        title: Sample rate
-        type: option
-        units:
-        - default
-        - 10Hz
-        - 100Hz
-        - 200Hz
-        - 500Hz
-        - 800Hz
-        - 1000Hz
-        - 10KHz
-        - 25KHz
-      descr: Gyro chip
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Gyro scale
+        name: scale
       name: bmg160
     - content:
       - content:
@@ -204,20 +145,38 @@
           units: deg/s
         descr: Gyro bias
         name: bias
-      - name: rate
-        title: Sample rate
-        type: option
-        units:
-        - default
-        - 10Hz
-        - 100Hz
-        - 200Hz
-        - 500Hz
-        - 800Hz
-        - 1000Hz
-        - 10KHz
-        - 25KHz
-      descr: IMU chip
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Gyro scale
+        name: scale
+      name: lsm6dso
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: deg/s
+        - name: y
+          type: real
+          units: deg/s
+        - name: z
+          type: real
+          units: deg/s
+        descr: Gyro bias
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Gyro scale
+        name: scale
       name: mpu6000
     - content:
       - content:
@@ -232,10 +191,236 @@
           units: deg/s
         descr: Gyro bias
         name: bias
-      descr: IMU chip
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Gyro scale
+        name: scale
       name: lsm9ds1
-    name: ins
-    title: Inertial
+    - descr: 'The priority of data, published by the module.
+
+        All priorities, except `local` are broadcasting data in network.
+
+        '
+      name: mode
+      title: Operation mode
+      type: option
+      units:
+      - 'off'
+      - local
+      - primary
+      - secondary
+      - failsafe
+      - auxillary
+    descr: Gyroscopes
+    name: gyro
+    title: Gyro
+  - content:
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: m/s^2
+        - name: y
+          type: real
+          units: m/s^2
+        - name: z
+          type: real
+          units: m/s^2
+        descr: Gyro bias
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Acc scale
+        name: scale
+      name: icm20689
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: m/s^2
+        - name: y
+          type: real
+          units: m/s^2
+        - name: z
+          type: real
+          units: m/s^2
+        descr: Gyro bias
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Acc scale
+        name: scale
+      name: lsm6dso
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: m/s^2
+        - name: y
+          type: real
+          units: m/s^2
+        - name: z
+          type: real
+          units: m/s^2
+        descr: Gyro bias
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Acc scale
+        name: scale
+      name: mpu6000
+    - content:
+      - content:
+        - name: x
+          type: real
+          units: m/s^2
+        - name: y
+          type: real
+          units: m/s^2
+        - name: z
+          type: real
+          units: m/s^2
+        descr: Gyro bias
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        descr: Acc scale
+        name: scale
+      name: lsm9ds1
+    - descr: 'The priority of data, published by the module.
+
+        All priorities, except `local` are broadcasting data in network.
+
+        '
+      name: mode
+      title: Operation mode
+      type: option
+      units:
+      - 'off'
+      - local
+      - primary
+      - secondary
+      - failsafe
+      - auxillary
+    descr: Accelerometers
+    name: acc
+    title: Acc
+  - content:
+    - content:
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        name: scale
+      name: mmc5983
+    - content:
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        name: scale
+      name: lsm9ds1
+    - content:
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        name: scale
+      name: bmm150
+    - descr: 'The priority of data, published by the module.
+
+        All priorities, except `local` are broadcasting data in network.
+
+        '
+      name: mode
+      title: Operation mode
+      type: option
+      units:
+      - 'off'
+      - local
+      - primary
+      - secondary
+      - failsafe
+      - auxillary
+    - content:
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        name: bias
+      - content:
+        - name: x
+          type: real
+        - name: y
+          type: real
+        - name: z
+          type: real
+        name: scale
+      name: ist8310
+    descr: Magnetometers
+    name: mag
+    title: Mag
   descr: Inertial sensors
   name: imu
   title: IMU
@@ -301,6 +486,19 @@
     - 'on'
     - 'off'
     - RX
+  - content:
+    - name: mode
+      title: Interface mode
+      type: option
+      units:
+      - 'off'
+      - NODE
+      - LAN
+    - name: id
+      title: VCP port ID
+      type: byte
+    descr: VCP data forwarding
+    name: vcp
   - name: scan
     title: Scan for network
     type: command
@@ -352,22 +550,266 @@
     - 500mW
     - 1W
     - 2W
-  - content:
-    - name: mode
-      title: Interface mode
-      type: option
-      units:
-      - 'off'
-      - NODE
-      - LAN
-    - name: id
-      title: VCP port ID
-      type: byte
-    descr: VCP data forwarding
-    name: vcp
   descr: Radio module
   name: radio
   title: Radio
+- content:
+  - name: load_bcfg
+    title: Load basic config
+    type: command
+  - name: read_sn
+    title: Read serial number
+    type: command
+  - name: read_ver
+    title: Read version
+    type: command
+  - name: read_tel
+    title: Read telemerty
+    type: command
+  - name: stop
+    title: Stop servo
+    type: command
+  - name: reset_fault
+    title: Reset fault
+    type: command
+  - default: 0.0
+    descr: ratio by position
+    name: pos_ratio
+    type: real
+  - default: 0.0
+    descr: ratio by velocity
+    name: vel_ratio
+    type: real
+  - default: 0.0
+    descr: Commutation Angle Offset
+    name: com_angle
+    type: real
+  - default: 0.0
+    descr: Reference Angle Offset
+    name: ref_angle
+    type: real
+  - default: 0.0
+    descr: minimum position
+    max: 180.0
+    min: -180.0
+    name: min_pos
+    type: real
+    units: deg
+  - default: 0.0
+    descr: maximum position
+    max: 180.0
+    min: -180.0
+    name: max_pos
+    type: real
+    units: deg
+  - default: 0.0
+    descr: Zero position
+    max: 180.0
+    min: -180.0
+    name: zero_pos
+    type: real
+    units: deg
+  - default: 10.0
+    descr: Max Velocity
+    min: 0.0
+    name: max_vel
+    type: real
+    units: deg/s
+  - default: 10.0
+    descr: Profiler Max Velocity
+    min: 0.0
+    name: pr_max_vel
+    type: real
+    units: deg/s
+  - default: 100.0
+    descr: Profiler Max Acceleration
+    min: 0.0
+    name: pr_max_acc
+    type: real
+    units: deg/s^2
+  - default: 5.0
+    descr: Peak current
+    max: 100.0
+    min: 0.0
+    name: peak_curr
+    type: real
+    units: A
+  - default: 2000.0
+    descr: Peak current time
+    max: 5000.0
+    min: 0.0
+    name: peak_curr_time
+    type: real
+    units: ms
+  - default: 50.0
+    descr: Position window
+    min: 0.0
+    name: pos_window
+    type: real
+    units: cnt
+  - default: 200.0
+    descr: Position window time
+    max: 5000.0
+    min: 0.0
+    name: pos_window_time
+    type: real
+    units: ms
+  - default: 2.0
+    descr: Velocity window
+    min: 0.0
+    name: vel_window
+    type: real
+    units: deg/sec
+  - default: 50.0
+    descr: Velocity window time
+    max: 5000.0
+    min: 0.0
+    name: vel_window_time
+    type: real
+    units: ms
+  - default: 40.0
+    descr: Over Voltage Level
+    max: 100.0
+    min: 0.0
+    name: ovoltlev
+    type: real
+    units: V
+  - default: 40.0
+    descr: Shunt Enable Voltage
+    max: 100.0
+    min: 0.0
+    name: sh_en_volt
+    type: real
+    units: V
+  - default: 40.0
+    descr: Shunt Disable Voltage
+    max: 100.0
+    min: 0.0
+    name: sh_dis_volt
+    type: real
+    units: V
+  - content:
+    - default: 0.416
+      descr: Velocity Kp
+      name: vel_kp
+      type: real
+    - default: 33.16
+      descr: Velocity Ki
+      name: vel_ki
+      type: real
+    - default: 0.06
+      descr: Position Kp
+      name: pos_kp
+      type: real
+    - default: 0.001
+      descr: Position Ki
+      name: pos_ki
+      type: real
+    name: reg
+    title: Regulator
+  - content:
+    - default: 600.0
+      descr: Position Window
+      min: 0.0
+      name: poswindow
+      type: real
+      units: cnt
+    - default: 2000.0
+      descr: Position Timeout
+      max: 5000.0
+      min: 0.0
+      name: postimeout
+      type: real
+      units: ms
+    - default: 2.0
+      descr: Velocity Window
+      min: 0.0
+      name: velwindow
+      type: real
+      units: deg/sec
+    - default: 2000.0
+      descr: Velocity Timeout
+      max: 5000.0
+      min: 0.0
+      name: veltimeout
+      type: real
+      units: ms
+    name: foll_err
+    title: Following Error
+  - content:
+    - descr: Position following
+      name: posferr
+      type: option
+      units:
+      - Power Off
+      - Do Nothing
+    - descr: Over Voltage
+      name: ovolterr
+      type: option
+      units:
+      - Power Off
+      - Do Nothing
+    - descr: Over Temperature
+      name: otemperr
+      type: option
+      units:
+      - Power Off
+      - Do Nothing
+    - descr: Under Temperature
+      name: utemperr
+      type: option
+      units:
+      - Power Off
+      - Do Nothing
+    - descr: Motor Over Temperature
+      name: motemperr
+      type: option
+      units:
+      - Power Off
+      - Do Nothing
+    - descr: Over Voltage Sensitivity
+      name: ovoltsens
+      type: option
+      units:
+      - Fast
+      - Midium
+      - Slow
+    name: actions
+    title: Actions For Errors
+  descr: "\u0421ore configuration"
+  name: core
+  title: Core
+- content:
+  - default: 1
+    max: 30
+    min: 1
+    name: id
+    title: Actuator ID
+    type: byte
+  - default: 1
+    descr: Communication timeout
+    max: 127
+    min: 0
+    name: timeout
+    type: byte
+    units: '[ms]x100'
+  - default: 0
+    descr: Freshness counter threshold
+    max: 15
+    min: 0
+    name: fct
+    type: byte
+    units: cnt
+  - default: 0.0
+    descr: Fail-Safe position
+    max: 180.0
+    min: -180.0
+    name: fspos
+    type: real
+    units: deg
+  descr: Config
+  name: adasi
+  title: Adasi
 - content:
   - content:
     - array: 4
@@ -405,7 +847,7 @@
   title: Analog
 - content:
   - content:
-    - array: $gpio_channels
+    - array: $controls_gpio
       name: phy
       reboot: true
       title: Port options
@@ -416,7 +858,7 @@
       - PU
       - PD
       - OD
-    - array: $gpio_channels
+    - array: $controls_gpio
       descr: '* `off` - the port is shutdown (floating);
 
         * `OUT` - the port is configured as logical output;
@@ -453,24 +895,24 @@
       - IN_WIDTH
       - IN_DUTY
       - IN_SET
-    - array: $gpio_channels
+    - array: $controls_gpio
       descr: "When this option is `on` - the physical TTL level [0/1] of the \npin\
         \ is inverted. \n* `inputs`: level is inverted before processing, \n* `outputs`:\
         \ level is inverted after processing, before applying.\n"
       name: inv
       title: Signal inverted
       type: option
-    - array: $gpio_channels
+    - array: $controls_gpio
       descr: "* `inputs`: the measured value will be stored \nin this variable and\
         \ broadcasted to network, this parameter is mandatory for inputs;\n* `outputs`:\
         \ the value of the variable will be applied immediately \nto the port logic.\
-        \ If this parameter is omitted - the channel of \n[controls](ports_controls)\
-        \ module output is used as value when assigned, \ni.e. the `ch` of control\
-        \ must be equal to the gpio port number, starting from 1;\n"
+        \ If this parameter is omitted - the channel of \n[controls](controls) module\
+        \ output is used as value when assigned, \ni.e. the `ch` of control must be\
+        \ equal to the gpio port number, starting from 1;\n"
       name: bind
       title: Binded variable
       type: bind
-    - array: $gpio_channels
+    - array: $controls_gpio
       descr: "* `OUT`, `OUT_PWM`, `OUT_DUTY`: variable value is multiplied by this\
         \ factor;\n* `OUT_PULSE`: if this parameter is set more than `bias` - the\
         \ pulse will be \n  emitted with the set period `[s]`, otherwise, the pulse\
@@ -480,14 +922,14 @@
       name: mult
       title: Value multiplier
       type: real
-    - array: $gpio_channels
+    - array: $controls_gpio
       descr: "* `outputs`: variable value, after multiplying by `mult` is adjusted\
         \ \nwith the value of this parameter before applying to TTL logic;\n* `inputs`:\
         \ this parameter is added to measured value, after \napplying the `mult`;\n"
       name: bias
       title: Value bias
       type: real
-    - array: $gpio_channels
+    - array: $controls_gpio
       descr: "Used for display/notes purposes only, as the value is stored \nin node\
         \ and can be shared within the crew as a comment.\n"
       name: label
@@ -507,11 +949,14 @@
     - 100Hz
     - 200Hz
     - 400Hz
-  - array: 24
-    name: xpl
-    title: Xplane controls
-    type: text
   - content:
+    - array: 24
+      descr: 'Output channel value is applied to specified X-Plane data ref.
+
+        '
+      name: ch_xpl
+      title: Channel XPL binding
+      type: text
     - array: 32
       descr: 'Value of the variable is used as `input value` for the control.
 
@@ -582,10 +1027,10 @@
       type: real
       units: '%'
     descr: Servo controls
-    name: controls
-  descr: Physical interfaces
-  name: ports
-  title: Ports
+    name: mixer
+  descr: Output Controls Mapping
+  name: controls
+  title: Controls
 - content:
   - descr: 'Stop publishing data on network for all publishers of the node.
 
@@ -661,37 +1106,60 @@
       increment: 0.01
       max: 10
       min: 0
-      name: baro
+      name: noise
       title: Static pressure noise
       type: real
       units: mbar
+    - decimal: 2
+      increment: 0.01
+      name: bias
+      title: Static pressure offset
+      type: real
+      units: mbar
+    - descr: 'Raw sensor readings are multiplied by this value and provided to the
+        output.
+
+        '
+      increment: 0.1
+      max: 100
+      min: 0
+      name: mult
+      title: Static pressure multiplier
+      type: real
+    descr: Simulated Barometer
+    name: baro
+    title: Baro
+  - content:
     - decimal: 2
       default: 0.01
       increment: 0.01
       max: 10
       min: 0
-      name: pitot
+      name: noise
       title: Dynamic pressure noise
       type: real
       units: Pa
-    - name: herr
-      title: Altitude offset
-      type: bind
-    - default: 0
-      descr: 'Up or Down TAS. Example: if aerr 15%, the sensor airspeed measures by
-        15% more.
+    - decimal: 2
+      increment: 0.01
+      name: bias
+      title: Dynamic pressure offset
+      type: real
+      units: Pa
+    - descr: 'Raw sensor readings are multiplied by this value and provided to the
+        output.
+
+        Simulates IAS to EAS conversion.
 
         '
-      increment: 1
-      max: 100
-      min: -100
-      name: aerr
-      title: Airspeed offset
+      increment: 0.1
+      max: 2
+      min: 0
+      name: keas
+      title: Airspeed multiplier
       type: real
-      units: '%'
-    descr: Simulated Airdata
-    name: air
-    title: Airdata
+    descr: Simulated Dynamic Pressure sensor
+    name: pitot
+    title: Pitot
   - content:
     - default: auto
       name: pwr
@@ -717,6 +1185,9 @@
   descr: Simulation preferences
   name: sim
   title: Simulator
+- descr: Virtual Comm Ports
+  name: vcp
+  title: Interfaces
 - content:
   - name: rebias
     title: Reset IMU bias
@@ -945,6 +1416,12 @@
       name: lpf
       title: Energy derivative LP filter
       type: real
+    - name: baro
+      title: Barometer sensor
+      type: option
+      units:
+      - sensor
+      - 'off'
     - name: slip
       title: Slip source
       type: option
@@ -973,11 +1450,9 @@
     units:
     - auto
     - HDG
-    - 3D
-    - indoor
     - disable
   - name: hsrc
-    title: Altitude preference
+    title: Default altitude preference
     type: option
     units:
     - baro
@@ -1010,13 +1485,13 @@
     - UAV
     - GCS
   - content:
-    - descr: 'Enables the [VCP](ports_vcp) forwarding feature to the external interface.
+    - descr: 'Enables the [VCP](vcp) forwarding feature to the external interface.
 
         '
       name: enable
       type: option
     - array: 4
-      descr: "Selects the VCP IDs to be forwarded. \nThe VCP data should be traslated\
+      descr: "Selects the VCP IDs to be forwarded. \nThe VCP data should be translated\
         \ to LAN if the port is located on different node.\n"
       name: id
       type: byte
@@ -1076,7 +1551,7 @@
       units: m/s
     - decimal: 1
       descr: 'This airspeed is used by the auto flaps regulator to apply flaps when
-        the airspeed is close to the parameter value.
+        the airspeed drops down to the parameter value.
 
         '
       increment: 1
@@ -1155,8 +1630,6 @@
 
       '
     increment: 10
-    max: 5000
-    min: 1
     name: altitude
     title: safe altitude
     type: word
@@ -1193,8 +1666,8 @@
       controls.
 
       '
-    increment: 1
-    max: 100
+    increment: 0.1
+    max: 1000
     min: 0
     name: climb
     title: Maximum climb rate
@@ -1213,24 +1686,20 @@
       the aircraft.
 
       '
-    increment: 1
-    max: 100
-    min: 0.1
+    increment: 0.1
+    max: 1000
+    min: 0
     name: sink
     title: Maximum descent rate
     type: real
     units: m/s
-  - decimal: 1
-    default: 7.0
+  - default: 7
     descr: "This is the maximum vertical acceleration,\neither up or down, that the\
       \ controller will use to correct speed\nor height errors. The controller will\
       \ limit the slew rate of \ncommanded pitch angle to not to exceed this limit.\n"
-    increment: 1
-    max: 50.0
-    min: 1.0
     name: acc
     title: Maximum acceleration
-    type: real
+    type: byte
     units: m/s^2
   - descr: 'Used by some control loops gains. Although, gain coefficients are estimated,
       based on the `fuel` weight. This parameter should reflect the maximum weight
@@ -1249,6 +1718,19 @@
     name: ktas
     title: TAS to cruise gain for ail, elv
     type: option
+  - content:
+    - default: 3
+      name: count
+      title: Count of circles
+      type: byte
+    - default: 15
+      increment: 10
+      name: time
+      title: Circling time
+      type: word
+      units: min
+    descr: Maximum count of circles and maximum circling time
+    name: circles
   - content:
     - decimal: 1
       default: 2
@@ -1274,6 +1756,13 @@
       title: Hover mode maximum descent rate
       type: real
       units: m/s
+    - descr: 'Slew rate for the commanded prop pitch on liftoff procedure
+
+        '
+      name: kto
+      title: Liftoff prop pitch slew rate
+      type: byte
+      units: '%/s'
     descr: Helicopter specific parameters
     name: heli
   - content:
@@ -2181,6 +2670,24 @@
         type: real
       descr: Prop pitch
       name: prop
+    - content:
+      - increment: 0.1
+        min: 0
+        name: Kp
+        title: proportional gain
+        type: real
+      - increment: 0.1
+        min: 0
+        name: Kd
+        title: differential gain
+        type: real
+      - increment: 0.1
+        min: 0
+        name: Ki
+        title: integral gain
+        type: real
+      descr: Engine Governor RPM to Prop pitch [%]
+      name: glider
     default:
       Kd: 3.1
       Kff: 0.5
@@ -2306,6 +2813,12 @@
       max: 100
       name: min
       title: VSI flaps
+      type: byte
+      units: '%'
+    - increment: 5
+      max: 100
+      name: step
+      title: Step in automatic mode
       type: byte
       units: '%'
     - increment: 10
@@ -2574,6 +3087,40 @@
         name: cap
         title: Energy capacity factor
         type: real
+      - content:
+        - increment: 0.1
+          min: 0
+          name: Kp
+          title: proportional gain
+          type: real
+        - increment: 0.1
+          min: 0
+          name: Ki
+          title: integral gain
+          type: real
+        - min: 0
+          name: Lp
+          title: proportional limit
+          type: byte
+          units: '%'
+        - max: 100
+          name: Li
+          title: integral limit
+          type: byte
+          units: '%'
+        - max: 100
+          name: Lo
+          title: output limit
+          type: byte
+          units: '%'
+        - max: 100
+          name: bias
+          title: bias
+          type: byte
+          units: '%'
+        descr: Distance error[m] to airbrake[%]
+        name: airbrk
+        title: airbrk
       descr: Approach phase parameters
       name: app
     - content:
@@ -2587,7 +3134,7 @@
         max: 90
         name: pitch
         title: Flare max pitch angle limit
-        type: byte
+        type: real
         units: deg
       - decimal: 1
         default: 0.5
@@ -2598,6 +3145,20 @@
         title: Flare sink rate
         type: real
         units: m/s
+      - content:
+        - increment: 0.1
+          min: 0
+          name: Kp
+          title: proportional gain
+          type: real
+        - max: 100
+          name: Lo
+          title: output limit
+          type: byte
+          units: '%'
+        descr: Vertical speed error[m/s] to airbrake[%]
+        name: airbrk
+        title: airbrk
       descr: Flare phase parameters
       name: flare
     - content:
@@ -2615,6 +3176,19 @@
         title: Touchdown max pitch angle limit
         type: byte
         units: deg
+      - decimal: 1
+        default: 0
+        descr: 'This speed is defined as the one-G stall speed at which  the airplane
+          can develop a lift force (normal to the flight path)  equal to its weight.
+
+          '
+        increment: 1
+        max: 1000
+        min: 0
+        name: VS1G
+        title: Stall speed at 1g load factor
+        type: real
+        units: m/s
       descr: Touchdown phase parameters
       name: touch
     - content:
@@ -2682,17 +3256,41 @@
       to optimize bandwidth, to be later transmitted by [com](/hw/com) node to the\
       \ GCS.\nThe interface is detected automatically based on requests routes from\
       \ the GCS.\nIn case you have to forward telemetry stream to other redundant\
-      \ modems \n(f.ex. connected to a [VCP](ports_vcp)), this option should be turned\
-      \ on\nto make data broadcasted and available to other modules/nodes.\n"
+      \ modems \n(f.ex. connected to a [VCP](vcp)), this option should be turned on\n\
+      to make data broadcasted and available to other modules/nodes.\n"
     name: broadcast
     title: Broadcast to all interfaces
     type: option
   - content:
-    - name: cam
-      title: Gimbal payload related data
+    - descr: '* `default`: autopilot telemetry dataset, used for experimental flights;
+
+        * `minimal`: minimal vehicle telemetry;
+
+        * `normal`: same as `default` dataset with some values removed, enough for
+        normal operation;
+
+        * `none`: no data fields selected;
+
+        '
+      name: mode
+      title: Default dataset selection
+      type: option
+      units:
+      - default
+      - minimal
+      - normal
+      - none
+    - name: sync
+      title: Auto add modified data fields
       type: option
     - name: usr
       title: User related data
+      type: option
+    - name: srcs
+      title: Redundancy of sensors
+      type: option
+    - name: cam
+      title: Gimbal payload related data
       type: option
     - name: ats
       title: Tracking antenna related data
@@ -2703,28 +3301,12 @@
     - name: haps
       title: HAPS related data
       type: option
-    - name: redundancy
-      title: Source of sensors
-      type: option
-    - content:
-      - array: 16
-        name: bind
-        type: bind
-      - array: 16
-        name: format
-        type: option
-        units:
-        - real
-        - precise
-        - dword
-        - word
-        - byte
-        - bit
-        - option
+    - array: 24
       descr: 'Auxillary mandala variables to be included in the stream.
 
         '
       name: aux
+      type: bind
     descr: "To limit the bandwidth, stream can have included (or excluded) \nspecific\
       \ variable groups. \nSee [source code](https://github.com/uavos/apx-lib/blob/main/xbus/telemetry/TelemetryDataset.h)\n\
       for details.\n"
@@ -2733,6 +3315,20 @@
   name: telemetry
   title: Telemetry
 - content:
+  - name: mode
+    title: ATS current mode
+    type: option
+    units:
+    - 'off'
+    - gps
+  descr: Antenna tracking system
+  name: ats
+  title: ATS
+- content:
+  - descr: Enable protocols
+    name: mode
+    title: Enable
+    type: option
   - content:
     - descr: '* `NODE`: serial data, transmitted by the protocol is addressed
 
@@ -2765,9 +3361,47 @@
       - 20ms
       - 100ms
       - 500ms
-    descr: Futaba SBUS servo
+    descr: SBUS servo controls
     name: sbus
     title: SBUS
+  - content:
+    - descr: '* `NODE`: serial data, transmitted by the protocol is addressed
+
+        to VCP of the same (local) node, i.e. protocol and VCP are in the same node;
+
+        * `LAN`: serial data, transmitted by the protocol is broadcasted
+
+        to all nodes in network, i.e. the protocol can be run on one node,
+
+        but the physical VCP port can be on another node;
+
+        '
+      name: mode
+      title: Interface mode
+      type: option
+      units:
+      - 'off'
+      - NODE
+      - LAN
+    - descr: "Protocol will process data from the VCP with the same `id`. \nAll transmitted\
+        \ data will also be addressed to the specified `id`.\n"
+      name: id
+      title: VCP port ID
+      type: byte
+    - name: ext
+      title: extended SBUS
+      type: option
+    - max: 16
+      name: chrc
+      title: "\u0441hannel number for switching to RC mode"
+      type: byte
+    - array: 16
+      name: bind
+      title: bind channels
+      type: bind
+    descr: SBUS RC receiver
+    name: sbusrx
+    title: SBUSRX
   - content:
     - descr: '* `NODE`: serial data, transmitted by the protocol is addressed
 

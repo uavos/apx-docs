@@ -16,7 +16,7 @@ This module provides virtual machine to execute WASM scripts onboard. The script
 ## Usage examples
 
 * Define and automate UAV safety procedures, specific to a vehicle;
-* Implement specific payload protocol to communicate via [VCP](ports_vcp);
+* Implement specific payload protocol to communicate via [VCP](vcp);
 * Implement custom control algorithm and override autopilot;
 * Collect specific sensors data and send it to custom GCS plugin via VCP stream;
 

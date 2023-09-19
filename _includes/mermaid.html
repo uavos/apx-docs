@@ -1,0 +1,24 @@
+<script>
+    // select <pre class="mermaid"> _and_ <pre><code class="language-mermaid">
+    document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => {
+        // if the second selector got a hit, reference the parent <pre>
+        if ($el.tagName === "CODE")
+            $el = $el.parentElement
+        $el.outerHTML = `<div class="mermaid">${$el.textContent}</div>`
+    })
+
+</script>
+
+<!-- <script type="text/javascript" src="https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js"></script> -->
+<script src="{{ '/assets/js/mermaid.min.js' | prepend: site.baseurl }}"></script>
+
+<script>
+    $(document).ready(function () {
+        mermaid.initialize({
+            logLevel: "error",
+            securityLevel: "loose",
+            theme: "neutral",
+        })
+
+    });
+</script>

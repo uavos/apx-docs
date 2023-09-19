@@ -5,6 +5,7 @@ module: identity
 name: identity
 nodes:
 - ghanta
+- nav
 - sim
 - com
 params:
@@ -25,13 +26,13 @@ params:
     - UAV
     - GCS
   - content:
-    - descr: 'Enables the [VCP](ports_vcp) forwarding feature to the external interface.
+    - descr: 'Enables the [VCP](vcp) forwarding feature to the external interface.
 
         '
       name: enable
       type: option
     - array: 4
-      descr: "Selects the VCP IDs to be forwarded. \nThe VCP data should be traslated\
+      descr: "Selects the VCP IDs to be forwarded. \nThe VCP data should be translated\
         \ to LAN if the port is located on different node.\n"
       name: id
       type: byte

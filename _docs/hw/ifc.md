@@ -5,9 +5,9 @@ documents:
 - assets/ifc-AP9R1-footprint.pdf
 - assets/ifc-AP9-footprint.pdf
 modules:
-- ports.vcp
-- ports.controls
-- ports.gpio
+- vcp
+- controls
+- controls.gpio
 - ifc.mux
 - protocols
 - script
@@ -25,8 +25,6 @@ input and output of different digital and analog signals. This board also contai
 The built-in analog multiplexer is used to map logical signal to any of twelve physical ports of the board.
 
 Some modifications of this node have power switches to control power lines, and also may include isolated RS232-485-422 and CAN interfaces.
-
-![IFC](assets/ifc-pcb.png)
 
 ## Node Features
 

@@ -58,7 +58,7 @@ params:
       units: m/s
     - decimal: 1
       descr: 'This airspeed is used by the auto flaps regulator to apply flaps when
-        the airspeed is close to the parameter value.
+        the airspeed drops down to the parameter value.
 
         '
       increment: 1
@@ -137,8 +137,6 @@ params:
 
       '
     increment: 10
-    max: 5000
-    min: 1
     name: altitude
     title: safe altitude
     type: word
@@ -175,8 +173,8 @@ params:
       controls.
 
       '
-    increment: 1
-    max: 100
+    increment: 0.1
+    max: 1000
     min: 0
     name: climb
     title: Maximum climb rate
@@ -195,24 +193,20 @@ params:
       the aircraft.
 
       '
-    increment: 1
-    max: 100
-    min: 0.1
+    increment: 0.1
+    max: 1000
+    min: 0
     name: sink
     title: Maximum descent rate
     type: real
     units: m/s
-  - decimal: 1
-    default: 7.0
+  - default: 7
     descr: "This is the maximum vertical acceleration,\neither up or down, that the\
       \ controller will use to correct speed\nor height errors. The controller will\
       \ limit the slew rate of \ncommanded pitch angle to not to exceed this limit.\n"
-    increment: 1
-    max: 50.0
-    min: 1.0
     name: acc
     title: Maximum acceleration
-    type: real
+    type: byte
     units: m/s^2
   - descr: 'Used by some control loops gains. Although, gain coefficients are estimated,
       based on the `fuel` weight. This parameter should reflect the maximum weight
@@ -231,6 +225,19 @@ params:
     name: ktas
     title: TAS to cruise gain for ail, elv
     type: option
+  - content:
+    - default: 3
+      name: count
+      title: Count of circles
+      type: byte
+    - default: 15
+      increment: 10
+      name: time
+      title: Circling time
+      type: word
+      units: min
+    descr: Maximum count of circles and maximum circling time
+    name: circles
   - content:
     - decimal: 1
       default: 2
@@ -256,6 +263,13 @@ params:
       title: Hover mode maximum descent rate
       type: real
       units: m/s
+    - descr: 'Slew rate for the commanded prop pitch on liftoff procedure
+
+        '
+      name: kto
+      title: Liftoff prop pitch slew rate
+      type: byte
+      units: '%/s'
     descr: Helicopter specific parameters
     name: heli
   - content:

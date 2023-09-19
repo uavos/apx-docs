@@ -236,6 +236,12 @@ params:
       name: lpf
       title: Energy derivative LP filter
       type: real
+    - name: baro
+      title: Barometer sensor
+      type: option
+      units:
+      - sensor
+      - 'off'
     - name: slip
       title: Slip source
       type: option
@@ -264,11 +270,9 @@ params:
     units:
     - auto
     - HDG
-    - 3D
-    - indoor
     - disable
   - name: hsrc
-    title: Altitude preference
+    title: Default altitude preference
     type: option
     units:
     - baro

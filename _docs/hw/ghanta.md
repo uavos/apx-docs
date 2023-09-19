@@ -4,6 +4,10 @@ documents:
 - assets/ghanta-AP9-footprint.pdf
 - assets/ghanta-RUS-footprint.pdf
 modules:
+- vcp
+- controls
+- controls.gpio
+- protocols
 - telemetry
 - identity
 - script

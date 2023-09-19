@@ -1,11 +1,11 @@
 pages:
 - mandala
 - shiva
-- ports_vcp
-- ports_controls
+- vcp
+- controls
 - mod
 - mdb
-- ports_gpio
+- controls_gpio
 - ahrs
 - node
 - ifc_mux
